@@ -15,7 +15,7 @@
 
 | Student Name    | Student Email               | GitHub Username |
 |    :---:        |     :---:                   |     :---:       |
-| member1         |                             |                 |
+| Eddie Fu       |   efu1@sfsu.edu              |   eddiefu1     |
 | Yoshimasa Iwano | yiwano@sfsu.edu             |  YoshimasaIwano |
 | Dominique Henry | dhenry3@mail.sfsu.edu       | dhenry98        |
 | Kobe Shelby     | kshelby@mail.sfsu.edu       |  Kobe040102     |
