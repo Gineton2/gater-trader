@@ -17,7 +17,7 @@
 |    :---:        |     :---:                   |     :---:       |
 | member1         |                             |                 |
 | member2         |                             |                 |
-| member3         |                             |                 |
+| Dominique Henry | dhenry3@mail.sfsu.edu       | dhenry98        |
 | member4         |                             |                 |
 | Rai'd Muhammad  |  rmuhammad@mail.sfsu.edu    |  muhammad14u2c  |
 | Duccio Rocca    |  drocca@sfsu.edu            |  RINO-GAELICO   |
