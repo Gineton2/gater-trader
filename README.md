@@ -18,7 +18,7 @@
 | member1         |                             |                 |
 | member2         |                             |                 |
 | Dominique Henry | dhenry3@mail.sfsu.edu       | dhenry98        |
-| member4         |                             |                 |
+| Kobe Shelby     | kshelby@mail.sfsu.edu       |  Kobe040102     |
 | Rai'd Muhammad  |  rmuhammad@mail.sfsu.edu    |  muhammad14u2c  |
 | Duccio Rocca    |  drocca@sfsu.edu            |  RINO-GAELICO   |
 
