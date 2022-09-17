@@ -17,6 +17,10 @@ router.get('/aboutMe', function(req, res, next) {
     res.render('aboutMe');
     
 });
+
+router.get('/about-gineton', function(req, res, next) {
+  res.render('about-gineton');
+});
   
 
   /*
