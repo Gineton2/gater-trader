@@ -1,0 +1,96 @@
+#Head {
+  margin: auto;
+  padding: 5px;
+  background-color: orange;
+}
+.Title h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 50px;
+  text-align: left;
+  color: black;
+  margin-left: 25px;
+}
+.Special_num {
+  text-decoration: bold;
+  color: white;
+}
+.Meet_Team {
+  font-size: 35px;
+  text-align: center;
+  /* text-decoration: underline; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color:white;
+  font-weight: bolder;
+}
+/* cleaner
+ .word1 {
+  font-weight: lighter;
+}
+.word2 {
+  font-weight: bolder;
+} */
+body {
+  margin: auto;
+  background-color: rgb(84, 173, 170);
+}
+/*Profiles*/
+.Pictures img {
+  max-height: 15%;
+  max-width: 15%;
+}
+.CEO {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5px;
+}
+.Leads1 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+.Leads2 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+.LeadNames1 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 40px;
+  gap: 75px;
+}
+.LeadNames2 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 40px;
+  gap: 100px;
+}
+.Positions1 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 0;
+  gap: 80px;
+}
+.Positions2 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 10px;
+  gap: 100px;
+}
+.TeamInfo{
+   background-color: lightskyblue; 
+}
+.TeamInfo h1{
+    text-align: center;
+    font-weight: lighter;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
+    color:white;
+    text-decoration: underline;
+    
+}
