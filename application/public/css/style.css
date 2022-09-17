@@ -1,85 +1,120 @@
-#head {
+#Head {
   margin: auto;
   padding: 5px;
   background-color: orange;
 }
-.title h1 {
+.Title h1 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 50px;
   text-align: left;
   color: black;
   margin-left: 25px;
 }
-.team-number {
+
+.Special_num {
   text-decoration: bold;
   color: white;
 }
-.meet-team {
+.Meet_Team {
   font-size: 35px;
   text-align: center;
   /* text-decoration: underline; */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: white;
+  color:white;
   font-weight: bolder;
 }
-
+/* cleaner
+ .word1 {
+  font-weight: lighter;
+}
+.word2 {
+  font-weight: bolder;
+} */
 body {
   margin: auto;
   background-color: rgb(84, 173, 170);
 }
 /*Profiles*/
-.pictures img {
+.Pictures img {
   max-height: 15%;
   max-width: 15%;
 }
-.lead {
+.CEO {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 5px;
 }
-
-.leads {
+.Leads1 {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
 }
-.lead-names-1 {
+.Leads2 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+.LeadNames1 {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
   padding-left: 40px;
   gap: 75px;
 }
-.lead-names-2 {
+.LeadNames2 {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
   padding-left: 40px;
   gap: 100px;
 }
-.team-roles-1 {
+.Positions1 {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
   padding-left: 0;
   gap: 80px;
 }
-.team-roles-2 {
+.linkAbout1 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 0;
+  gap: 80px;
+  margin-bottom: .5rem;
+}
+.linkAbout2 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 0;
+  gap: 80px;
+  margin-bottom: .5rem;
+}
+.Positions2 {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
   padding-left: 10px;
   gap: 100px;
 }
-.team-info {
-  background-color: lightskyblue;
+.TeamInfo{
+   background-color: lightskyblue; 
 }
-.team-info h1 {
-  text-align: center;
-  font-weight: lighter;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 50px;
-  color: white;
-  text-decoration: underline;
+.TeamInfo h1{
+    text-align: center;
+    font-weight: lighter;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
+    color:white;
+    text-decoration: underline;
+    
 }
+
+h1 {
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+}
+
+

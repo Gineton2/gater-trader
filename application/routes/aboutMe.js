@@ -9,8 +9,8 @@ var router = express.Router();
 The app.get() method specifies a callback function that will be invoked whenever there is an HTTP GET request with a path ('/') relative to the site root
  */
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('home');
+router.get('/aboutMe', function(req, res, next) {
+    res.render('aboutMe');
   });
 
 
@@ -22,4 +22,4 @@ BUT
 If you want to export a complete object in one assignment instead of building it one property at a time,
 assign it to module.exports as shown below
  */
-  module.exports = router;
+module.exports = router;
