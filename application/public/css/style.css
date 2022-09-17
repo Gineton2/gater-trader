@@ -20,7 +20,7 @@
   text-align: center;
   /* text-decoration: underline; */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color:white;
+  color: white;
   font-weight: bolder;
 }
 /* cleaner
@@ -82,7 +82,7 @@ body {
   justify-content: space-evenly;
   padding-left: 0;
   gap: 80px;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 .linkAbout2 {
   display: flex;
@@ -90,7 +90,7 @@ body {
   justify-content: space-evenly;
   padding-left: 0;
   gap: 80px;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 .Positions2 {
   display: flex;
@@ -99,22 +99,42 @@ body {
   padding-left: 10px;
   gap: 100px;
 }
-.TeamInfo{
-   background-color: lightskyblue; 
+.TeamInfo {
+  background-color: lightskyblue;
 }
-.TeamInfo h1{
-    text-align: center;
-    font-weight: lighter;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 50px;
-    color:white;
-    text-decoration: underline;
-    
+.TeamInfo h1 {
+  text-align: center;
+  font-weight: lighter;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 50px;
+  color: white;
+  text-decoration: underline;
 }
 
 h1 {
-  margin-bottom: .5rem;
-  margin-top: .5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
+.singleBox {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: lighter;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.8rem;
+  color: white;
+  padding-left: 20rem;
+  padding-right: 20rem;
+}
 
+.gitLink{
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
+.imgAboutMe{
+  border: .0625rem solid grey;
+  border-radius: .25rem;
+  box-shadow: 1px 1px 4px 1px #4d2828;
+}
