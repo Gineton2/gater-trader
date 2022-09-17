@@ -10,8 +10,14 @@ The app.get() method specifies a callback function that will be invoked whenever
  */
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('home');
-  });
+    res.render('index');
+});
+
+router.get('/aboutMe', function(req, res, next) {
+    res.render('aboutMe');
+    
+});
+  
 
   /*
 To make objects available outside of a module
