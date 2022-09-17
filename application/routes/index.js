@@ -21,6 +21,12 @@ router.get('/aboutMe', function(req, res, next) {
 router.get('/about-gineton', function(req, res, next) {
   res.render('about-gineton');
 });
+
+router.get('/about-yoshimasa-iwano', function(req, res, next) {
+  res.render('about-yoshimasa-iwano');
+});
+
+
   
 
   /*
