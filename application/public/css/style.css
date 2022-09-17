@@ -119,13 +119,14 @@ h1 {
 .singleBox {
   display: flex;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   font-weight: lighter;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.8rem;
   color: white;
   padding-left: 20rem;
   padding-right: 20rem;
+  
 }
 
 .gitLink{
@@ -137,4 +138,14 @@ h1 {
   border: .0625rem solid grey;
   border-radius: .25rem;
   box-shadow: 1px 1px 4px 1px #4d2828;
+  margin: .9rem;
+  
+}
+
+.wordAbout{
+  padding: .5rem;
+}
+
+.leadWord{
+  padding: .7rem;
 }
