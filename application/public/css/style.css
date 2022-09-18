@@ -40,6 +40,7 @@ body {
 .Pictures img {
   max-height: 15%;
   max-width: 15%;
+  object-fit: contain;
   
 }
 .CEO {
