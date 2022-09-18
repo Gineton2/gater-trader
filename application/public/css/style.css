@@ -37,12 +37,12 @@ body {
   background-color: rgb(84, 173, 170);
 }
 /*Profiles*/
-/* .Pictures img {
+.Pictures img {
   max-height: 15%;
   max-width: 15%;
   
-} */
-/* .CEO {
+}
+.CEO {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -111,7 +111,7 @@ body {
   padding-left: 10px;
   gap: 100px;
   flex-wrap: no-wrap;
-} */
+}
 .team-info {
   background-color: lightskyblue;
 }
