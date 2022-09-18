@@ -46,6 +46,10 @@ router.get('/about-kobe', function(req, res, next) {
   
 });
 
+router.get('/about-dominique', function(req, res, next) {
+  res.render('about-dominique');
+
+});
 
 
 
