@@ -23,13 +23,7 @@
   color: white;
   font-weight: bolder;
 }
-/* cleaner
- .word1 {
-  font-weight: lighter;
-}
-.word2 {
-  font-weight: bolder;
-} */
+
 body {
   margin: auto;
   background-color: rgb(84, 173, 170);
@@ -44,16 +38,19 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 5px;
+  flex-wrap: no-wrap;
 }
 .Leads1 {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
+  flex-wrap: no-wrap;
 }
 .Leads2 {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
+  flex-wrap: no-wrap;
 }
 .LeadNames1 {
   display: flex;
@@ -61,6 +58,7 @@ body {
   justify-content: space-evenly;
   padding-left: 40px;
   gap: 75px;
+  flex-wrap: no-wrap;
 }
 .LeadNames2 {
   display: flex;
@@ -68,6 +66,7 @@ body {
   justify-content: space-evenly;
   padding-left: 40px;
   gap: 100px;
+  flex-wrap: no-wrap;
 }
 .Positions1 {
   display: flex;
@@ -75,6 +74,7 @@ body {
   justify-content: space-evenly;
   padding-left: 0;
   gap: 80px;
+  flex-wrap: no-wrap;
 }
 .linkAbout1 {
   display: flex;
@@ -83,6 +83,7 @@ body {
   padding-left: 0;
   gap: 80px;
   margin-bottom: 0.5rem;
+  flex-wrap: no-wrap;
 }
 .linkAbout2 {
   display: flex;
@@ -91,6 +92,7 @@ body {
   padding-left: 0;
   gap: 80px;
   margin-bottom: 0.5rem;
+  flex-wrap: no-wrap;
 }
 .Positions2 {
   display: flex;
@@ -98,6 +100,7 @@ body {
   justify-content: space-evenly;
   padding-left: 10px;
   gap: 100px;
+  flex-wrap: no-wrap;
 }
 .TeamInfo {
   background-color: lightskyblue;
@@ -106,9 +109,11 @@ body {
   text-align: center;
   font-weight: lighter;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 50px;
+  font-size: 2rem;
   color: white;
-  text-decoration: underline;
+  margin: 1rem;
+  padding: .5rem;
+  /* text-decoration: underline; */
 }
 
 h1 {
