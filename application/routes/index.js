@@ -31,8 +31,13 @@ router.get('/about-duccio', function(req, res, next) {
   
 });
 
-router.get('/about-eddie', function(req, res, next) {
-  res.render('about-eddie');
+router.get('/about-eddie-fu', function(req, res, next) {
+  res.render('about-eddie-fu');
+  
+});
+
+router.get('/about-raid', function(req, res, next) {
+  res.render('about-raid');
   
 });
 
