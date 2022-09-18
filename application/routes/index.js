@@ -41,6 +41,13 @@ router.get('/about-raid', function(req, res, next) {
   
 });
 
+router.get('/about-kobe', function(req, res, next) {
+  res.render('about-kobe');
+  
+});
+
+
+
 
   
 
