@@ -1,0 +1,281 @@
+#Head {
+  margin: auto;
+  padding: 5px;
+  background-color: orange;
+}
+.Title h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2rem;
+  text-align: left;
+  color: black;
+  margin-left: 25px;
+}
+
+.header-fall22{
+
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+.Special_num {
+  text-decoration: bold;
+  color: white;
+}
+.Meet_Team {
+  font-size: 35px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-weight: bolder;
+}
+
+body {
+  margin: auto;
+  background-color: rgb(84, 173, 170);
+  background: radial-gradient(circle, rgb(84, 173, 170), rgb(116, 182, 162));
+}
+/*Profiles*/
+.Pictures img {
+  max-height: 15%;
+  max-width: 15%;
+  object-fit: contain;
+
+  
+}
+.CEO {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  flex-wrap: no-wrap;
+}
+.Leads1 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: no-wrap;
+}
+.Leads2 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: no-wrap;
+}
+.LeadNames1 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 40px;
+  gap: 75px;
+  flex-wrap: no-wrap;
+}
+.LeadNames2 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 40px;
+  gap: 100px;
+  flex-wrap: no-wrap;
+}
+.Positions1 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 0;
+  gap: 80px;
+  flex-wrap: no-wrap;
+}
+.linkAbout1 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 0;
+  gap: 80px;
+  margin-bottom: 0.5rem;
+  flex-wrap: no-wrap;
+}
+.linkAbout2 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 0;
+  gap: 80px;
+  margin-bottom: 0.5rem;
+  flex-wrap: no-wrap;
+}
+.Positions2 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 10px;
+  gap: 100px;
+  flex-wrap: no-wrap;
+}
+.TeamInfo {
+  background-color: lightskyblue;
+}
+.TeamInfo h1 {
+  text-align: center;
+  font-weight: lighter;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2rem;
+  color: white;
+  margin: 1rem;
+  padding: .5rem;
+  /* text-decoration: underline; */
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.singleBox {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  font-weight: lighter;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.8rem;
+  color: white;
+  padding-left: 20rem;
+  padding-right: 20rem;
+  
+}
+
+.gitLink{
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
+.imgAboutMe{
+  border: .0625rem solid grey;
+  border-radius: .25rem;
+  box-shadow: 1px 1px 4px 1px #4d2828;
+  margin: .9rem;
+  
+}
+
+.wordAbout{
+  padding: .5rem;
+}
+
+.leadWord{
+  padding: .7rem;
+}
+
+
+@media screen and (max-width: 600px) {
+  .team-leader {
+    text-align: center;
+  }
+  .team-leader img{
+    max-width: 100%;
+    height: 200px;
+    width: 200px;
+  }
+  .members {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .person {
+    flex-direction: column;
+    margin: auto;
+    padding: 1rem;
+  }
+  .members img {
+    max-width: 100%;
+    height: 150px;
+    width: 150px;
+  }
+  .name {
+  
+  }
+  .position {
+  
+  }
+  .about {
+  
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+  .team-leader {
+    text-align: center;
+  }
+  .team-leader img{
+    max-width: 100%;
+    height: 250px;
+    width: 250px;
+  }
+  .members {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .person {
+    flex-direction: column;
+    margin: auto;
+    padding: 1rem;
+  }
+  .members img {
+    max-width: 100%;
+    height: 200px;
+    width: 200px;
+  }
+  .name {
+  
+  }
+  .position {
+  
+  }
+  .about {
+  
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .team-leader {
+    text-align: center;
+  }
+  .team-leader img{
+    max-width: 100%;
+    height: 350px;
+    width: 350px;
+  }
+  .members {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .person {
+    flex-direction: column;
+    margin: auto;
+    padding: 1rem;
+  }
+  .members img {
+    max-width: 100%;
+    height: 250px;
+    width: 250px;
+  }
+  .name {
+  
+  }
+  .position {
+  
+  }
+  .about {
+  
+  }
+}
+
