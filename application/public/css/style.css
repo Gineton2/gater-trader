@@ -35,11 +35,16 @@
 body {
   margin: auto;
   background-color: rgb(84, 173, 170);
+  background: radial-gradient(circle, rgb(84, 173, 170), rgb(116, 182, 162));
 }
 /*Profiles*/
 .Pictures img {
   max-height: 15%;
   max-width: 15%;
+  border: .0625rem solid grey;
+  border-radius: .25rem;
+  box-shadow: 1px 1px 4px 1px #4d2828;
+  margin: .9rem;
   
 }
 .CEO {
@@ -164,3 +169,4 @@ h1 {
 .leadWord{
   padding: .7rem;
 }
+
