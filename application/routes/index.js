@@ -26,6 +26,16 @@ router.get('/about-yoshimasa-iwano', function(req, res, next) {
   res.render('about-yoshimasa-iwano');
 });
 
+router.get('/about-duccio', function(req, res, next) {
+  res.render('about-duccio');
+  
+});
+
+router.get('/about-eddie', function(req, res, next) {
+  res.render('about-eddie');
+  
+});
+
 
   
 
