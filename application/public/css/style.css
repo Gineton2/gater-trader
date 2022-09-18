@@ -11,6 +11,15 @@
   margin-left: 25px;
 }
 
+.header-fall22{
+
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
 .Special_num {
   text-decoration: bold;
   color: white;
@@ -18,7 +27,6 @@
 .Meet_Team {
   font-size: 35px;
   text-align: center;
-  /* text-decoration: underline; */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
   font-weight: bolder;
@@ -32,11 +40,13 @@ body {
 .Pictures img {
   max-height: 15%;
   max-width: 15%;
+  
 }
 .CEO {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding-top: 5px;
   flex-wrap: no-wrap;
 }
