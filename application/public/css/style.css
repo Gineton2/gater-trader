@@ -41,10 +41,8 @@ body {
 .Pictures img {
   max-height: 15%;
   max-width: 15%;
-  border: .0625rem solid grey;
-  border-radius: .25rem;
-  box-shadow: 1px 1px 4px 1px #4d2828;
-  margin: .9rem;
+  object-fit: contain;
+
   
 }
 .CEO {
@@ -168,5 +166,116 @@ h1 {
 
 .leadWord{
   padding: .7rem;
+}
+
+
+@media screen and (max-width: 600px) {
+  .team-leader {
+    text-align: center;
+  }
+  .team-leader img{
+    max-width: 100%;
+    height: 200px;
+    width: 200px;
+  }
+  .members {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .person {
+    flex-direction: column;
+    margin: auto;
+    padding: 1rem;
+  }
+  .members img {
+    max-width: 100%;
+    height: 150px;
+    width: 150px;
+  }
+  .name {
+  
+  }
+  .position {
+  
+  }
+  .about {
+  
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+  .team-leader {
+    text-align: center;
+  }
+  .team-leader img{
+    max-width: 100%;
+    height: 250px;
+    width: 250px;
+  }
+  .members {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .person {
+    flex-direction: column;
+    margin: auto;
+    padding: 1rem;
+  }
+  .members img {
+    max-width: 100%;
+    height: 200px;
+    width: 200px;
+  }
+  .name {
+  
+  }
+  .position {
+  
+  }
+  .about {
+  
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .team-leader {
+    text-align: center;
+  }
+  .team-leader img{
+    max-width: 100%;
+    height: 350px;
+    width: 350px;
+  }
+  .members {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .person {
+    flex-direction: column;
+    margin: auto;
+    padding: 1rem;
+  }
+  .members img {
+    max-width: 100%;
+    height: 250px;
+    width: 250px;
+  }
+  .name {
+  
+  }
+  .position {
+  
+  }
+  .about {
+  
+  }
 }
 
