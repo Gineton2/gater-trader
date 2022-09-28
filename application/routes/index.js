@@ -58,8 +58,8 @@ router.get('/database-test', function(req, res, next) {
 
 });
 
-router.post('/register',usernameValidation, emailValidation, passwordValidation, (req, res, next) => {
-  
+router.post('/register', (req, res, next) => {
+
   let password = req.body.password;
   let username = req.body.username;
   let Email = req.body.Email;
