@@ -1,5 +1,4 @@
 var express = require('express');
-
 //The top-level express object has a Router() method that creates a new router object.
 var router = express.Router();
 
