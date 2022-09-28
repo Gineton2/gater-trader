@@ -5,6 +5,7 @@ const usersRouter = require("./routes/users");
 const path = require("path");
 const {engine} = require("express-handlebars");
 const favicon = require('serve-favicon');
+const {requestPrint, errorPrint, successPrint} = require('./helpers/debugprinters');
 
 const app = express();
 
