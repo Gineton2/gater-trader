@@ -7,6 +7,8 @@ var db = require('../database/database');
 
 router.post('/register', (req, res, next) => {
 
+  res.send("YAY");
+
   let password = req.body.password;
   let username = req.body.username;
   let Email = req.body.Email;
