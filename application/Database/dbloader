@@ -39,7 +39,7 @@ async function makeTableOne(connection) {
     const [result, _] = await connection.query(
         // Users Table SQL Goes here
     `
-    CREATE TABLE table1 (
+    CREATE TABLE IF NOT EXISTS table1 (
         id int NOT NULL AUTO_INCREMENT,
         username varchar(45) DEFAULT NULL,
         email varchar(45) DEFAULT NULL,

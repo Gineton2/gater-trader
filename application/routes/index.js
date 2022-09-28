@@ -51,6 +51,11 @@ router.get('/about-dominique', function(req, res, next) {
 
 });
 
+router.get('/database-test', function(req, res, next) {
+  res.render('database-test');
+
+});
+
 
 
   
