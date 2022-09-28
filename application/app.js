@@ -1,6 +1,7 @@
 const express = require('express');
 const createError = require("http-errors");
 const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
 const path = require("path");
 const {engine} = require("express-handlebars");
 
@@ -29,7 +30,7 @@ app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
 
 app.use("/", indexRouter); // route middleware from ./routes/index.js
-
+app.use("/users", usersRouter); // route middleware from ./routes/users.js
 
 app.use("/public", express.static(path.join(__dirname, 'public')));
 

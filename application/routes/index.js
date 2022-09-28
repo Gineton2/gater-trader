@@ -16,23 +16,18 @@ router.get('/', function(req, res, next) {
     res.render('index');
 });
 
-router.post('/register', (req, res, next) => {
+// router.post('/register', (req, res, next) => {
 
-  res.send("YAY");
+//   res.send("YAY");
 
-  let password = req.body.password;
-  let username = req.body.username;
-  let Email = req.body.Email;
+//   let password = req.body.password;
+//   let username = req.body.username;
+//   let Email = req.body.Email;
 
-  let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
-  return db.execute(sqlCommand, [username, Email, password]);
+//   let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
+//   return db.execute(sqlCommand, [username, Email, password]);
   
-});
-
-router.get('/aboutMe', function(req, res, next) {
-    res.render('aboutMe');
-    
-});
+// });
 
 router.get('/about-gineton', function(req, res, next) {
   res.render('about-gineton');
@@ -73,9 +68,6 @@ router.get('/database-test', function(req, res, next) {
 });
 
 
-
-
-  
 
   /*
 To make objects available outside of a module
