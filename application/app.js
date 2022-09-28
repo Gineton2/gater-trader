@@ -11,10 +11,8 @@ var sessions = require('express-session');
 var sqlSession = require('express-mysql-session')(sessions);
 var mysqlSessionStore = new sqlSession({ /* default options */}, require('./database/database'));
 
-
-
-
 const app = express();
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico'))); 
 
 
 app.use(sessions({
@@ -53,7 +51,7 @@ app.use("/users", usersRouter); // route middleware from ./routes/users.js
 
 
 app.use("/public", express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico'))); 
+
 
 app.listen(1234, () => console.log('Server running on port 1234'));
 

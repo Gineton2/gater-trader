@@ -21,18 +21,22 @@ router.get('/', function(req, res, next) {
 
 router.post('/register',urlencodedParser, (req, res, next) => {
 
-    res.send("YAY");
+    
     console.log(req.body);
     // console.log(req.body.password);
     // console.log(req.body.username);
 
-  
+    
     let password = req.body.password;
     let username = req.body.username;
     let email = req.body.email;
   
     let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
+    
     db.execute(sqlCommand, [username, email, password])
+    .then(()=>{
+        res.send("Data sent to database");
+    })
     .catch((err) => {
         errorPrint("User could not be made", err);
     
