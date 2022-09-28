@@ -5,6 +5,17 @@ var router = express.Router();
 
 var db = require('../database/database');
 
+
+
+
+/*
+The app.get() method specifies a callback function that will be invoked whenever there is an HTTP GET request with a path ('/') relative to the site root
+ */
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    res.render('index');
+});
+
 router.post('/register', (req, res, next) => {
 
   res.send("YAY");
@@ -16,15 +27,6 @@ router.post('/register', (req, res, next) => {
   let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
   return db.execute(sqlCommand, [username, Email, password]);
   
-});
-
-
-/*
-The app.get() method specifies a callback function that will be invoked whenever there is an HTTP GET request with a path ('/') relative to the site root
- */
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index');
 });
 
 router.get('/aboutMe', function(req, res, next) {
