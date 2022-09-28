@@ -6,8 +6,6 @@ const {engine} = require("express-handlebars");
 
 const app = express();
 
-const db = require('./conf')
-
 
 
 app.engine(
