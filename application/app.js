@@ -35,3 +35,25 @@ app.use("/users", usersRouter); // route middleware from ./routes/users.js
 app.use("/public", express.static(path.join(__dirname, 'public')));
 
 app.listen(1234, () => console.log('Server running on port 1234'));
+
+/*
+ * Catch all route, if we get to here then the
+ * resource requested could not be found.
+ */
+app.use((req, res, next) => {
+    next(createError(404, `The route ${req.method} : ${req.url} does not exist.`));
+})
+
+
+/**
+ * Error Handler, used to render the error html file
+ * with relevant error information.
+ */
+app.use(function (err, req, res, next) {
+    res.locals.message = err.message;
+    res.locals.error = err;
+    errorPrint(err);
+    // render the error page
+    res.status(err.status || 500);
+    res.render("error");
+});
