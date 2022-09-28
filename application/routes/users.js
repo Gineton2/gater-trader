@@ -11,13 +11,14 @@ router.get('/', function(req, res, next) {
 router.post('/register', (req, res, next) => {
 
     res.send("YAY");
+    console.log(req);
   
-    let password = req.body.password;
-    let username = req.body.username;
-    let Email = req.body.Email;
+    // let password = req.body.password;
+    // let username = req.body.username;
+    // let Email = req.body.Email;
   
-    let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
-    return db.execute(sqlCommand, [username, Email, password]);
+    // let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
+    // return db.execute(sqlCommand, [username, Email, password]);
     
   });
 
