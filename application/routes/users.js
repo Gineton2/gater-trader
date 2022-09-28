@@ -1,4 +1,7 @@
 var express = require('express');
+const {requestPrint, errorPrint, successPrint} = require('../helpers/debugprinters');
+var flash = require('express-flash');
+
 //The top-level express object has a Router() method that creates a new router object.
 var router = express.Router();
 var bodyParser = require('body-parser');
@@ -29,7 +32,27 @@ router.post('/register',urlencodedParser, (req, res, next) => {
     let email = req.body.email;
   
     let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
-    return db.execute(sqlCommand, [username, email, password]);
+    db.execute(sqlCommand, [username, email, password])
+    .catch((err) => {
+        errorPrint("User could not be made", err);
+    
+        req.flash('error', 'Error: user could not be created');
+        req.session.save(err => {
+    
+            res.redirect("/database-test");
+        });
+    
+        
+            errorPrint(err.getMessage());
+            req.flash('error', err.getMessage());
+            res.status(err.getStatus());
+            res.redirect(err.getRedirectURL());
+        
+        
+    
+    })
+
+
     
   });
 

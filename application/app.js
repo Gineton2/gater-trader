@@ -6,10 +6,27 @@ const path = require("path");
 const {engine} = require("express-handlebars");
 const favicon = require('serve-favicon');
 const {requestPrint, errorPrint, successPrint} = require('./helpers/debugprinters');
+var flash = require('express-flash');
+var sessions = require('express-session');
+var sqlSession = require('express-mysql-session')(sessions);
+var mysqlSessionStore = new sqlSession({ /* default options */}, require('./database/database'));
+
+
+
 
 const app = express();
 
 
+app.use(sessions({
+    key:"csID",
+    secret:"secret",
+    store: mysqlSessionStore,
+    resave: false,
+    saveUninitialized: false
+
+}));
+
+app.use(flash());
 
 app.engine(
     'handlebars',
