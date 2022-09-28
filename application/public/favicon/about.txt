@@ -1,6 +1,6 @@
 This favicon was generated using the following font:
 
-- Font Title: Zen Loop
-- Font Author: Copyright 2021 The Zen-Loop Project Authors (https://github.com/googlefonts/zen-loop)
-- Font Source: http://fonts.gstatic.com/s/zenloop/v7/h0GrssK16UsnJwHsEK9zqwzX5vOG.ttf
+- Font Title: Yrsa
+- Font Author: Copyright 2015 The Yrsa-Rasa Project Authors (https://github.com/rosettatype/yrsa-rasa/)
+- Font Source: http://fonts.gstatic.com/s/yrsa/v15/wlprgwnQFlxs_wD3CFSMYmFaaCieSNNV9rRPfrKu.ttf
 - Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
