@@ -4,7 +4,7 @@ var router = express.Router();
 
 var db = require('../database/database');
 
-router.get('/users', function(req, res, next) {
+router.get('/', function(req, res, next) {
     res.render('index');
 });
 
