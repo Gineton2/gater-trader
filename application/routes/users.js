@@ -5,7 +5,7 @@ var router = express.Router();
 var db = require('../database/database');
 
 router.get('/', function(req, res, next) {
-    res.send('respond');
+    res.render('index');
 });
 
 router.post('/register', (req, res, next) => {
