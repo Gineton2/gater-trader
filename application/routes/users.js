@@ -6,6 +6,7 @@ var router = express.Router();
 var db = require('../database/database');
 
 
+
 router.post('/register', (req, res, next) => {
 
     res.send("YAY");
