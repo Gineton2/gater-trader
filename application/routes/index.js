@@ -5,6 +5,16 @@ var router = express.Router();
 
 var db = require('../database/database');
 
+router.post('/register', (req, res, next) => {
+
+  let password = req.body.password;
+  let username = req.body.username;
+  let Email = req.body.Email;
+
+  let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
+  return db.execute(sqlCommand, [username, Email, password]);
+  
+});
 
 
 /*
@@ -58,16 +68,6 @@ router.get('/database-test', function(req, res, next) {
 
 });
 
-router.post('/register', (req, res, next) => {
-
-  let password = req.body.password;
-  let username = req.body.username;
-  let Email = req.body.Email;
-
-  let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
-  return db.execute(sqlCommand, [username, Email, password]);
-  
-});
 
 
 
