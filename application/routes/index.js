@@ -3,6 +3,8 @@ var express = require('express');
 //The top-level express object has a Router() method that creates a new router object.
 var router = express.Router();
 
+var db = require('../database/database');
+
 
 
 /*
@@ -54,6 +56,17 @@ router.get('/about-dominique', function(req, res, next) {
 router.get('/database-test', function(req, res, next) {
   res.render('database-test');
 
+});
+
+router.post('/register',usernameValidation, emailValidation, passwordValidation, (req, res, next) => {
+  
+  let password = req.body.password;
+  let username = req.body.username;
+  let Email = req.body.Email;
+
+  let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
+  return db.execute(sqlCommand, [username, Email, password]);
+  
 });
 
 
