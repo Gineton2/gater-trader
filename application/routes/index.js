@@ -29,6 +29,10 @@ router.get('/', function(req, res, next) {
   
 // });
 
+router.get('/about-team', function(req, res, next) {
+  res.render('about-team');
+});
+
 router.get('/about-gineton', function(req, res, next) {
   res.render('about-gineton');
 });

@@ -1,64 +1,8 @@
-<section class="Meet_Team">
-      <h1>
-        <span class="word1">Meet the </span><span class="word2">Team</span>
-      </h1>
-      <h4 class="header-fall22">Software Engineering class SFSU <br>
-&lt; Fall, 2022 &gt; <br>
-Section 03 <br>
-Team 07</h4>
-    </section>
-    <!---Team profile pics and about me-->
-    
-<section class="Pictures main-container">
-  <div class="team-leader">
-    <div class="person">
-      <img src="/public/gineton-portrait.jpeg"/>
-      <h1 class="name">Gineton Alencar</h1>
-      <h1 class="position">Team lead</h1>
-      <h1 class="about"><a href="/about-gineton">About</a></h1>
-    </div>
-  </div>
-  <div class="members">
-    <div class="person">
-      <img src="/public/eddie-picture.JPG" />
-      <h1 class="name">Eddie Fu</h1>
-      <h1 class="position">Frontend Lead</h1>
-      <h1 class="about"><a id="frontendLeadLink" href="/about-eddie-fu">About</a></h1>
-    </div>
-    <div class="person">
-      <img src="/public/yoshimasa-picture.jpg" />
-      <h1 class="name">Yoshimasa Iwano</h1>
-      <h1 class="position">GitHub Master</h1>
-      <h1 class="about"><a id="githubMasterLeadLink" href="/about-yoshimasa-iwano">About</a></h1>
-    </div>
-    <div class="person">
-      <img src="/public/duccio-closeup.jpg" />
-      <h1 class="name">Duccio Rocca</h1>
-      <h1 class="position">Backend Lead</h1>
-      <h1 class="about"><a id="backendLeadLink" href="/about-duccio">About</a></h1>
-    </div>
-    <div class="person">
-      <img src="/public/Dominique.JPG" />
-      <h1 class="name">Dominique Henry</h1>
-      <h1 class="position">GitHub</h1>
-      <h1 class="about"><a id="gitHub" href="/about-dominique">About</a></h1>
-    </div>
-    <div class="person">
-      <img src="/public/kobe-profile.jpg" />
-      <h1 class="name">Kobe Shelby</h1>
-      <h1 class="position">Frontend</h1>
-      <h1 class="about"><a id="frontend" href="/about-kobe">About</a></h1>
-    </div>
-    <div class="person">
-      <img src="/public/silhouette.jpg" />
-      <h1 class="name">Rai’d S. Muhammad</h1>
-      <h1 class="position">Backend Lead</h1>
-      <h1 class="about"><a id="backend" href="/about-raid">About</a></h1>
-    </div>
-  </div>
-</section>
-
-<section class="TeamInfo">
-  <h1>Talent wins games, <br>but teamwork and intelligence <br>win championships.<br> (Michael Jordan)</h1>
-</section>
-
+<h2 class="photo-count" id="photo-count"></h1>
+<div class="container" id="container">
+    <div id="main-content" class="main-content">
+        {{#each results}}
+                {{> card this}}
+            {{/each}}
+</div>
+</div>

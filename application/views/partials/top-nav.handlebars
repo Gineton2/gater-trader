@@ -1,0 +1,83 @@
+{{! <div class="top-nav" id="top-nav">
+
+    <button id="search-button" class ="search-button" type="submit"><i class="fa fa-search"></i></button>
+
+    <input class ="search-text" id="search-text" name="search-text" type="text">
+</div> }}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><span class="neonText">CSC-648 FALL22 Team 7</span></a>
+
+  <div class="navbar-container" id="navbarSupportedContent">
+
+    <ul class="navbar-nav">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/about-team">About</a>
+      </li>
+
+      <li class="nav-item active btn-group-search " role="group" >
+        <div class="container-search" >
+              <div class="input-group">
+                <div class="input-group-btn search-panel form-outline ">
+
+                  <button
+                    type="button"
+                    class="btn btn-default dropdown-toggle select"
+                    id="dropdownMenuButton"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <span id="search_concept selected" class="selected">All</span>
+                    <span class="caret"></span>
+                  </button>
+                  
+                  <ul
+                    class="dropdown-menu scrollable-dropdown"
+                    id="dropdown-menu"
+                    role="menu"
+                  >
+                    <li><a class="dropdown-item active-item">All</a></li>
+                    <li><a class="dropdown-item">Videos</a></li>
+                    <li><a class="dropdown-item">Images</a></li>
+                    <li><a class="dropdown-item">Music</a></li>
+                    <li><a class="dropdown-item">Ebooks</a></li>
+                    <li><a class="dropdown-item">Slides</a></li>
+                  </ul>
+                </div>
+
+                {{!-- <input
+                  type="hidden"
+                  name="search_param"
+                  value="all"
+                  id="search_param"
+                /> --}}
+                <input
+                  type="text"
+                  class ="search-text" 
+                  id="search-text" 
+                  name="search-text"
+                  placeholder="e.g. Janis Joplin"
+                />
+
+                <button 
+                id="search-button" 
+                class="search-button" 
+                type="submit">
+                  <i class="bi bi-search"></i>
+                </button>
+
+              </div>
+            
+         
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</nav>

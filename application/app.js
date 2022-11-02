@@ -2,10 +2,13 @@ const express = require('express');
 const createError = require("http-errors");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const postsRouter = require("./routes/posts");
 const path = require("path");
 const {engine} = require("express-handlebars");
 const favicon = require('serve-favicon');
 const {requestPrint, errorPrint, successPrint} = require('./helpers/debugprinters');
+
+// REACTIVATE
 var flash = require('express-flash');
 var sessions = require('express-session');
 var sqlSession = require('express-mysql-session')(sessions);
@@ -14,7 +17,7 @@ var mysqlSessionStore = new sqlSession({ /* default options */}, require('./data
 const app = express();
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico'))); 
 
-
+// REACTIVATE
 app.use(sessions({
     key:"csID",
     secret:"secret",
@@ -23,13 +26,12 @@ app.use(sessions({
     saveUninitialized: false
 
 }));
-
 app.use(flash());
 
 app.engine(
     'handlebars',
     engine({
-        layoutsDir: path.join(__dirname, "views"), //where to look for layouts
+        layoutsDir: path.join(__dirname, "views/layout"), //where to look for layouts
         partialsDir: path.join(__dirname, "views/partials"), // where to look for partials
         extname: ".handlebars", //expected file extension for handlebars files
         defaultLayout: "home", //default layout for app, general template for all pages in app
@@ -48,6 +50,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use("/", indexRouter); // route middleware from ./routes/index.js
 app.use("/users", usersRouter); // route middleware from ./routes/users.js
+app.use("/posts", postsRouter); // route middleware from ./routes/posts.js
 
 
 app.use("/public", express.static(path.join(__dirname, 'public')));

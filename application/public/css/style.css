@@ -1,3 +1,4 @@
+
 #Head {
   margin: auto;
   padding: 5px;
@@ -276,6 +277,35 @@ h1 {
   }
   .about {
   
+  }
+
+  .btn-group-search{
+    display: flex;
+    border-radius: 4px 4px 4px 4px;
+    border-style: groove;
+    border-width: thin;
+  }
+
+  .navbar-container{
+    display: flex;
+  }
+
+  .nav-item{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+
+  .open-caret {
+    transform: rotate(180deg);
+    transition: all .25s ease-out;
+  }
+  
+  .select:hover{
+    background: #7a7c86;
+  }
+
+  .active-item{
+    background: #83889d;
   }
 }
 
