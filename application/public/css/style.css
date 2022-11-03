@@ -4,13 +4,13 @@
   padding: 5px;
   background-color: orange;
 } */
-.Title h1 {
+/* .Title h1 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 2rem;
   text-align: left;
   color: black;
   margin-left: 25px;
-}
+} */
 
 .header-fall22{
 
@@ -18,14 +18,14 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
   font-weight: bolder;
-  font-size: 1rem;
+  font-size: 1rem; 
 }
 
-.Special_num {
+/* .Special_num {
   text-decoration: bold;
   color: white;
-}
-.Meet_Team {
+} */
+.meet-team {
   font-size: 35px;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -39,22 +39,22 @@ body {
   background: radial-gradient(circle, rgb(84, 173, 170), rgb(116, 182, 162));
 }
 /*Profiles*/
-.Pictures img {
+.pictures img {
   max-height: 15%;
   max-width: 15%;
   object-fit: contain;
 
   
 }
-.CEO {
+.ceo {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-top: 5px;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
 }
-.Leads1 {
+/* .Leads1 {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
@@ -89,8 +89,9 @@ body {
   padding-left: 0;
   gap: 80px;
   flex-wrap: no-wrap;
-}
-.linkAbout1 {
+} 
+*/
+/* .linkAbout1 {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
@@ -115,11 +116,11 @@ body {
   padding-left: 10px;
   gap: 100px;
   flex-wrap: no-wrap;
-}
-.TeamInfo {
+} */
+.team-info {
   background-color: lightskyblue;
 }
-.TeamInfo h1 {
+.team-info h1 {
   text-align: center;
   font-weight: lighter;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -135,7 +136,7 @@ h1 {
   margin-top: 0.5rem;
 }
 
-.singleBox {
+.single-box {
   display: flex;
   justify-content: center;
   text-align: left;
@@ -148,12 +149,12 @@ h1 {
   
 }
 
-.gitLink{
+.git-link{
   margin-top: 1rem;
   margin-bottom: .5rem;
 }
 
-.imgAboutMe{
+.img-about-me{
   border: .0625rem solid grey;
   border-radius: .25rem;
   box-shadow: 1px 1px 4px 1px #4d2828;
@@ -161,16 +162,23 @@ h1 {
   
 }
 
-.wordAbout{
+.word-about{
   padding: .5rem;
 }
 
-.leadWord{
+.lead-word{
   padding: .7rem;
 }
 
+.bg-grey { background-color: #dcdcdc;}
 
 @media screen and (max-width: 600px) {
+  .pl-sm-0 { padding-left: 0;}
+  .pr-sm-0 { padding-right: 0;}
+  .ml-sm-1 { margin-left: 0.50rem;}
+  .mr-sm-1 { margin-right: 0.50rem;}
+  .ml-sm-auto { margin-left: auto;}
+  .mr-sm-auto { margin-right: auto;}
   .team-leader {
     text-align: center;
   }
@@ -207,6 +215,12 @@ h1 {
 }
 
 @media screen and (min-width: 600px) and (max-width: 1200px) {
+  .pl-md-0 { padding-left: 0;}
+  .pr-md-0 { padding-right: 0;}
+  .ml-md-1 { margin-left: 0.50rem;}
+  .mr-md-1 { margin-right: 0.50rem;}
+  .ml-md-auto { margin-left: auto;}
+  .mr-md-auto { margin-right: auto;}
   .team-leader {
     text-align: center;
   }
@@ -244,6 +258,12 @@ h1 {
 }
 
 @media screen and (min-width: 1200px) {
+  .pl-xl-0 { padding-left: 0;}
+  .pr-xl-0 { padding-right: 0;}
+  .ml-xl-1 { margin-left: 0.50rem;}
+  .mr-xl-1 { margin-right: 0.50rem;}
+  .ml-xl-auto { margin-left: auto;}
+  .mr-xl-auto { margin-right: auto;}
   .team-leader {
     text-align: center;
   }

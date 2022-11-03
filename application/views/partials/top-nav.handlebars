@@ -5,76 +5,74 @@
     <input class ="search-text" id="search-text" name="search-text" type="text">
 </div> }}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex flex-row py-2">
-  <a class="navbar-brand flex-shrink-1 m-auto" href="#"><span class="neonText px-1">CSC-648 FALL22 Team 7</span></a>
+<nav class="navbar navbar-expand navbar-light bg-light d-flex flex-row flex-wrap py-2">
+  <a class="navbar-brand m-1" href="#"><span class="neonText px-1">CSC-648 FALL22 Team 7</span></a>
 
-  <div class="navbar-container px-5 m-auto" id="navbarSupportedContent">
+  <div class="navbar-container ml-sm-1 mr-sm-auto ml-md-1 mr-md-auto ml-xl-1 mr-xl-auto" id="navbarSupportedContent">
 
-    <ul class="navbar-nav px-5 d-flex flex-row flex-wrap justify-content-center">
+    <ul class="navbar-nav px-2 d-flex flex-row flex-wrap">
 
-      <li class="nav-item active m-auto px-2">
-        <a class="nav-link rounded-top rounded-bottom bg-secondary " href="/">Home</a>
+      <li class="nav-item active m-auto px-2 my-1">
+        <a class="nav-link rounded-3 bg-grey px-2 " href="/">Home</a>
       </li>
 
-      <li class="nav-item active m-auto px-2">
-        <a class="nav-link rounded-top rounded-bottom bg-secondary " href="/about-team">About</a>
+      <li class="nav-item active m-auto px-2 my-1">
+        <a class="nav-link rounded-3 bg-grey px-2 " href="/about-team">About</a>
       </li>
 
-      <li class="nav-item active btn-group-search m-auto px-2" role="group" >
-        <div class="container-search" >
-          <div class="input-group">
-            <div class="input-group-btn search-panel form-outline ">
+      <li class="nav-item active m-auto px-2 my-1" role="group" >
+        <div class="container-search input-group rounded-3 bg-grey " >
+          <div class="input-group-btn search-panel form-outline ">
 
-              <button
-                type="button"
-                class="btn btn-default dropdown-toggle select"
-                id="dropdownMenuButton"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <span id="search_concept selected" class="selected">All</span>
-                <span class="caret"></span>
-              </button>
-              
-              <ul
-                class="dropdown-menu scrollable-dropdown"
-                id="dropdown-menu"
-                role="menu"
-              >
-                <li><a class="dropdown-item active-item">All</a></li>
-                <li><a class="dropdown-item">Videos</a></li>
-                <li><a class="dropdown-item">Images</a></li>
-                <li><a class="dropdown-item">Music</a></li>
-                <li><a class="dropdown-item">Ebooks</a></li>
-                <li><a class="dropdown-item">Slides</a></li>
-              </ul>
-            </div>
-
-            {{!-- <input
-              type="hidden"
-              name="search_param"
-              value="all"
-              id="search_param"
-            /> --}}
-            <input
-              type="text"
-              class ="search-text" 
-              id="search-text" 
-              name="search-text"
-              placeholder="e.g. Janis Joplin"
-            />
-
-            <button 
-            id="search-button" 
-            class="search-button" 
-            type="submit">
-              <i class="bi bi-search"></i>
+            <button
+              type="button"
+              class="btn btn-default dropdown-toggle select"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span id="search_concept selected" class="selected">All</span>
+              <span class="caret"></span>
             </button>
-
+            
+            <ul
+              class="dropdown-menu scrollable-dropdown "
+              id="dropdown-menu"
+              role="menu"
+            >
+              <li><a class="dropdown-item active-item">All</a></li>
+              <li><a class="dropdown-item">Videos</a></li>
+              <li><a class="dropdown-item">Images</a></li>
+              <li><a class="dropdown-item">Music</a></li>
+              <li><a class="dropdown-item">Ebooks</a></li>
+              <li><a class="dropdown-item">Slides</a></li>
+            </ul>
           </div>
 
+          {{!-- <input
+            type="hidden"
+            name="search_param"
+            value="all"
+            id="search_param"
+          /> --}}
+          <input
+            type="text"
+            class ="search-text" 
+            id="search-text" 
+            name="search-text"
+            placeholder="e.g. Janis Joplin"
+          />
+
+          <button 
+          id="search-button" 
+          class="search-button rounded-end" 
+          type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+
         </div>
+
       </li>
     </ul>
 
