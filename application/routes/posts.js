@@ -7,8 +7,10 @@ const {requestPrint, errorPrint, successPrint} = require('../helpers/debugprinte
 var sharp = require('sharp');
 var multer = require('multer');
 var crypto = require('crypto');
+
 // var PostError = require('../helpers/error/PostError');
 // const {postValidation} = require('../middleware/validation');
+
 var PostModel = require("../models/posts-model");
 
 var storage = multer.diskStorage({
@@ -38,7 +40,7 @@ router.get('/search', async (req,res,next) =>{
         categorySearch = "%";
      }
   
-     if(!searchTerm){
+     if(!searchTerm){ // empty input
 
         // when input is empty show all content within the category 
         let results = await PostModel.search(searchTerm, categorySearch);
@@ -47,7 +49,13 @@ router.get('/search', async (req,res,next) =>{
                      message: `No input was given for your search, but here are ${results.length} posts that may interest you`,
                      results: results
                     });
-                }
+                }else{// nothing within the category so let's show all the posts
+                    let [results,fields] = await db.query('SELECT post_id, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC');
+                    res.send({
+                        message: `No result whithin the selected category, but here are ${results.length} posts that may interest you`,
+                        results: results
+                       });
+                 }
                 
      }else { // input text is not empty so show result of the query
          let results = await PostModel.search(searchTerm, categorySearch);
@@ -56,7 +64,7 @@ router.get('/search', async (req,res,next) =>{
                      message: `${results.length} results found`,
                      results: results
                  });
-             } else { // nothing found therefore let's show the whole database within the selected category
+             } else { // nothing found therefore let's show all the posts within the selected category
                  let [results,fields] = await db.query('SELECT post_id, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE ? ORDER BY post_creation_time DESC', [categorySearch]);
                             if(results.length){
                                 
@@ -65,7 +73,7 @@ router.get('/search', async (req,res,next) =>{
                             //  message: `No results were found for your search but here are ${results.length} posts`
                              message: `No results were found for ${searchTerm} but here are ${results.length} posts within ${categorySearch}`
                          }); }
-                         else{// nothing within the category
+                         else{// nothing within the category so let's show all the posts
                             let [results,fields] = await db.query('SELECT post_id, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC');
                             res.send({
                                 message: `No result whithin the selected category, but here are ${results.length} posts that may interest you`,
