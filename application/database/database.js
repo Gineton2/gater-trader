@@ -8,10 +8,16 @@ const db = mysql.createPool({
     // password: "TEAM07team07",
 
     // local
+    // host: 'localhost',
+    // user : 'root',
+    // database : 'copy_EC2_DB',
+    // password : 'ABB10iote'
+
+    // local Yoshi
     host: 'localhost',
     user : 'root',
     database : 'copy_EC2_DB',
-    password : 'ABB10iote'
+    password : 'csmc4403'
 });
 
 module.exports = db.promise();
