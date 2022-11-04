@@ -62,25 +62,31 @@ function addFlashFromFrontEnd(message) {
     // setflashMessageFadeOut(flashMessageDiv);
 }
 
+function createSearchConditionMessage(categorySearch, searchText) {
+    let innerTextNode = document.createTextNode(categorySearch + " > " + searchText);
+    let searchCondition = document.getElementById('search-condition');
+    searchCondition.innerText='';
+    searchCondition.appendChild(innerTextNode);
+}
+
 function createResultMessage(messageData) {
     let innerTextNode = document.createTextNode(messageData);
     let photoCount = document.getElementById('photo-count');
     photoCount.innerText='';
     photoCount.appendChild(innerTextNode);
     return;
-
 }
 
 function createCard(postData) {
     return `
-    <div id="post-${postData.post_id}" class="card">
-    <img class="card-image" src="${postData.post_thumbnail}" alt="Missing Image">
-    <div class="card-body">
-        <p class="card-title">${postData.title}</p>
-        <p clas="card-text">${postData.post_description}</p>
-        <a href="/post/${postData.post_id}" class="anchor-buttons">Post Details</a>
-    </div>
-</div>`;
+        <div id="post-${postData.post_id}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto my-2">
+            <img class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image">
+            <div class="card-body bg-grey w-100">
+                <p class="card-title w-100">${postData.title}</p>
+                <p clas="card-text w-100">${postData.post_description}</p>
+                <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary stretched-link w-100 m-auto">Post Details</a>
+            </div>
+        </div>`;
 }
 
 
@@ -88,7 +94,7 @@ function createCard(postData) {
 
 function executeSearch() {
     console.log('searching...');
-    let searchTerm = document.getElementById('search-text').value;
+    let searchText = document.getElementById('search-text').value;
     let categorySearch = document.getElementById("search_concept selected").innerText;
     
     categorySearch.toString();
@@ -99,7 +105,7 @@ function executeSearch() {
     //     // return;
     // }
     let mainContent = document.getElementById('main-content');
-    searchTerm+= '-'+categorySearch;
+    let searchTerm = searchText + '-' + categorySearch;
     let searchURL = `/posts/search?search=${searchTerm}`;
     fetch(searchURL)
         .then((data) => {
@@ -110,6 +116,7 @@ function executeSearch() {
         }).then((data_json) => {
             if (data_json.message) {
                 // addFlashFromFrontEnd(data_json.message);
+                createSearchConditionMessage(categorySearch, searchText);
                 createResultMessage(data_json.message);
             }
             let newMainContentHTML = '';

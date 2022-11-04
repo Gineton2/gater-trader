@@ -172,6 +172,47 @@ h1 {
 
 .bg-grey { background-color: #dcdcdc;}
 
+.bold { font-weight: bold;}
+
+.btn-group-search{
+  display: flex;
+  /* border-radius: 4px 4px 4px 4px; */
+  /* border-style: groove;
+  border-width: thin; */
+}
+
+.navbar-container{
+  display: flex;
+}
+
+.nav-item{
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.open-caret {
+  transform: rotate(180deg);
+  transition: all .25s ease-out;
+}
+
+.select:hover{
+  background: #7a7c86;
+}
+
+.active-item{
+  background: #83889d;
+}
+
+.main-content{
+  display: grid;
+  grid-template-columns: repeat(3,auto);
+  column-gap: 3rem;
+  grid-template-rows: repeat(1,auto);
+  margin-top: 20px;
+  margin: 1rem;
+  padding: .5rem;
+}
+
 @media screen and (max-width: 600px) {
   .pl-sm-0 { padding-left: 0;}
   .pr-sm-0 { padding-right: 0;}
@@ -179,6 +220,7 @@ h1 {
   .mr-sm-1 { margin-right: 0.50rem;}
   .ml-sm-auto { margin-left: auto;}
   .mr-sm-auto { margin-right: auto;}
+  .mw-sm-25 { max-width: 25%;}
   .team-leader {
     text-align: center;
   }
@@ -221,6 +263,7 @@ h1 {
   .mr-md-1 { margin-right: 0.50rem;}
   .ml-md-auto { margin-left: auto;}
   .mr-md-auto { margin-right: auto;}
+  .mw-md-20 { max-width: 20%;}
   .team-leader {
     text-align: center;
   }
@@ -264,6 +307,7 @@ h1 {
   .mr-xl-1 { margin-right: 0.50rem;}
   .ml-xl-auto { margin-left: auto;}
   .mr-xl-auto { margin-right: auto;}
+  .mw-xl-15 { max-width: 15%;}
   .team-leader {
     text-align: center;
   }
@@ -297,45 +341,6 @@ h1 {
   }
   .about {
   
-  }
-
-  .btn-group-search{
-    display: flex;
-    border-radius: 4px 4px 4px 4px;
-    border-style: groove;
-    border-width: thin;
-  }
-
-  .navbar-container{
-    display: flex;
-  }
-
-  .nav-item{
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-  }
-
-  .open-caret {
-    transform: rotate(180deg);
-    transition: all .25s ease-out;
-  }
-  
-  .select:hover{
-    background: #7a7c86;
-  }
-
-  .active-item{
-    background: #83889d;
-  }
-
-  .main-content{
-    display: grid;
-    grid-template-columns: repeat(3,auto);
-    column-gap: 3rem;
-    grid-template-rows: repeat(1,auto);
-    margin-top: 20px;
-    margin: 1rem;
-    padding: .5rem;
   }
 }
 

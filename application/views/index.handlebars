@@ -1,8 +1,9 @@
-<h2 class="photo-count" id="photo-count"></h1>
-<div class="container" id="container">
-    <div id="main-content" class="main-content">
+<h4 id="search-condition" class="text-left px-2 my-2 mx-2" ></h4>
+<h4 id="photo-count" class="photo-count text-left px-2 my-2 mx-2" ></h4>
+<div id="container" class="container px-0 w-100">
+    <div id="main-content" class="main-content d-flex flex-row flex-wrap mx-0 px-0">
         {{#each results}}
                 {{> card this}}
             {{/each}}
-</div>
+    </div>
 </div>
