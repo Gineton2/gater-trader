@@ -16,6 +16,8 @@ router.get('/', function(req, res, next) {
     res.render('index');
 });
 
+
+
 // router.post('/register', (req, res, next) => {
 
 //   res.send("YAY");

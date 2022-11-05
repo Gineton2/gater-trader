@@ -84,6 +84,7 @@ function createCard(postData) {
             <div class="card-body bg-grey w-100">
                 <p class="card-title w-100">${postData.title}</p>
                 <p clas="card-text w-100">${postData.post_description}</p>
+                <p class="card-price w-100">$ ${postData.price}</p>
                 <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary w-100 m-auto">Post Details</a>
             </div>
         </div>`;
@@ -94,47 +95,70 @@ function createCard(postData) {
 
 function executeSearch() {
     console.log('searching...');
+
+    
+
     let searchText = document.getElementById('search-text').value;
     let categorySearch = document.getElementById("search_concept selected").innerText;
     
     categorySearch.toString();
+
     console.log('cat:'+categorySearch);
-    // if (!searchTerm) {
-    //     searchTerm = '';
-    //     // location.replace('/');
-    //     // return;
-    // }
-    let mainContent = document.getElementById('main-content');
+  
+    
     let searchTerm = searchText + '-' + categorySearch;
     let searchURL = `/posts/search?search=${searchTerm}`;
+    // 
+
+    
+
+    let mainContent = document.getElementById('main-content');
+    
+    console.log(window.location.href);
+    
+    
     fetch(searchURL)
         .then((data) => {
             
             console.log(data);
             return data.json();
 
-        }).then((data_json) => {
+        })
+        .then((data_json) => {
+            
+            
             if (data_json.message) {
                 // addFlashFromFrontEnd(data_json.message);
+
+                
                 createSearchConditionMessage(categorySearch, searchText);
                 createResultMessage(data_json.message);
             }
             let newMainContentHTML = '';
             data_json.results.forEach((row) => {
+                console.log(row);
                 newMainContentHTML += createCard(row);
             });
             mainContent.innerHTML = newMainContentHTML;
             
         })
         .catch((err) => console.log(err));
-
+        
+    
+    
     let mainpagePicture = document.getElementById("mainpage-picture");
-    mainpagePicture.style.display = "none";
+    if(mainpagePicture){
+        mainpagePicture.style.display = "none";
+    }
+
+    
+    
 }
 
 
 if (searchButton) {
     searchButton.onclick = executeSearch;
+       
 }
 
 if(input)

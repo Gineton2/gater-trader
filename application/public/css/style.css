@@ -176,9 +176,18 @@ h1 {
 
 .btn-group-search{
   display: flex;
+  
   /* border-radius: 4px 4px 4px 4px; */
   /* border-style: groove;
   border-width: thin; */
+}
+
+.search-text{
+  border-style: solid;
+  border: none;
+  border-width: 1px;
+  border: 1px solid #cccccc;
+  text-indent: 0.3rem;
 }
 
 .navbar-container{

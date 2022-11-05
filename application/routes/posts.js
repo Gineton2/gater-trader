@@ -27,6 +27,8 @@ var storage = multer.diskStorage({
 var uploader = multer({storage: storage});
 
 
+// good working one
+
 router.get('/search', async (req,res,next) =>{
 
     try{
@@ -48,9 +50,9 @@ router.get('/search', async (req,res,next) =>{
                  res.send({
                      message: `No input was given for your search, but here are ${results.length} posts that may interest you`,
                      results: results
-                    });
+                    })
                 }else{// nothing within the category so let's show all the posts
-                    let [results,fields] = await db.query('SELECT post_id, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC');
+                    let [results,fields] = await db.query('SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC');
                     res.send({
                         message: `No result whithin the selected category, but here are ${results.length} posts that may interest you`,
                         results: results
@@ -65,7 +67,7 @@ router.get('/search', async (req,res,next) =>{
                      results: results
                  });
              } else { // nothing found therefore let's show all the posts within the selected category
-                 let [results,fields] = await db.query('SELECT post_id, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE ? ORDER BY post_creation_time DESC', [categorySearch]);
+                 let [results,fields] = await db.query('SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE ? ORDER BY post_creation_time DESC', [categorySearch]);
                             if(results.length){
                                 
                             res.send({
@@ -74,7 +76,7 @@ router.get('/search', async (req,res,next) =>{
                              message: `No results were found for ${searchTerm} but here are ${results.length} posts within ${categorySearch}`
                          }); }
                          else{// nothing within the category so let's show all the posts
-                            let [results,fields] = await db.query('SELECT post_id, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC');
+                            let [results,fields] = await db.query('SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC');
                             res.send({
                                 message: `No result whithin the selected category, but here are ${results.length} posts that may interest you`,
                                 results: results
@@ -86,6 +88,7 @@ router.get('/search', async (req,res,next) =>{
         next(err);
         }
      });
+
 
 
      module.exports = router;
