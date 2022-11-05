@@ -84,7 +84,7 @@ function createCard(postData) {
             <div class="card-body bg-grey w-100">
                 <p class="card-title w-100">${postData.title}</p>
                 <p clas="card-text w-100">${postData.post_description}</p>
-                <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary stretched-link w-100 m-auto">Post Details</a>
+                <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary w-100 m-auto">Post Details</a>
             </div>
         </div>`;
 }
@@ -127,6 +127,9 @@ function executeSearch() {
             
         })
         .catch((err) => console.log(err));
+
+    let mainpagePicture = document.getElementById("mainpage-picture");
+    mainpagePicture.style.display = "none";
 }
 
 
@@ -143,4 +146,23 @@ if(input)
         
     }
 })
+}
+
+function examplePlaceholder() {
+    let category = document.getElementById("search_concept selected").innerText;
+    let searchText = document.getElementById('search-text');
+    if (category === 'All') {
+        searchText.placeholder = " e.g. Janis Joplin";
+    } else if (category === 'Videos') {
+        searchText.placeholder = " e.g. YouTube";
+    } else if (category === 'Images') {
+        searchText.placeholder = " e.g. mountains";
+    } else if (category === 'Music') {
+        searchText.placeholder = " e.g. Justin Bieber";
+    } else if (category === 'Ebooks') {
+        searchText.placeholder = " e.g. Zybooks";
+    } else if (category === 'Slides') {
+        searchText.placeholder = " e.g. csc648";
+    }
+
 }
