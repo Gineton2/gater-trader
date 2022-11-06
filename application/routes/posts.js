@@ -69,10 +69,15 @@ router.get('/search', async (req,res,next) =>{
              } else { // nothing found therefore let's show all the posts within the selected category
                  let [results,fields] = await db.query('SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE ? ORDER BY post_creation_time DESC', [categorySearch]);
                             if(results.length){
+
+                                if(categorySearch==='%'){
+                                categorySearch='all categories';
+                                }
                                 
                             res.send({
                              results: results,
                             //  message: `No results were found for your search but here are ${results.length} posts`
+                            
                              message: `No results were found for ${searchTerm} but here are ${results.length} posts within ${categorySearch}`
                          }); }
                          else{// nothing within the category so let's show all the posts
