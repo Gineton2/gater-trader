@@ -1,0 +1,168 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+nav{
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    min-height: 8vh;
+    padding: 15px 30px;
+    /* background-color: rgb(255, 255, 255); */
+
+}
+nav .logo{
+
+    color:rgb(70, 59, 38); 
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: 30px;
+    font-weight: 800;
+    cursor: pointer;
+
+
+}
+
+nav ol{
+    display: flex;
+    list-style: none;
+    margin: auto 0;
+    justify-content: space-around;
+    width: 40%;
+}
+/* .nav-links li {
+    list-style: none;
+} */
+
+nav ol li {
+    margin: 1px 0px; 
+}
+
+nav ol li a {
+    color:white; 
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    /* font-weight: bold; */
+    font-size: 14px;
+}
+
+nav ol li:hover a {
+    background: white;
+    color:blueviolet;
+}
+
+nav .search_box {
+    display: flex;
+    margin: auto 0;
+    height: 28px;
+    line-height: 28px;
+}
+
+nav .search_box input {
+    border: none;
+    outline: none;
+    background: white;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 21px;
+    width: 220px;
+}
+
+nav .search_box span {
+    color: blueviolet;
+    font-size: 20px;
+    background: white;
+    height: 100%;
+    padding: 8px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+nav .search_box span::after{
+    height: 100%;
+    width: 0%;
+    content: "";
+    background: rgb(84, 173, 170);
+
+    position: absolute;
+    top: 0;
+    right: 0; 
+    z-index: -1;
+    transition: 0.3s;
+}
+nav .search_box span:hover{
+    color: white;
+}
+nav .search_box span:hover::after{
+    width: 100%;
+}
+
+nav .bar {
+    position: relative;
+    margin: auto;
+    display: none;
+}
+
+nav .bar span {
+    position: relative;
+    color: white;
+    font-size: 25px;
+}
+
+
+@media screen and (max-width: 758px) {
+    nav{
+        display: block;
+        padding: 0;
+    }
+    nav.logo {
+        display: inline-block;
+        padding: 15px 30px;
+    }
+    nav .search_box{
+        width: 100%;
+        display: inline-block;
+        justify-content: center;
+        margin-bottom: 15px;
+
+    }
+    nav .search_box input {
+        width: 80%;
+    }
+    nav ol{
+        
+        display: flex;
+        flex-direction:column;
+        background: white;
+        margin-left: 120px;
+        
+        transition: 0.3s;
+    }
+
+    nav ol li{
+        text-align: center;
+        transition: 0.3s 0.1s all;
+    }
+    nav ol li a{
+        color: black;
+        font-size: 25px;
+        padding: 25px;
+        display: block;
+    }
+    nav .bar {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 80px;
+        cursor: pointer; 
+    }
+
+}

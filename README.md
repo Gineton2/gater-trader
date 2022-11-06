@@ -23,4 +23,6 @@
 | Rai'd Muhammad  |  rmuhammad@mail.sfsu.edu    |  muhammad14u2c  |
 | Duccio Rocca    |  drocca@sfsu.edu            |  RINO-GAELICO   |
 
+###npm i, npm install nodemon, npm install express, npm install handlebars, npm install express-handlebars 
+
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
