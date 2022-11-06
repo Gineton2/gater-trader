@@ -1,5 +1,7 @@
 # csc648 Repository
 
+###npm i, npm install nodemon, npm install express, npm install handlebars, npm install express-handlebars : 'npm start nodemon' to change code on the fly
+
 ## Please when ready add your teams application URL or IP to the repository description. This will help with grading. Teams are expected to keep this value up to date.
 
 ## Please do the following steps before completing Milestone 0.
@@ -23,6 +25,6 @@
 | Rai'd Muhammad  |  rmuhammad@mail.sfsu.edu    |  muhammad14u2c  |
 | Duccio Rocca    |  drocca@sfsu.edu            |  RINO-GAELICO   |
 
-###npm i, npm install nodemon, npm install express, npm install handlebars, npm install express-handlebars 
+
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
