@@ -10,9 +10,8 @@ dropdowns.forEach(dropdown=>{
     let menu = dropdown.querySelector('.dropdown-menu');
     let options = dropdown.querySelectorAll('.dropdown-menu li');
     let selected = dropdown.querySelector('.selected');
-    let selectedHidden = dropdown.querySelector('.selectedCat');
 
-    console.log('here is the list of elements select:'+select+' , caret: ' +caret+ ',  menu: '+menu+' , options: '+options+', selected: '+selected+', hidden: '+selectedHidden);
+    console.log('here is the list of elements select:'+select+' , caret: ' +caret+ ',  menu: '+menu+' , options: '+options+', selected: '+selected);
 
     select.addEventListener('click',()=>{
         caret.classList.toggle('open-caret');
@@ -22,8 +21,6 @@ dropdowns.forEach(dropdown=>{
 
         option.addEventListener('click', ()=>{
 
-
-            selectedHidden.value = option.innerText;
             selected.innerText = option.innerText;
 
             options.forEach(option => {
@@ -166,21 +163,21 @@ function executeSearch() {
 }
 
 
-// if (searchButton) {
-//     searchButton.onclick = executeSearch;
+if (searchButton) {
+    searchButton.onclick = executeSearch;
        
-// }
+}
 
-// if(input)
-// {
-//     input.addEventListener('keydown', function(event) {
-//     if(event.key === 'Enter'){
-//         console.log("Enter pressed");
-//         executeSearch();
+if(input)
+{
+    input.addEventListener('keydown', function(event) {
+    if(event.key === 'Enter'){
+        console.log("Enter pressed");
+        executeSearch();
         
-//     }
-// })
-// }
+    }
+})
+}
 
 function examplePlaceholder() {
     let category = document.getElementById("search_concept selected").innerText;

@@ -1,6 +1,7 @@
 var express = require('express');
 var db = require('../database/database');
 
+
 var router = express.Router();
 
 const {requestPrint, errorPrint, successPrint} = require('../helpers/debugprinters');
@@ -8,8 +9,14 @@ var sharp = require('sharp');
 var multer = require('multer');
 var crypto = require('crypto');
 
+
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 // var PostError = require('../helpers/error/PostError');
 // const {postValidation} = require('../middleware/validation');
+
+const {doTheSearch} = require('../middleware/postsmiddleware');
 
 var PostModel = require("../models/posts-model");
 
@@ -28,6 +35,16 @@ var uploader = multer({storage: storage});
 
 
 // good working one
+
+router.post('/search',urlencodedParser, doTheSearch, function(req,res,next) {
+
+    console.log(req.params.results);
+
+    res.render('index');
+    
+});
+
+/*
 
 router.get('/search', async (req,res,next) =>{
 
@@ -94,6 +111,6 @@ router.get('/search', async (req,res,next) =>{
         }
      });
 
-
+*/
 
      module.exports = router;

@@ -1,6 +1,11 @@
-<img id="mainpage-picture" class="w-100" src="/public/images/mainpage-picture.png" alt="mainpage picture"/>
-<h4 id="search-condition" class="text-left px-2 my-2 mx-2" ></h4>
-<h5 id="photo-count" class="photo-count text-left text-black-50 px-2 my-2 mx-2" ></h5>
+ {{#if results}} {{else}} <img id="mainpage-picture" class="w-100" src="/public/images/mainpage-picture.png" alt="mainpage picture"/> {{/if}}
+
+<h4 id="search-condition" class="text-left px-2 my-2 mx-2" >
+    {{#if condition}} {{condition}} {{/if}}
+</h4>
+<h5 id="photo-count" class="photo-count text-left text-black-50 px-2 my-2 mx-2" >
+    {{#if message}} {{message}} {{/if}}
+</h5>
 <div id="container" class="container px-0">
     <div id="main-content" class="main-content d-flex flex-row flex-wrap mx-0 px-0">
         {{#each results}}

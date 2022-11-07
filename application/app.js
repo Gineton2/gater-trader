@@ -7,6 +7,7 @@ const path = require("path");
 const {engine} = require("express-handlebars");
 const favicon = require('serve-favicon');
 const {requestPrint, errorPrint, successPrint} = require('./helpers/debugprinters');
+var bodyParser = require('body-parser');
 
 // REACTIVATE
 var flash = require('express-flash');
@@ -16,6 +17,8 @@ var mysqlSessionStore = new sqlSession({ /* default options */}, require('./data
 
 const app = express();
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico'))); 
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // REACTIVATE
 app.use(sessions({

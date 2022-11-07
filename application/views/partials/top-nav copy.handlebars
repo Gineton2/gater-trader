@@ -25,8 +25,7 @@
 
 
       <li class="nav-item btn-group-search active m-auto px-2 my-1" role="group" >
-        <form class="container-search input-group rounded-3 bg-grey "  method="POST"
-            action="/posts/search">
+        <div class="container-search input-group rounded-3 bg-grey " >
           <div class="input-group-btn search-panel form-outline ">
 
             <button
@@ -38,7 +37,6 @@
               aria-expanded="false"
             >
               <span id="search_concept selected" class="selected">All</span>
-              <input type="hidden" name="selectedCat" value="All" id="selectedCat" class="selectedCat">
               <span class="caret"></span>
             </button>
             
@@ -61,20 +59,18 @@
             type="text"
             class ="search-text" 
             id="search-text" 
-            name="searchText"
+            name="search-text"
             placeholder=" e.g. Janis Joplin"
           />
 
           <button 
           id="search-button" 
           class="btn btn-default search-button rounded-end" 
-          type="submit"
-          method="POST"
-          action="/posts/search">
+          type="submit">
             <i class="bi bi-search"></i>
           </button>
 
-        </form>
+        </div>
 
       </li>
 
