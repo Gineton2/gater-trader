@@ -16,7 +16,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 // var PostError = require('../helpers/error/PostError');
 // const {postValidation} = require('../middleware/validation');
 
-const {doTheSearch} = require('../middleware/postsmiddleware');
+const {doTheSearch} = require('../middleware/postsMiddleware');
 
 var PostModel = require("../models/posts-model");
 
