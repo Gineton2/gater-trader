@@ -3,6 +3,9 @@ var express = require('express');
 //The top-level express object has a Router() method that creates a new router object.
 var router = express.Router();
 
+var db = require('../database/database');
+
+
 
 
 /*
@@ -13,9 +16,23 @@ router.get('/', function(req, res, next) {
     res.render('index');
 });
 
-router.get('/aboutMe', function(req, res, next) {
-    res.render('aboutMe');
-    
+
+
+// router.post('/register', (req, res, next) => {
+
+//   res.send("YAY");
+
+//   let password = req.body.password;
+//   let username = req.body.username;
+//   let Email = req.body.Email;
+
+//   let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
+//   return db.execute(sqlCommand, [username, Email, password]);
+  
+// });
+
+router.get('/about-team', function(req, res, next) {
+  res.render('about-team');
 });
 
 router.get('/about-gineton', function(req, res, next) {
@@ -51,9 +68,12 @@ router.get('/about-dominique', function(req, res, next) {
 
 });
 
+router.get('/database-test', function(req, res, next) {
+  res.render('database-test');
+
+});
 
 
-  
 
   /*
 To make objects available outside of a module
@@ -62,4 +82,4 @@ BUT
 If you want to export a complete object in one assignment instead of building it one property at a time,
 assign it to module.exports as shown below
  */
-  module.exports = router;
+module.exports = router;
