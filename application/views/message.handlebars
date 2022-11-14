@@ -1,62 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <link rel="stylesheet" type="text/css" href="/public/css/message.css" >
-  </head>
-  <body>
-    <section class="message">
-        <div class="content">
-            <h2>Message Owner</h2>
-            <p>Hello</p>
+<div>
+    <div class="container py-4 p-3">
+        <h1 class="display-4 text-center bold text-white bg-dark ">Message Owner</h1> <br>
+        <div class="row h-100 align-items-center py-2 m-4 ">
+            <div class="col-lg-6 d-none d-lg-block"><img src="/public/images/ebook2.jpg" alt="" class="img-fluid"></div>
+            <div class="col-lg-6 p-5">
+
+
+                <p class="mb-4 text-center text-white display-4 p-3">Legacy of the Midnight Marauders </p><br>
+                <h3 style="color:white ;"> Description: <br><br> This is an eBook sold by James Brown. </h3>
+                <h5 style="color:white ;"></h5> <br><br>
+
+
+                <h3 style="color:white ;">Price: <br><br> $0.00 FREE</h3>
+            </div>
+
         </div>
-        <div class="container">
-        <div class="messageInfo">
-            <div class="box">
-                {{!-- <div class="icon"></div> --}}
-                <div class="text">
-                    <h3>Title: Ebook Author</h3>
-                    <p>Info </p>
+    </div>
+</div>
+
+<section class="mb-4 px-5 m-4">
+
+    <h1 class="h1-responsive font-weight-bold text-center my-4 bold text-white bg-dark">Message Owner Form</h1>
+
+    <div class="row ">
+
+        <!--Grid column-->
+        <div class="col-md-12 mb-md-2 mb-5">
+            <form id="contact-form" name="contact-form">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0 text-center text-white ">
+                            <label for="name" class="">
+                                <h4>Your name</h4>
+                            </label>
+                            <input type="text" id="name" name="name" class="form-control">
+
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-3 text-center text-white">
+                            <label for="email" class="">
+                                <h4>Your email</h4>
+                            </label>
+                            <input type="text" id="email" name="email" class="form-control">
+
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
                 </div>
-            </div>
-            <div class="box">
-                {{!-- <div class="icon"></div> --}}
-                <div class="text">
-                    <h3>Title: Name of Ebook</h3>
-                    <p>Info about Ebook goes here</p>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-3 text-center text-white">
+                            <label for="subject" class="">
+                                <h4>Subject</h4>
+                            </label>
+                            <input type="text" id="subject" name="subject" class="form-control">
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="box">
-                {{!-- <div class="icon"></div> --}}
-                <div class="text">
-                    <h3>Title: Description</h3>
-                    <p>E book Description</p>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form text-center text-white ">
+                            <label for="message">
+                                <h4>Enter your Message</h4>
+                            </label>
+                            <textarea type="text" id="message" name="message" rows="4"
+                                class="form-control md-textarea"></textarea>
+
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="messageForm">
-            <form>
-                <h2>Send Message</h2>
-                <div class="inputbox">
-                    <input type="text" name="" required="required">
-                    <span>Full Name</span>
-                </div>
-                 <div class="inputbox">
-                    <input type="text" name="" required="required">
-                    <span>Email</span>
-                </div>
-                 <div class="inputbox">
-                    <textarea required="required"></textarea>
-                    <span>Type your message...</span>
-                </div>
-                 <div class="inputbox">
-                    <input type="submit" name="" value="Send">
-                </div>
+                <!--Grid row-->
+
             </form>
+            <br><br>
+            <div class="text-center text-md-left">
+                <a class="btn btn-success btn-lg " onclick="document.getElementById('contact-form').submit();">Send</a>
+            </div>
+            <div class="status"></div>
         </div>
-        </div>
-    </section>
-  </body>
-</html>
+
+    </div>
+</section>
+
+<footer class="pb-5 text-white">
+    <div class="container text-center">
+        <p class="font-italic mb-0 text-white">SFSU CSC648 Team 7</p>
+    </div>
+</footer>
