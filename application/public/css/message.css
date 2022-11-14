@@ -1,0 +1,80 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    
+}
+
+.message {
+    position: relative;
+    min-height: 60vh;
+    padding: 50px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.message .content {
+    max-width: 800px;
+    text-align: center;
+
+}
+.message .content h2 {
+    font-size: 36px;
+    font-weight: 500;
+    color: #fff;
+
+
+}
+
+.message .content p {
+    font-weight: 300;
+    color:#fff; 
+
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.container .messageInfo {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container .messageInfo .box{
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+}
+.container .messageInfo .box .text {
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    color: #fff;
+    flex-direction: column;
+    font-weight: 300;
+}
+
+.container .messageInfo .box .text h3 {
+    font-weight: 500;
+    color: blue;
+
+}
+.messageForm {
+    width: 40%;
+    padding: 40px;
+    background: white; 
+
+}
+.messageForm h2 {
+    font-size: 30px;
+    color: blueviolet;
+    font-weight: 500;
+}

@@ -39,8 +39,12 @@ app.engine(
         extname: ".handlebars", //expected file extension for handlebars files
         defaultLayout: "home", //default layout for app, general template for all pages in app
         helpers: {
+            
             emptyObject : (obj) => {
-                return !(obj.constructor === Object && Object.keys(obj).length == 0);
+                if(obj){
+                    return !(obj.constructor === Object && Object.keys(obj).length == 0);
+                }
+                
             }
 
         }, //adding new helpers to handlebars for extra functionality

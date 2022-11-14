@@ -73,6 +73,21 @@ router.get('/database-test', function(req, res, next) {
 
 });
 
+router.get('/signup', function(req, res, next) {
+  res.render('signup');
+
+});
+
+router.get('/message', function(req, res, next) {
+  res.render('message');
+
+});
+
+router.get('/login', function(req, res, next) {
+  res.render('login');
+
+});
+
 
 
   /*
