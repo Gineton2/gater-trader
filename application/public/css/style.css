@@ -12,6 +12,14 @@
   margin-left: 25px;
 } */
 
+.bg-lightgreen {
+  background-color: rgb(39, 67, 66);
+}
+
+img {
+  object-fit: cover;
+}
+
 .header-fall22{
 
   text-align: center;

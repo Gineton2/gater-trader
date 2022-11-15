@@ -5,14 +5,14 @@ var router = express.Router();
 
 var db = require('../database/database');
 
-
+const {getRecentPosts}  = require('../middleware/postsMiddleware');
 
 
 /*
 The app.get() method specifies a callback function that will be invoked whenever there is an HTTP GET request with a path ('/') relative to the site root
  */
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', getRecentPosts, function(req, res, next) {
     res.render('index');
 });
 

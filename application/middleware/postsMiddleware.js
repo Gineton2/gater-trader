@@ -4,7 +4,7 @@ var db = require("../database/database");
 
 var bodyParser = require("body-parser");
 
-const { search } = require("../models/posts-model");
+const { search, getNRecentPosts } = require("../models/posts-model");
 
 const doTheSearch = async function (req, res, next) {
   try {
@@ -100,4 +100,18 @@ const doTheSearch = async function (req, res, next) {
   }
 };
 
-module.exports = { doTheSearch };
+const getRecentPosts = async function(req,res,next) {
+
+  try {
+      let results = await getNRecentPosts(4);
+      res.locals.results = results;
+      if(results.length == 0) {
+          req.flash('error', 'There are no post created yet');
+      }
+      next();
+  } catch(err) {
+      next(err);
+  }
+}
+
+module.exports = { doTheSearch, getRecentPosts };
