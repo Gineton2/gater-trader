@@ -93,6 +93,16 @@ router.get('/make-post', function(req, res, next) {
 
 });
 
+router.get('/dashboard', function(req, res, next) {
+  res.render('dashboard');
+
+});
+
+router.get('/forgot-password', function(req, res, next) {
+  res.render('forgot-password');
+
+});
+
 
 
   /*
