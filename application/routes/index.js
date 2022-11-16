@@ -88,6 +88,11 @@ router.get('/login', function(req, res, next) {
 
 });
 
+router.get('/make-post', function(req, res, next) {
+  res.render('make-post');
+
+});
+
 
 
   /*
