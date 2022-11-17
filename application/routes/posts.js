@@ -40,7 +40,7 @@ router.post('/search',urlencodedParser, doTheSearch, function(req,res,next) {
 
     console.log(req.params.results);
 
-    res.render('index');
+    res.render('display-results');
     
 });
 

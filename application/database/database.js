@@ -14,11 +14,17 @@ const db = mysql.createPool({
     // database : 'copy_EC2_DB',
     // password : 'ABB10iote'
 
-    // // local Yoshi
+    // local Yoshi
     // host: 'localhost',
     // user : 'root',
     // database : 'copy_EC2_DB',
-    // password : 'csmc4403'
+    // password : 'passyoshi'
+
+    //  // // local Rai'd M.
+    // host: 'localhost',
+    // user : 'root',
+    // database : 'teamschema',
+    // password : 'nap765gUp!'
 });
 
 module.exports = db.promise();

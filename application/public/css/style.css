@@ -12,6 +12,18 @@
   margin-left: 25px;
 } */
 
+.bg-lightgreen {
+  background-color: rgb(39, 67, 66);
+}
+
+.bg-green {
+  background-color: rgb(84, 136, 134);
+}
+
+img {
+  object-fit: fill;
+}
+
 .header-fall22{
 
   text-align: center;
@@ -35,8 +47,8 @@
 
 body {
   margin: auto;
-  background-color: rgb(84, 173, 170);
-  background: radial-gradient(circle, rgb(84, 173, 170), rgb(116, 182, 162));
+  background-color: rgb(17, 41, 40);
+  background: radial-gradient(circle, rgb(15, 44, 43), rgb(59, 84, 76));
 }
 /*Profiles*/
 .pictures img {
@@ -192,6 +204,7 @@ h1 {
 
 .navbar-container{
   display: flex;
+  
 }
 
 .nav-item{

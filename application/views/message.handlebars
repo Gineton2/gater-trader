@@ -1,0 +1,115 @@
+{{!-- This page is the message page. Must be implemented when user is logged in --}}
+
+<div>
+    <div class="container py-4 p-3">
+        <h1 class="display-4 text-center font-weight-bold text-white bg-green ">Message Owner</h1> <br>
+        <div class="row h-100 align-items-center py-2 m-4 ">
+            <div class="col-lg-6 d-none d-lg-block"><img src="/public/images/ebook2.jpeg" alt="PostImage"
+                    class="img-fluid"></div>
+            <div class="col-lg-6 p-5">
+
+
+                <p class="mb-4 text-center text-white display-4 p-3">Legacy of the Midnight Marauders </p><br>
+                <h3 style="color:white ;"> Description: <br><br> This is an eBook sold by James Brown. </h3>
+                <h5 style="color:white ;"></h5> <br><br>
+
+
+                <h3 style="color:white ;">Price: <br><br> $0.00 FREE</h3>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<section class="mb-4 px-5 m-4">
+
+    <h1 class="h1-responsive font-weight-bold text-center my-4 text-white bg-green">Message Owner Form</h1>
+
+    <div class="row ">
+
+        <!--Grid column-->
+        <div class="col-md-12 mb-md-2 mb-5">
+            <form id="contact-form" name="contact-form">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0 text-center text-white ">
+                            <label for="name" class="">
+                                <h4>Your name</h4>
+                            </label>
+                            <input type="text" id="name" name="name" class="form-control">
+
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-3 text-center text-white">
+                            <label for="email" class="">
+                                <h4>Your email</h4>
+                            </label>
+                            <input type="text" id="email" name="email" class="form-control">
+
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-3 text-center text-white">
+                            <label for="subject" class="">
+                                <h4>Subject</h4>
+                            </label>
+                            <input type="text" id="subject" name="subject" class="form-control">
+
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form text-center text-white ">
+                            <label for="message">
+                                <h4>Enter your Message</h4>
+                            </label>
+                            <textarea type="text" id="message" name="message" rows="4"
+                                class="form-control md-textarea"></textarea>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--Grid row-->
+
+            </form>
+            <br><br>
+            <div class="text-center text-md-left">
+                <a class="btn btn-success btn-lg " onclick="document.getElementById('contact-form').submit();">Send</a>
+            </div>
+            <div class="status"></div>
+        </div>
+
+    </div>
+</section>
+
+{{!-- Clickable Footer --}}
+<footer class="pb-3 text-white">
+    <div class="container text-center">
+        <a href="/about-team" class="text-decoration-none">
+            <p class="font-italic mb-0 text-white py-2">SFSU CSC648 Team 7</p>
+        </a>
+    </div>
+</footer>

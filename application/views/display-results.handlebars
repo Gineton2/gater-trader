@@ -1,0 +1,54 @@
+<h4 id="search-condition" class="text-left text-white px-2 my-2 mx-2" >
+    {{#if condition}} {{condition}} {{/if}}
+</h4>
+<h5 id="photo-count" class="photo-count text-left text-white px-2 my-2 mx-2" >
+    {{#if message}} {{message}} {{/if}}
+</h5>
+<div id="container" class="container px-0">
+    <div id="main-content" class="main-content d-flex flex-row flex-wrap mx-0 px-0">
+        {{#each results}}
+            {{> card this}}
+        {{/each}}
+    </div>
+    <footer class="pb-3 text-white">
+    <div class="container text-center">
+        <a href="/about-team" class="text-decoration-none"><p class="font-italic mb-0 text-white">SFSU CSC648 Team 7</p></a> 
+    </div>
+</footer>
+</div>
+{{!-- <div class="row ">
+  <div class="column col-sm-12 col-md-2" >
+    <img src="/public/images/ebook.jpg" width="100%" class="img-fluid img-center">
+    <img src="/public/images/ebook2.jpg" width="100%" class="img-fluid img-center">
+    <img src="/public/images/uploads/test_image.jpeg" width="100%" class="img-fluid img-center">
+    <img src="paris.jpg">
+    <img src="nature.jpg">
+    <img src="mist.jpg">
+    <img src="paris.jpg">
+  </div>
+  <div class="column col-sm-12 col-md-2">
+    <img src="underwater.jpg">
+    <img src="ocean.jpg">
+    <img src="wedding.jpg">
+    <img src="mountainskies.jpg">
+    <img src="rocks.jpg">
+    <img src="underwater.jpg">
+  </div>
+  <div class="column col-sm-12 col-md-2">
+    <img src="wedding.jpg">
+    <img src="rocks.jpg">
+    <img src="falls2.jpg">
+    <img src="paris.jpg">
+    <img src="nature.jpg">
+    <img src="mist.jpg">
+    <img src="paris.jpg">
+  </div>
+  <div class="column col-sm-12 col-md-2">
+    <img src="underwater.jpg">
+    <img src="ocean.jpg">
+    <img src="wedding.jpg">
+    <img src="mountainskies.jpg">
+    <img src="rocks.jpg">
+    <img src="underwater.jpg">
+  </div>
+</div> --}}

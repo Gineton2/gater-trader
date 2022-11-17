@@ -5,14 +5,14 @@ var router = express.Router();
 
 var db = require('../database/database');
 
-
+const {getRecentPosts}  = require('../middleware/postsMiddleware');
 
 
 /*
 The app.get() method specifies a callback function that will be invoked whenever there is an HTTP GET request with a path ('/') relative to the site root
  */
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', getRecentPosts, function(req, res, next) {
     res.render('index');
 });
 
@@ -70,6 +70,36 @@ router.get('/about-dominique', function(req, res, next) {
 
 router.get('/database-test', function(req, res, next) {
   res.render('database-test');
+
+});
+
+router.get('/signup', function(req, res, next) {
+  res.render('signup');
+
+});
+
+router.get('/message', function(req, res, next) {
+  res.render('message');
+
+});
+
+router.get('/login', function(req, res, next) {
+  res.render('login');
+
+});
+
+router.get('/make-post', function(req, res, next) {
+  res.render('make-post');
+
+});
+
+router.get('/dashboard', function(req, res, next) {
+  res.render('dashboard');
+
+});
+
+router.get('/forgot-password', function(req, res, next) {
+  res.render('forgot-password');
 
 });
 
