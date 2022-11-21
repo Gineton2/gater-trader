@@ -9,53 +9,55 @@
             <div class="card-body p-5 ">
               <h2 class="text-uppercase text-center mb-5 bg-dark text-white bold">SIGN UP</h2>
 
-              <form>
-
-                <div class="form-outline mb-4 ">
+              <form data-toggle="validator" method="POST" action="/users/register" role="form">
+              <fieldset>
+                <div class="form-outline mb-4 form-group">
                   <div class="fields-one text-center bold">
                     <label class="form-label " for="form3Example1cg">Your Name</label>
                   </div>
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg border border-dark"
-                    placeholder="Enter Full Name" />
+                  <input type="text" id="username" name="username" class="form-control form-control-lg border border-dark"
+                    placeholder="Enter Full Name" required / >
 
                 </div>
 
-                <div class="form-outline mb-4">
+                <div class="form-outline mb-4 form-group">
                   <div class="fields-two text-center bold">
                     <label class="form-label" for="form3Example3cg">Your Email</label>
                   </div>
-                  <input type="email" id="form3Example1cg" class="form-control form-control-lg border border-dark"
-                    placeholder="Enter Your Email" />
+                  <input type="email" id="email" name="email" class="form-control form-control-lg border border-dark"
+                    placeholder="Enter Your Email" required />
 
                 </div>
 
-                <div class="form-outline mb-4">
+                <div class="form-outline mb-4 form-group">
                   <div class="fields-three text-center bold">
                     <label class="form-label" for="form3Example4cg">Password</label>
                   </div>
-                  <input type="password" id="form3Example1cg" class="form-control form-control-lg border border-dark"
-                    placeholder="Enter Your Password" />
+                  <input type="password" id="password" name="password" class="form-control form-control-lg border border-dark"
+                    placeholder="Enter Your Password" data-minlength="6" required />
 
                 </div>
 
-                <div class="form-outline mb-4">
+                <div class="form-outline mb-4 form-group">
                   <div class="fields-four text-center bold">
                     <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                   </div>
-                  <input type="password" id="form3Example1cg" class="form-control form-control-lg border border-dark"
-                    placeholder="Re Enter Your Password" />
+                  <input type="password" id="matchPassword" name="mathcPassword" class="form-control form-control-lg border border-dark"
+                    placeholder="Re Enter Your Password" data-match="#inputPassword" required />
 
                 </div>
 
+                </fieldset>
+
                 <div class="form-check d-flex justify-content-center mb-5 bold">
-                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" required />
                   <label class="form-check-label" for="form2Example3g">
                     I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
                   </label>
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <button type="button" class="btn btn-success btn-block text-center btn-lg ">Sign
+                  <button type="submit" class="btn btn-success btn-block text-center btn-lg ">Sign
                     Up!</button>
                 </div>
 

@@ -14,14 +14,11 @@ dropdowns.forEach(dropdown=>{
 
     console.log('here is the list of elements select:'+select+' , caret: ' +caret+ ',  menu: '+menu+' , options: '+options+', selected: '+selected+', hidden: '+selectedHidden);
 
-    select.addEventListener('click',()=>{
-        caret.classList.toggle('open-caret');
-    });
+    
     options.forEach(option => {
 
 
         option.addEventListener('click', ()=>{
-
 
             selectedHidden.value = option.innerText;
             selected.innerText = option.innerText;
@@ -139,8 +136,6 @@ function executeSearch() {
             
             if (data_json.message) {
                 // addFlashFromFrontEnd(data_json.message);
-
-                
                 createSearchConditionMessage(categorySearch, searchText);
                 createResultMessage(data_json.message);
             }
@@ -182,7 +177,17 @@ function executeSearch() {
 // })
 // }
 
+function caretChange() {
+
+    let caret = document.getElementById('caret');
+    caret.classList.remove("caret");
+    caret.classList.toggle('open-caret');
+}
+
 function examplePlaceholder() {
+
+    
+
     let category = document.getElementById("search_concept selected").innerText;
     let searchText = document.getElementById('search-text');
     if (category === 'All') {

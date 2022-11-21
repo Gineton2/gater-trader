@@ -38,9 +38,7 @@ var uploader = multer({storage: storage});
 
 router.post('/search',urlencodedParser, doTheSearch, function(req,res,next) {
 
-    console.log(req.params.results);
-
-    res.render('display-results');
+    res.render('index');
     
 });
 

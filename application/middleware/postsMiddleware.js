@@ -7,18 +7,22 @@ var bodyParser = require("body-parser");
 const { search, getALLRecentPosts } = require("../models/posts-model");
 
 const doTheSearch = async function (req, res, next) {
+
   try {
     let searchTerm = req.body.searchText;
     let categorySearch = req.body.selectedCat;
 
-    console.log("search:" + searchTerm);
-    console.log("cat: " + categorySearch);
+    let inputChecker = /^[_A-z0-9]{1,}$/;
+    if(!inputChecker.test(searchTerm)){
+      searchTerm = "";
+    }
+
+    // console.log("search:" + searchTerm);
+    // console.log("cat: " + categorySearch);
 
     if (categorySearch === "All") {
       categorySearch = "%";
     }
-
-    console.log("INSIDE DO_RESEARCH");
 
     if (searchTerm === "") {
       // empty input
@@ -30,8 +34,11 @@ const doTheSearch = async function (req, res, next) {
           categorySearch = "All";
         }
         res.locals.results = results;
-        res.locals.message = `No input was given for your search, but here are ${results.length} posts that may interest you`;
+        res.locals.message = `Here are ${results.length} posts that may interest you`;
         res.locals.condition = `${categorySearch} > ${searchTerm}`;
+        res.locals.imageFalse = "False";
+        res.locals.categorySearch = categorySearch;
+        res.locals.searchTerm = searchTerm;
 
         next();
       } else {
@@ -42,8 +49,11 @@ const doTheSearch = async function (req, res, next) {
        
 
         res.locals.results = results;
-        (res.locals.message = `No result whithin the selected category, but here are ${results.length} posts that may interest you`),
-          (res.locals.condition = `${categorySearch} > ${searchTerm}`);
+        res.locals.message = `No results whithin the selected category, but here are ${results.length} posts that may interest you`,
+        res.locals.condition = `${categorySearch} > ${searchTerm}`;
+        res.locals.imageFalse = "False";
+        res.locals.categorySearch = categorySearch;
+        res.locals.searchTerm = searchTerm;
 
         next();
       }
@@ -58,7 +68,11 @@ const doTheSearch = async function (req, res, next) {
         res.locals.results = results;
         res.locals.message = `${results.length} results found`;
         res.locals.condition = `${categorySearch} > ${searchTerm}`;
+        res.locals.imageFalse = "False";
+        res.locals.categorySearch = categorySearch;
+        res.locals.searchTerm = searchTerm;
         next();
+
       } else {
         // nothing found therefore let's show all the posts within the selected category
         let [results, fields] = await db.query(
@@ -78,6 +92,10 @@ const doTheSearch = async function (req, res, next) {
           }
 
           res.locals.condition = `${categorySearch} > ${searchTerm}`;
+          res.locals.imageFalse = "False";
+          res.locals.categorySearch = categorySearch;
+          res.locals.searchTerm = searchTerm;
+
           next();
         } else {
           // nothing within the category so let's show all the posts
@@ -88,9 +106,14 @@ const doTheSearch = async function (req, res, next) {
           if (categorySearch === "%") {
             categorySearch = "All";
           }
+
           res.locals.results = results;
           res.locals.message = `No result whithin the selected category, but here are ${results.length} posts that may interest you`;
           res.locals.condition = `${categorySearch} > ${searchTerm}`;
+          res.locals.imageFalse = "False";
+          res.locals.categorySearch = categorySearch;
+          res.locals.searchTerm = searchTerm;
+
           next();
         }
       }
@@ -103,12 +126,14 @@ const doTheSearch = async function (req, res, next) {
 const getRecentPosts = async function(req,res,next) {
 
   try {
+
       let results = await getALLRecentPosts();
       res.locals.results = results;
       if(results.length == 0) {
-          req.flash('error', 'There are no post created yet');
+          req.flash('error', 'There are no posts created yet');
       }
       next();
+
   } catch(err) {
       next(err);
   }

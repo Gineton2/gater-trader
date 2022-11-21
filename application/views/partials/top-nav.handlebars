@@ -1,9 +1,4 @@
-{{! <div class="top-nav" id="top-nav">
 
-  <button id="search-button" class="search-button" type="submit"><i class="fa fa-search"></i></button>
-
-  <input class="search-text" id="search-text" name="search-text" type="text">
-</div> }}
 <div class="container text-center text-white">
     <p  class="font-italic mb-0 text-white">SFSU Software Engineering Project CSC 648-848, Fall 2022. 
       For Demonstration Only</p>
@@ -30,15 +25,7 @@
         <a class="nav-link rounded-3 bg-dark px-4" href="/about-team">About</a>
       </li>
 
-      <li class="nav-item active m-auto px-5 my-1">
-        <a class="nav-link rounded-3 bg-dark px-4 " href=https://www.sfsu.edu>Contact Us</a>
-      </li>
-
-
-      <li class="nav-item active m-auto px-5 my-1 ">
-        <a class="nav-link rounded-3 bg-dark px-4 " href="/">Home</a>
-      </li>
-
+  
 
       <li class="nav-item btn-group-search active m-auto px-2 my-1 " role="group">
         <form class="container-search input-group rounded-3 bg-grey " method="POST" action="/posts/search">
@@ -48,9 +35,10 @@
               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span id="search_concept selected" class="selected w-100">All</span>
               <input type="hidden" name="selectedCat" value="All" id="selectedCat" class="selectedCat">
-              <span class="caret"></span>
+              <span id="caret" class="caret"></span>
             </button>
 
+            
             <ul class="dropdown-menu scrollable-dropdown " id="dropdown-menu" role="menu"
               onclick="examplePlaceholder()">
               <li><a class="dropdown-item active-item">All</a></li>
@@ -63,6 +51,27 @@
           </div>
 
           <input type="text" class="search-text" id="search-text" name="searchText" placeholder=" e.g. Janis Joplin" />
+
+          {{#if searchTerm}}
+
+            <script defer>
+               document.getElementById("search-text").setAttribute('placeholder', '{{searchTerm}}');
+               
+            </script>
+
+            {{/if}}
+
+            {{#if categorySearch}}
+
+            <script defer>
+                let innerTextNode = document.createTextNode('{{categorySearch}}');
+                let searchCondition = document.getElementById('search_concept selected');
+                searchCondition.innerText='';
+                searchCondition.appendChild(innerTextNode);
+               
+            </script>
+
+            {{/if}}
 
           <button id="search-button" class="btn btn-default search-button rounded-end" type="submit" method="POST"
             action="/posts/search">
