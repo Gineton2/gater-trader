@@ -1,3 +1,16 @@
+/* 
+    Filename: posts-model.js
+    
+    Purpose: Execute the select query in the database 
+    to get 'n' amount of recent posts 
+
+    Author: Duccio Rocca & Yoshimasa Iwano, Team: 07
+    
+    Course: CSC648 SFSU
+
+ */
+
+
 const db = require("../database/database");
 
 const PostModel = {};

@@ -1,3 +1,14 @@
+/* 
+    Filename: debugprinters.js
+
+    Purpose: Formats errors with colors 
+
+    Author: Duccio Rocca & Yoshimasa Iwano, Team: 07
+
+    Course: CSC648 SFSU
+
+ */
+
 const colors = require('colors');
 
 colors.setTheme({

@@ -1,16 +1,13 @@
 /* 
-#Head {
-  margin: auto;
-  padding: 5px;
-  background-color: orange;
-} */
-/* .Title h1 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2rem;
-  text-align: left;
-  color: black;
-  margin-left: 25px;
-} */
+    Filename: style.css
+
+    Purpose: General Styling of Nav and About page 
+    
+    Author: Gineton Alencar, Team: 07
+    
+    Course: CSC648 SFSU
+
+ */
 
 .bg-lightgreen {
   background-color: rgb(39, 67, 66);
@@ -268,15 +265,7 @@ h1 {
     height: 150px;
     width: 150px;
   }
-  .name {
   
-  }
-  .position {
-  
-  }
-  .about {
-  
-  }
 }
 
 @media screen and (min-width: 600px) and (max-width: 1200px) {
@@ -312,15 +301,7 @@ h1 {
     height: 200px;
     width: 200px;
   }
-  .name {
   
-  }
-  .position {
-  
-  }
-  .about {
-  
-  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -356,14 +337,6 @@ h1 {
     height: 250px;
     width: 250px;
   }
-  .name {
   
-  }
-  .position {
-  
-  }
-  .about {
-  
-  }
 }
 

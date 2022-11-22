@@ -1,3 +1,16 @@
+/* 
+    Filename: users.js
+
+    Purpose: Creates application parser and 
+    executes sql query to insert users and handles 
+    errors for inserting in users. 
+
+    Author: Duccio Rocca, Yoshimasa Iwano, Team: 07
+
+    Course: CSC648 SFSU 
+*/
+
+
 var express = require('express');
 const {requestPrint, errorPrint, successPrint} = require('../helpers/debugprinters');
 var flash = require('express-flash');

@@ -1,5 +1,21 @@
-const mysql = require('mysql2');
+/* 
+    Filename: Database.js
+    
+    Purpose: Establishes MySQL connection
 
+    Author: Duccio Rocca & Yoshimasa Iwano 
+
+    Team: 07
+
+    Course: CSC648 SFSU
+
+ */
+
+const { Template } = require('@carbon/icons-react');
+const mysql = require('mysql2');
+const { title } = require('process');
+
+//Comment out code that doesn't reflect local connection
 const db = mysql.createPool({
     
     // EC2
