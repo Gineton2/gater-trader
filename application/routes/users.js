@@ -2,17 +2,12 @@ var express = require('express');
 const {requestPrint, errorPrint, successPrint} = require('../helpers/debugprinters');
 var flash = require('express-flash');
 const UserError = require("../helpers/error/UserError");
+const UserModel = require('../models/users-model');
+const {usernameValidation, passwordValidation, loginValidation} = require('../middleware/validation');
 
 //The top-level express object has a Router() method that creates a new router object.
 var router = express.Router();
 var bodyParser = require('body-parser');
-
-var db = require('../database/database');
-
-
-// create application/json parser
-var jsonParser = bodyParser.json()
-
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
@@ -20,43 +15,74 @@ router.get('/', function(req, res, next) {
     res.render('index');
 });
 
-router.post('/register',urlencodedParser, (req, res, next) => {
-
-    
-    console.log(req.body);
-    console.log(req.body.password);
-    console.log(req.body.username);
+router.post('/register',urlencodedParser, usernameValidation, passwordValidation, (req, res, next) => {
 
     
     let password = req.body.password;
     let username = req.body.username;
     let email = req.body.email;
+    let matchPassword = req.body.matchPassword;
 
-  
-    let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
-    
-    db.execute(sqlCommand, [username, email, password])
-    .then(()=>{
-        res.send("Data sent to database");
+    UserModel.usernameExists(username)
+    .then((usernameDoesExits) => {
+        if(usernameDoesExits){
+            throw new UserError(
+                "Registration failed: Username already exists",
+                "/signup",
+                200
+            );
+        }else{
+            return UserModel.emailExists(email);
+        }
     })
-    .catch((err) => {
-        errorPrint("User could not be made", err);
+    .then((emailDoesExists) => {
+        if(emailDoesExists){
+            throw new UserError(
+                "Registration failed: Email already exists",
+                "/signup",
+                200
+            );
+        }else{
+            return UserModel.create(username, password, email);
+        }
+    })
+    .then((createUserId)=>{
+        if(createUserId < 0){
+            throw new UserError(
+                "Server Error: user could not be created",
+                "/signup",
+                500
+            );
+        }else{
+            successPrint("User.js --> User was created");
+            req.flash('success', 'User account has been created');
+            res.redirect('/login');
+        }
+    })
+    // let sqlCommand = "INSERT INTO users (username, email, password, creation_time) VALUES (?,?,?, now())";
     
-        req.flash('error', 'Error: user could not be created');
-        req.session.save(err => {
-    
-            res.redirect("/database-test");
-        });
-    
+    // db.execute(sqlCommand, [username, email, password])
+    // .then(()=>{
+    //     res.send("Data sent to database");
         
+    // })
+    .catch((err) => {
+
+        errorPrint("User could not be made", err);
+        // req.flash('error', 'Error: user could not be created');
+        req.session.save(err => {
+
+            res.redirect("/signup");
+        });
+
+        if (err instanceof UserError) {
             errorPrint(err.getMessage());
             req.flash('error', err.getMessage());
             res.status(err.getStatus());
             res.redirect(err.getRedirectURL());
-        
-        
-    
-    })
+        } else {
+            next(err);
+        }})
 
 
     

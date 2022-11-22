@@ -34,7 +34,6 @@ dropdowns.forEach(dropdown=>{
 
 });
 
-
 function setflashMessageFadeOut(flashMessage) {
     setTimeout(() => {
         let currentOpacity = 1.0;
@@ -59,7 +58,7 @@ function addFlashFromFrontEnd(message) {
     innerFlashDiv.setAttribute('class', 'alert alert-success');
     document.getElementsByTagName('body')[0].appendChild(flashMessageDiv);
     console.log(document.getElementsByTagName('body')[0]);
-    // setflashMessageFadeOut(flashMessageDiv);
+    setflashMessageFadeOut(flashMessageDiv);
 }
 
 function createSearchConditionMessage(categorySearch, searchText) {

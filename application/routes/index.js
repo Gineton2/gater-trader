@@ -16,20 +16,15 @@ router.get('/', getRecentPosts, function(req, res, next) {
     res.render('index');
 });
 
+router.get('/signup', function(req, res, next) {
+  res.render('signup');
+});
+
+router.get('/login', function(req,res,next) {
+  res.render('login');
+})
 
 
-// router.post('/register', (req, res, next) => {
-
-//   res.send("YAY");
-
-//   let password = req.body.password;
-//   let username = req.body.username;
-//   let Email = req.body.Email;
-
-//   let sqlCommand = "INSERT INTO table1 (username, email, password) VALUES (?,?,?)";
-//   return db.execute(sqlCommand, [username, Email, password]);
-  
-// });
 
 router.get('/about-team', function(req, res, next) {
   res.render('about-team');
