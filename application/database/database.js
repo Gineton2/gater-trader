@@ -34,7 +34,7 @@ const db = mysql.createPool({
     // host: 'localhost',
     // user : 'root',
     // database : 'copy_EC2_DB',
-    // password : 'csmc4403'
+    // password : 'passyoshi'
 
      // // local Rai'd M.
     host: 'localhost',
