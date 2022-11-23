@@ -1,3 +1,16 @@
+/* 
+    Filename: dbloader
+
+    Purpose: Creates database connection and creates database
+
+    Author: Duccio Rocca & Yoshimasa Iwano 
+
+    Team: 07
+    
+    Course: CSC648 SFSU
+
+ */
+
 "use strict";
 const mysql = require("mysql2/promise");
 

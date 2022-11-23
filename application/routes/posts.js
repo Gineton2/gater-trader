@@ -1,3 +1,15 @@
+/* 
+    Filename: posts.js
+
+    Purpose: Uses middleware to execute search
+    and provide index layout of results.
+    Also adds files to storage wth filename and mimetype.
+
+    Author: Duccio Rocca, Yoshimasa Iwano, Team: 07
+
+    Course: CSC648 SFSU 
+*/
+
 var express = require('express');
 var db = require('../database/database');
 
