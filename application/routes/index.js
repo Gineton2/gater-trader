@@ -1,3 +1,18 @@
+/* 
+    Filename: index.js
+
+    Purpose: Creates Express application
+    and render views of site. 
+
+    Author: Duccio Rocca, Yoshimasa Iwano
+    Gineton Alencar, Rai'd Muhammad, Eddie Fu,
+    Dominque Henry, Kobe D Shelby, Team: 07
+
+    Course: CSC648 SFSU
+
+ */
+
+
 var express = require('express');
 
 //The top-level express object has a Router() method that creates a new router object.

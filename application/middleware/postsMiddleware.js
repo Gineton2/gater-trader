@@ -1,3 +1,16 @@
+/* 
+    Filename: postsMiddlewars.js
+    
+    Purpose: establishes logic in regard to posting
+    and searching the site
+
+    Author: Duccio Rocca & Yoshimasa Iwano, Team: 07
+    
+    Course: CSC648 SFSU
+
+ */
+
+
 const postsMiddleware = {};
 
 var db = require("../database/database");

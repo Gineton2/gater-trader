@@ -1,5 +1,17 @@
+<!--- 
+    Filename: index.handlebars
+
+    Purpose: page to display search results 
+
+    Author: Yoshimasa Iwano, Duccio Rocca, Kobe Shelby Team: 07
+
+    Course: CSC648 SFSU 
+--->
 {{#if imageFalse}} 
-{{else}}<img id="mainpage-picture" class="w-100" src="/public/images/mainpage-picture.jpeg" alt="mainpage picture"/>
+{{else}}
+
+
+<img id="mainpage-picture" class="w-100" src="/public/images/mainpage-picture.jpeg" alt="mainpage picture"/>
 {{/if}}
 <h4 id="search-condition" class="text-left text-white px-2 my-2 mx-2" >
     {{#if condition}} {{condition}} {{/if}}
