@@ -4,8 +4,8 @@ let dropdowns = document.querySelectorAll(".search-panel");
 let password = document.getElementById("password");
 let matchPassword = document.getElementById("password");
 
-
-password.addEventListener('focusout', function(){
+if(password){
+  password.addEventListener('focusout', function(){
     let passwordChecker = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
     if(!passwordChecker.test(password.value)){
@@ -26,6 +26,8 @@ password.addEventListener('focusout', function(){
     }
     
 });
+}
+
 
 
 
