@@ -17,7 +17,8 @@ if(password){
             divMessagePassword.setAttribute("id", "text-alert-password");
             document.getElementById("div-input-password").appendChild(divMessagePassword);
         }else{
-            document.getElementById("text-alert-password").innerText("Password must have at least one lower case, one upper case and one digit");
+            console.log("Check not passed and not null")
+            document.getElementById("text-alert-password").textContent ="Password must have at least one lower case, one upper case and one digit";
         }  
     }else{
         if(document.getElementById("text-alert-password")!=null){
