@@ -5,16 +5,16 @@ let password = document.getElementById("password");
 let matchPassword = document.getElementById("password");
 const warningText = document.getElementById('warning');
 
-searchButton.addEventListener('click', (event) => {
-    console.log('event listener');
+input.addEventListener('input', checkSearchtext);
+searchButton.addEventListener('click', checkSearchtext);
+
+function checkSearchtext (event) {
     let validText = /\W/;
     if (validText.test(input.value)) {
-        console.log('invalid character');
         event.preventDefault();
         displayWarning();
     }
-})
-
+}
 let warningTimeout;
 function displayWarning() {
     if (!warningText.hidden) {
