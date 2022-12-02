@@ -3,7 +3,30 @@ let input = document.getElementById("search-text");
 let dropdowns = document.querySelectorAll(".search-panel");
 let password = document.getElementById("password");
 let matchPassword = document.getElementById("password");
+const warningText = document.getElementById('warning');
 
+searchButton.addEventListener('click', (event) => {
+    console.log('event listener');
+    let validText = /\W/;
+    if (validText.test(input.value)) {
+        console.log('invalid character');
+        event.preventDefault();
+        displayWarning();
+    }
+})
+
+let warningTimeout;
+function displayWarning() {
+    if (!warningText.hidden) {
+        clearTimeout(warningTimeout);
+    } else {
+        warningText.hidden = false;
+    }
+    warningTimeout = setTimeout(() => {
+        warningText.hidden = true;
+        warningTimeout = -1;
+    }, 3000)
+}
 
 password.addEventListener('focusout', function(){
     let passwordChecker = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
@@ -24,7 +47,6 @@ password.addEventListener('focusout', function(){
             document.getElementById("text-alert-password").textContent = "";
         }
     }
-    
 });
 
 
