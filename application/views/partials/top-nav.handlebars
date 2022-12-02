@@ -5,63 +5,63 @@
       For Demonstration Only
     </p>
   </div>
-  <nav class="navbar navbar-dark d-flex flex-row flex-wrap ">
+  <nav class="navbar navbar-expand navbar-dark d-flex flex-row justify-content-between flex-wrap ">
     <a class="navbar text-white text-decoration-none" href="/">
       <span class="neonText bold px-1 "> 
         <h4>Gater<span class="border-white" style="color: purple">T</span>rader</h4>
       </span>
     </a>
-    {{!-- <div class="navbar-container" id="navbarSupportedContent"> --}}
-    <ul class="navbar-nav align-items-center d-flex flex-row flex-wrap mx-auto">
-      <li class="nav-item btn-group-search active m-auto px-2 my-1 " role="group">
-        <form class="container-search input-group rounded-3 bg-grey " method="POST" action="/posts/search">
-          <div class="input-group-btn search-panel form-outline ">
-            <button type="button" class="btn btn-default dropdown-toggle select" id="dropdownMenuButton"
-              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span id="search_concept selected" class="selected w-100">All</span>
-              <input type="hidden" name="selectedCat" value="All" id="selectedCat" class="selectedCat">
-              <span id="caret" class="caret"></span>
+    <div class="navbar-container mx-auto" id="navbarSupportedContent">
+      <ul class="navbar-nav align-items-center d-flex flex-row flex-wrap mx-auto">
+        <li class="nav-item btn-group-search active m-auto px-2 my-1 " role="group">
+          <form class="container-search input-group rounded-3 bg-grey " method="POST" action="/posts/search">
+            <div class="input-group-btn search-panel form-outline ">
+              <button type="button" class="btn btn-default dropdown-toggle select" id="dropdownMenuButton"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span id="search_concept selected" class="selected w-100">All</span>
+                <input type="hidden" name="selectedCat" value="All" id="selectedCat" class="selectedCat">
+                <span id="caret" class="caret"></span>
+              </button>
+              <ul class="dropdown-menu scrollable-dropdown " id="dropdown-menu" role="menu"
+                onclick="examplePlaceholder()">
+                <li><a class="dropdown-item active-item">All</a></li>
+                <li><a class="dropdown-item">Videos</a></li>
+                <li><a class="dropdown-item">Images</a></li>
+                <li><a class="dropdown-item">Music</a></li>
+                <li><a class="dropdown-item">Ebooks</a></li>
+                <li><a class="dropdown-item">Slides</a></li>
+              </ul>
+            </div>
+            <input type="text" class="search-text" id="search-text" name="searchText" placeholder=" e.g. Janis Joplin" />
+            {{!-- <input class="search-text" id="search-text" name="search-text" type="text">  --}}
+            {{#if searchTerm}}
+              <script defer>
+                document.getElementById("search-text").setAttribute('placeholder', '{{searchTerm}}');
+              </script>
+            {{/if}}
+            {{#if categorySearch}}
+              <script defer>
+                  let innerTextNode = document.createTextNode('{{categorySearch}}');
+                  let searchCondition = document.getElementById('search_concept selected');
+                  searchCondition.innerText='';
+                  searchCondition.appendChild(innerTextNode);
+              </script>
+            {{/if}}
+            <button id="search-button" class="btn btn-default search-button rounded-end" type="submit" method="POST" action="/posts/search">
+              <i class="bi bi-search"></i>
             </button>
-            <ul class="dropdown-menu scrollable-dropdown " id="dropdown-menu" role="menu"
-              onclick="examplePlaceholder()">
-              <li><a class="dropdown-item active-item">All</a></li>
-              <li><a class="dropdown-item">Videos</a></li>
-              <li><a class="dropdown-item">Images</a></li>
-              <li><a class="dropdown-item">Music</a></li>
-              <li><a class="dropdown-item">Ebooks</a></li>
-              <li><a class="dropdown-item">Slides</a></li>
-            </ul>
-          </div>
-          <input type="text" class="search-text" id="search-text" name="searchText" placeholder=" e.g. Janis Joplin" />
-          {{!-- <input class="search-text" id="search-text" name="search-text" type="text"> --}}
-          {{#if searchTerm}}
-            <script defer>
-              document.getElementById("search-text").setAttribute('placeholder', '{{searchTerm}}');
-            </script>
-          {{/if}}
-          {{#if categorySearch}}
-            <script defer>
-                let innerTextNode = document.createTextNode('{{categorySearch}}');
-                let searchCondition = document.getElementById('search_concept selected');
-                searchCondition.innerText='';
-                searchCondition.appendChild(innerTextNode);
-            </script>
-          {{/if}}
-          <button id="search-button" class="btn btn-default search-button rounded-end" type="submit" method="POST" action="/posts/search">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
-      </li>
-      <li class="nav-item active m-auto px-2 my-1 ">
-        <a class="nav-link rounded-3 bg-dark px-4 " href="/login">Login</a>
-      </li>
-      <li class="nav-item active m-auto px-2 my-1">
-        <a class="nav-link rounded-3 bg-dark px-4 " href="/signup">Sign Up</a>
-      </li>
-      <li class="nav-item active m-auto px-2 my-1">
-        <a class="nav-link rounded-3 bg-dark px-4" href="/about-team">About</a>
-      </li>
-    </ul>
-    {{!-- </div>  --}}
+          </form>
+        </li>
+        <li class="nav-item active m-auto px-2 my-1 ">
+          <a class="nav-link rounded-3 bg-dark px-4 " href="/login">Login</a>
+        </li>
+        <li class="nav-item active m-auto px-2 my-1">
+          <a class="nav-link rounded-3 bg-dark px-4 " href="/signup">Sign Up</a>
+        </li>
+        <li class="nav-item active m-auto px-2 my-1">
+          <a class="nav-link rounded-3 bg-dark px-4" href="/about-team">About</a>
+        </li>
+      </ul>
+    </div> 
   </nav>
 </div>

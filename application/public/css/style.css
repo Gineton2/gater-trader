@@ -184,7 +184,7 @@ h1 {
 .bold { font-weight: bold;}
 
 .btn-group-search{
-  /* display: flex; */
+  display: flex;
   
   /* border-radius: 4px 4px 4px 4px; */
   /* border-style: groove;
@@ -200,7 +200,7 @@ h1 {
 }
 
 .navbar-container{
-  /* display: flex; */
+  display: flex;
   
 }
 

@@ -38,6 +38,7 @@ password.addEventListener('focusout', function(){
             let divMessagePasswordText = document.createTextNode("Password must have at least one lower case, one upper case and one digit");
             divMessagePassword.appendChild(divMessagePasswordText);
             divMessagePassword.setAttribute("id", "text-alert-password");
+            divMessagePassword.className = "text-danger text-center"
             document.getElementById("div-input-password").appendChild(divMessagePassword);
         }else{
             document.getElementById("text-alert-password").innerText("Password must have at least one lower case, one upper case and one digit");
