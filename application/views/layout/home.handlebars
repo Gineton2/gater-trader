@@ -32,9 +32,6 @@
     
   </header>
   {{> top-nav }}
-  <div id="warning" class="border text-danger my-1 rounded-2 text-center w-50 mx-auto" hidden="true">
-    invalid character! Use Alphanumeric characters
-  </div>
   {{#if (emptyObject messages)}}
     {{> flash-message}}
 {{/if}}
