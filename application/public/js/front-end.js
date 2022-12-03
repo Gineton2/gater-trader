@@ -28,7 +28,8 @@ function displayWarning() {
     }, 3000)
 }
 
-password.addEventListener('focusout', function(){
+if(password){
+  password.addEventListener('focusout', function(){
     let passwordChecker = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
     if(!passwordChecker.test(password.value)){
@@ -41,7 +42,8 @@ password.addEventListener('focusout', function(){
             divMessagePassword.className = "text-danger text-center"
             document.getElementById("div-input-password").appendChild(divMessagePassword);
         }else{
-            document.getElementById("text-alert-password").innerText("Password must have at least one lower case, one upper case and one digit");
+            console.log("Check not passed and not null")
+            document.getElementById("text-alert-password").textContent ="Password must have at least one lower case, one upper case and one digit";
         }  
     }else{
         if(document.getElementById("text-alert-password")!=null){
@@ -49,6 +51,8 @@ password.addEventListener('focusout', function(){
         }
     }
 });
+}
+
 
 
 
