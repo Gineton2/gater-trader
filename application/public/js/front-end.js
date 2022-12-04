@@ -3,6 +3,30 @@ let input = document.getElementById("search-text");
 let dropdowns = document.querySelectorAll(".search-panel");
 let password = document.getElementById("password");
 let matchPassword = document.getElementById("password");
+const warningText = document.getElementById('warning');
+
+input.addEventListener('input', checkSearchtext);
+searchButton.addEventListener('click', checkSearchtext);
+
+function checkSearchtext (event) {
+    let validText = /\W/;
+    if (validText.test(input.value)) {
+        event.preventDefault();
+        displayWarning();
+    }
+}
+let warningTimeout;
+function displayWarning() {
+    if (!warningText.hidden) {
+        clearTimeout(warningTimeout);
+    } else {
+        warningText.hidden = false;
+    }
+    warningTimeout = setTimeout(() => {
+        warningText.hidden = true;
+        warningTimeout = -1;
+    }, 3000)
+}
 
 if(password){
   password.addEventListener('focusout', function(){
@@ -15,6 +39,7 @@ if(password){
             let divMessagePasswordText = document.createTextNode("Password must have at least one lower case, one upper case and one digit");
             divMessagePassword.appendChild(divMessagePasswordText);
             divMessagePassword.setAttribute("id", "text-alert-password");
+            divMessagePassword.className = "text-danger text-center"
             document.getElementById("div-input-password").appendChild(divMessagePassword);
         }else{
             console.log("Check not passed and not null")
@@ -25,7 +50,6 @@ if(password){
             document.getElementById("text-alert-password").textContent = "";
         }
     }
-    
 });
 }
 

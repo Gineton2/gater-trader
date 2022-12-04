@@ -30,7 +30,7 @@ const db = mysql.createPool({
     // database : 'copy_EC2_DB',
     // password : 'ABB10iote'
 
-    // local Yoshi
+    // // local Yoshi
     // host: 'localhost',
     // user : 'root',
     // database : 'copy_EC2_DB',

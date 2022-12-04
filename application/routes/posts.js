@@ -48,7 +48,7 @@ var uploader = multer({storage: storage});
 
 // good working one
 
-router.post('/search',urlencodedParser, doTheSearch, function(req,res,next) {
+router.post('/search', urlencodedParser, doTheSearch, function(req,res,next) {
 
     res.render('index');
     
