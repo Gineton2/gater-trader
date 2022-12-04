@@ -15,7 +15,7 @@ const postsMiddleware = {};
 
 var db = require("../database/database");
 
-var bodyParser = require("body-parser");
+// var bodyParser = require("body-parser");
 
 const { search, getALLRecentPosts } = require("../models/posts-model");
 
@@ -29,9 +29,6 @@ const doTheSearch = async function (req, res, next) {
     if(!inputChecker.test(searchTerm)){
       searchTerm = "";
     }
-
-    // console.log("search:" + searchTerm);
-    // console.log("cat: " + categorySearch);
 
     if (categorySearch === "All") {
       categorySearch = "%";

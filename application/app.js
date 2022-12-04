@@ -23,6 +23,7 @@ const {
   successPrint,
 } = require("./helpers/debugprinters");
 var bodyParser = require("body-parser");
+var cookieParser = require('cookie-parser')
 
 // REACTIVATE
 var flash = require("express-flash");
@@ -39,6 +40,9 @@ const app = express();
 app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
 
 // REACTIVATE
 app.use(
@@ -69,6 +73,15 @@ app.engine(
     }, //adding new helpers to handlebars for extra functionality
   })
 );
+app.use((req,res,next) => {
+  if(req.session.username){
+
+      res.locals.logged = true;
+      res.locals.username = req.session.username;
+
+  }
+  next();
+});
 
 // view engine setup
 app.set("view engine", "handlebars");
@@ -79,6 +92,10 @@ app.use("/users", usersRouter); // route middleware from ./routes/users.js
 app.use("/posts", postsRouter); // route middleware from ./routes/posts.js
 
 app.use("/public", express.static(path.join(__dirname, "public")));
+
+
+
+app.use(cookieParser());
 
 app.listen(1234, () => console.log("Server running on port 1234"));
 
@@ -104,3 +121,6 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+
+module.exports = app;
