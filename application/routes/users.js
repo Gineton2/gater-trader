@@ -26,6 +26,7 @@ router.get('/', function(req, res, next) {
     res.render('index');
 });
 
+
 router.post('/register', usernameValidation, passwordValidation, (req, res, next) => {
 
     
@@ -92,16 +93,13 @@ router.post('/register', usernameValidation, passwordValidation, (req, res, next
     
   });
 
-  router.post('/login', (req, res, next) => {
+router.post('/login', (req, res, next) => {
 
     let email = req.body.email;
     let password = req.body.password;
 
     UserModel.authenticate(email,password)
         .then((userInfo) => {
-
-            
-
             if (userInfo != -1) {
 
                 successPrint(`User ${userInfo.username} is logged in`);
@@ -124,12 +122,16 @@ router.post('/register', usernameValidation, passwordValidation, (req, res, next
         .catch((err) => {
             errorPrint("user login failed")
             if (err instanceof UserError) {
+
                 req.flash('error', err.getMessage());
                 errorPrint(err.getMessage());
                 res.status(err.getStatus());
-                res.redirect('/login');
+                res.render('login');
+                
+
             } else {
-                res.redirect('/login');
+                res.render('login');
+                
             }
 
         });
@@ -137,6 +139,24 @@ router.post('/register', usernameValidation, passwordValidation, (req, res, next
 
 });
 
+router.post('/logout', (req, res, next) => {
+    req.session.destroy((err) => {
+        if (err) {
+            errorPrint(err.getMessage());
+            next(err);
+        } else {
+            
+            successPrint('Session was destroyed');
+            res.clearCookie('csID');
+            req.session = null;
+            res.locals.logged = false;
+            res.json({status: "Ok", message: "user is logged out"});
+            
+        }
+
+    });
+
+});
 
 
-  module.exports = router;
+module.exports = router;

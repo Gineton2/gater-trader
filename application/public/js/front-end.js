@@ -5,6 +5,22 @@ let password = document.getElementById("password");
 let matchPassword = document.getElementById("password");
 const warningText = document.getElementById('warning');
 
+let logout = document.getElementById('logout');
+if (logout) {
+    logout.onclick = (event) => {
+        fetch('users/logout', {
+            method: "POST"
+        })
+        .then((data) => {
+            // data.locals.logged = false;
+            console.log("logout");
+            location.replace('/');
+
+        })
+    }
+
+}
+
 input.addEventListener('input', checkSearchtext);
 searchButton.addEventListener('click', checkSearchtext);
 
@@ -54,8 +70,6 @@ if(password){
 }
 
 
-
-
 dropdowns.forEach((dropdown) => {
   let select = dropdown.querySelector(".select");
   let caret = dropdown.querySelector(".caret");
@@ -92,32 +106,32 @@ dropdowns.forEach((dropdown) => {
   });
 });
 
-function setflashMessageFadeOut(flashMessage) {
-  setTimeout(() => {
-    let currentOpacity = 1.0;
-    let timer = setInterval(() => {
-      if (currentOpacity < 0.5) {
-        clearInterval(timer);
-        flashMessage.remove();
-      }
-      currentOpacity = currentOpacity - 0.05;
-      flashMessage.style.opacity = currentOpacity;
-    }, 50);
-  }, 3000);
-}
+// function setflashMessageFadeOut(flashMessage) {
+//   setTimeout(() => {
+//     let currentOpacity = 1.0;
+//     let timer = setInterval(() => {
+//       if (currentOpacity < 0.5) {
+//         clearInterval(timer);
+//         flashMessage.remove();
+//       }
+//       currentOpacity = currentOpacity - 0.05;
+//       flashMessage.style.opacity = currentOpacity;
+//     }, 50);
+//   }, 3000);
+// }
 
-function addFlashFromFrontEnd(message) {
-  let flashMessageDiv = document.createElement("div");
-  let innerFlashDiv = document.createElement("div");
-  let innerTextNode = document.createTextNode(message);
-  innerFlashDiv.appendChild(innerTextNode);
-  flashMessageDiv.appendChild(innerFlashDiv);
-  flashMessageDiv.setAttribute("id", "flashMessage");
-  innerFlashDiv.setAttribute("class", "alert alert-success");
-  document.getElementsByTagName("body")[0].appendChild(flashMessageDiv);
-  console.log(document.getElementsByTagName("body")[0]);
-  setflashMessageFadeOut(flashMessageDiv);
-}
+// function addFlashFromFrontEnd(message) {
+//   let flashMessageDiv = document.createElement("div");
+//   let innerFlashDiv = document.createElement("div");
+//   let innerTextNode = document.createTextNode(message);
+//   innerFlashDiv.appendChild(innerTextNode);
+//   flashMessageDiv.appendChild(innerFlashDiv);
+//   flashMessageDiv.setAttribute("id", "flashMessage");
+//   innerFlashDiv.setAttribute("class", "alert alert-success");
+//   document.getElementsByTagName("body")[0].appendChild(flashMessageDiv);
+//   console.log(document.getElementsByTagName("body")[0]);
+//   setflashMessageFadeOut(flashMessageDiv);
+// }
 
 function createSearchConditionMessage(categorySearch, searchText) {
   let innerTextNode = document.createTextNode(

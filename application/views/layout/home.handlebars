@@ -40,4 +40,22 @@
     {{{body}}}
 
   </body>
+  {{#if logged}}
+    {{!-- <script>
+        let logout = document.getElementById('logout');
+        if (logout) {
+            element.onclick = (event) => {
+                fetch('users/logout', {
+                    method: "POST"
+                })
+                        .then((data) => {
+                            
+                            location.replace('/');
+
+                        })
+            }
+
+        }
+    </script> --}}
+{{/if}}
 </html>
