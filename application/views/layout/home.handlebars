@@ -3,7 +3,7 @@
 
     Purpose: Homepage layout. "/"
 
-    Author: Duccio Rocca, Yoshimasa Iwano, Gineton ALencar,Team: 07
+    Author: Duccio Rocca, Yoshimasa Iwano, Gineton ALencar, Rai'd Muhammad Team: 07
 
     Course: CSC648 SFSU 
 --->
@@ -12,32 +12,40 @@
 <!--HomePage--->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" >
-    <link rel="shortcut icon" href="#">
-    <link rel="icon" href="/application/public/favicon.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <link rel="stylesheet" type="text/css" href="/public/css/style.css" >
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
-    <script defer type="application/javascript" src="/public/js/front-end.js"></script>
-    <link rel="shortcut icon" href="/favicon.ico">
-    <title>SFSU CSC648 FALL22 TEAM 07</title>
-  </head>
-  <!---Header starts--->
-  <header id="head">
-    
-  </header>
-  {{> top-nav }}
-  {{#if (emptyObject messages)}}
-    {{> flash-message}}
-{{/if}}
-  <!---Body starts--->
-  <body class="paperOverlay">
-    {{{body}}}
 
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="#">
+  <link rel="icon" href="/application/public/favicon.ico">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+    integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+    crossorigin="anonymous"></script>
+  <script defer type="application/javascript" src="/public/js/front-end.js"></script>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>SFSU CSC648 FALL22 TEAM 07</title>
+</head>
+<!---Header starts--->
+<header id="head">
+
+</header>
+{{> top-nav }}
+{{#if (emptyObject messages)}}
+{{> flash-message}}
+{{/if}}
+<!---Body starts--->
+
+
+<body class="paperOverlay">
+
+  {{{body}}}
+
+</body>
+{{> footer}}
 </html>
