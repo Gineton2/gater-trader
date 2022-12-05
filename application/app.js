@@ -3,7 +3,7 @@
 
     Purpose: Main configuration file for Express App
 
-    Author: Rai'd Gineton Alencar, Duccio Rocca, Team: 07
+    Author: Rai'd Muhammad, Gineton Alencar, Duccio Rocca, Team: 07
 
     Course: CSC648 SFSU 
 

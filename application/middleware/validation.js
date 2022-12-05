@@ -1,3 +1,15 @@
+/* 
+    Filename: validation.js
+
+    Purpose: handles user signup validation 
+
+    Author: Duccio Rocca & Yoshimasa Iwano, Team: 07
+
+    Course: CSC648 SFSU
+
+ */
+
+
 const checkUsername = (username) => {
 
     let usernameChecker = /^\D\w{2,}$/;

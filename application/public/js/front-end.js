@@ -32,24 +32,24 @@ if(password){
   password.addEventListener('focusout', function(){
     let passwordChecker = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
-    if(!passwordChecker.test(password.value)){
+    // if(!passwordChecker.test(password.value)){
         
-        if(document.getElementById("text-alert-password")==null){
-            let divMessagePassword = document.createElement("div");
-            let divMessagePasswordText = document.createTextNode("Password must have at least one lower case, one upper case and one digit");
-            divMessagePassword.appendChild(divMessagePasswordText);
-            divMessagePassword.setAttribute("id", "text-alert-password");
-            divMessagePassword.className = "text-danger text-center"
-            document.getElementById("div-input-password").appendChild(divMessagePassword);
-        }else{
-            console.log("Check not passed and not null")
-            document.getElementById("text-alert-password").textContent ="Password must have at least one lower case, one upper case and one digit";
-        }  
-    }else{
-        if(document.getElementById("text-alert-password")!=null){
-            document.getElementById("text-alert-password").textContent = "";
-        }
-    }
+    //     if(document.getElementById("text-alert-password")==null){
+    //         let divMessagePassword = document.createElement("div");
+    //         let divMessagePasswordText = document.createTextNode("Password must have at least one lower case, one upper case and one digit");
+    //         divMessagePassword.appendChild(divMessagePasswordText);
+    //         divMessagePassword.setAttribute("id", "text-alert-password");
+    //         divMessagePassword.className = "text-danger text-center"
+    //         document.getElementById("div-input-password").appendChild(divMessagePassword);
+    //     }else{
+    //         console.log("Check not passed and not null")
+    //         document.getElementById("text-alert-password").textContent ="Password must have at least one lower case, one upper case and one digit";
+    //     }  
+    // }else{
+    //     if(document.getElementById("text-alert-password")!=null){
+    //         document.getElementById("text-alert-password").textContent = "";
+    //     }
+    // }
 });
 }
 
