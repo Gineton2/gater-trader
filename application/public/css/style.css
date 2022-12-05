@@ -198,13 +198,16 @@ h1 {
 #navbarSupportedContent > ul > li.nav-item.btn-group-search.active.m-auto.px-2.my-1 > form > div {
   outline: none;
   text-decoration: none;
-  padding: 10px;
+  padding: 8px;
 }
 
 #dropdown-menu {
   text-align: center;
   text-decoration: none;
   outline: none;
+}
+#navbarSupportedContent > ul > li.nav-item.btn-group-search.active.m-auto.px-2.my-1 {
+  width:auto;
 }
 
 .search-text{
@@ -213,7 +216,8 @@ h1 {
   border-width: 1px;
   border: 1px solid #cccccc;
   text-indent: 0.3rem;
-  width: 550px;
+  min-width: 550px;
+  max-width: 550px;
   height: 50px; 
   font-size: 25px;
   text-align: center;
