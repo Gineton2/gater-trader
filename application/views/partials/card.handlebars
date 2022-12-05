@@ -11,7 +11,7 @@
 
 <div id="post-{{post_id}}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto border-0">
     <img class="card-image w-100" src={{post_thumbnail}} alt="Missing Image">
-    <div class="card-body bg-lightgreen w-100 text-white py-0">
+    <div class="card-body bg-greenOne w-100 text-white py-0">
         <p class="card-title w-100">{{title}}</p>
         <p clas="card-text w-100">{{post_description}}</p>
         {{#if price includeZero=true}}
@@ -19,7 +19,7 @@
     {{else}}
         <p class="card-price w-100">$ {{price}}</p>
     {{/if}}
-        
-        <a href="#" class="anchor-buttons btn btn-success w-100">Contact Seller</a>
+        {{!-- need contact seller to link to owner of post  --}}
+        <a href="/message" class="anchor-buttons btn btn-success w-100">Contact Seller</a>
     </div>
 </div>

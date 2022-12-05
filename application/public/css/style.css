@@ -14,7 +14,11 @@
 }
 
 .bg-green {
-  background-color: rgb(84, 136, 134);
+  background-color: rgb(78, 92, 85);
+}
+
+.bg-greenOne {
+  background-color: rgb(61, 72, 67);
 }
 
 img {

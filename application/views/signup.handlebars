@@ -9,79 +9,72 @@
 --->
 
 
-<div>
+<header>
+  <!-- Background image -->
+  <div id="intro" class="bg-image shadow-2-strong">
+    <div class="mask d-flex align-items-center h-100 mt-3">
+      <div class="container">
+        <div class="row justify-content-center ">
+          <div class="col-xl-5 col-md-8 text-center ">
+            <h3 class=" text-center mb-5 text-white bold">Registration Page</h3>
 
-  <div class="mask d-flex align-items-center h-100 mt-2 position-relative">
-    <div class="container w-75 ">
-      <div class="row d-flex justify-content-center align-items-center h-100 ">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6 ">
-          <h3 class=" text-center mb-5 text-white bold">Registration Page</h3>
-          <div class="card " style="border-radius: 50px;">
-            <div class="card-body p-5 ">
-              <h2 class="text-uppercase text-center mb-2 bg-dark text-white bold">SIGN UP</h2>
+            <form class="needs-validation  bg-green  rounded-5 shadow-5-strong p-5 " action="/users/register"
+              method="POST">
+              <h2 class="text-uppercase text-center mb-5 bg-dark text-white">Register </h2>
+              <!-- Email input -->
 
-              <form class="needs-validation"  method="POST" action="/users/register">
-              <fieldset>
-                <div class="form-outline mb-2 form-group">
-                  <div class="fields-one text-center bold">
-                    <label class="form-label " for="username">Your Name</label>
-                  </div>
-                  <input type="text" id="username" name="username" class="form-control form-control-lg border border-dark"
-                    placeholder="Enter Full Name" minlength="2" pattern="^\D\w{2,}" required />
-                </div>
-               
+              <div class="form-outline mb-4 text-center bold text-white">
 
-                <div class="form-outline mb-2 form-group">
-                  <div class="fields-two text-center bold">
-                    <label class="form-label" for="email">Your Email</label>
-                  </div>
-                  <input type="email" id="email" name="email" class="form-control form-control-lg border border-dark"
-                    placeholder="Enter Your Email" required />
+                <label class="form-label " for="username">Your Name</label>
 
-                </div>
+                <input type="text" id="username" name="username" class="form-control border border-dark"
+                  placeholder="Enter Full Name" minlength="2" pattern="^\D\w{2,}" required />
+              </div>
+              <div class="form-outline mb-4 text-center bold text-white">
+                <label class="form-label" for="email">Email address</label>
+                <input type="email" id="email" class="form-control border border-dark" placeholder="Enter Your Email" />
 
-                <div class="form-outline mb-2 form-group" id="div-input-password">
-                  <div class="fields-three text-center bold">
-                    <label class="form-label" for="password">Password</label>
-                  </div>
-                  <input type="password" id="password" name="password" class="form-control form-control-lg border border-dark"
-                    placeholder="Enter Your Password" minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  required />
+              </div>
 
-                </div>
+              <!-- Password input -->
+              <div class="form-outline mb-4 text-center bold text-white">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" id="password" class="form-control border border-dark"
+                  placeholder="Enter Your Password" />
 
-                <div class="form-outline mb-2 form-group">
-                  <div class="fields-four text-center bold">
-                    <label class="form-label" for="matchPassword">Repeat your password</label>
-                  </div>
-                  <input type="password" id="matchPassword" name="matchPassword" class="form-control form-control-lg border border-dark"
-                    placeholder="Re Enter Your Password" minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  required />
+              </div>
+              <div class="form-outline mb-4 text-center bold text-white">
+                <label class="form-label" for="password">Repeat Password</label>
+                <input type="password" id="password" class="form-control border border-dark"
+                  placeholder="Repeat Your Password" />
 
-                </div>
+              </div>
 
-                </fieldset>
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                  <!-- Checkbox -->
+                  <div class="form-check">
 
-                <div class="form-check d-flex justify-content-center mb-2 bold">
-                  <input class="form-check-input me-2" type="checkbox" value="" id="checkbox" required />
-                  <label class="form-check-label" for="form2Example3g">
-                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                  </label>
-                </div>
+                    <div class="form-check d-flex justify-content-center mb-2 bold">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="checkbox" required />
+                      <label class="form-check-label text-white" for="form2Example3g">
+                        I agree all statements in <a href="#!" class="text-body text-decoration-none text-white"><u
+                            class="text-decoration-none text-white">Terms of service</u></a>
+                      </label>
 
-                <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-success btn-block text-center btn-lg ">Sign
-                    Up!</button>
-                </div>
+                    </div>
+                    <p class="text-center text-warning"> *All fields required.</p>
 
-                <p class="text-center text-muted mt-3 mb-2">Do you already have an account? <a href="/login"
-                    class="fw-bold text-body"><u>Login here</u></a></p>
-
-              </form>
-
-            </div>
+                    <div class="d-flex justify-content-center">
+                      <button type="submit" class="btn btn-success btn-block text-center btn-lg ">Register
+                      </button>
+                    </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
+  <!-- Background image -->
+</header>
