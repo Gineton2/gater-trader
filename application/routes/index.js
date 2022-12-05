@@ -113,11 +113,6 @@ router.get('/forgot-password', function(req, res, next) {
 
 });
 
-router.get('/dummy-link', function(req, res, next) {
-  res.render('dummy-link');
-
-});
-
 
 
   /*
