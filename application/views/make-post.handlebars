@@ -19,16 +19,15 @@
         <div class="col col-lg-5 col-sm-2 align-items-center ">
             <div class="card  shadow-sm ">
                 <div class="card-body ">
-                    <input class="form-control form-control-lg" id="postFormFileData" type="file" />
-                    <div class="clearfix my-1"> <span class="badge rounded-pill bg-success px-2 fw-bold">Accepted
-                            File Types</span> <span class="px-1 fw-bold ">JPEG, MOV, PDF,WAV,MP4, MP3</span>
-                    </div>
+
                     <form class="mx-1 mx-md-5">
 
                         <div class="form-outline mb-2 p-1">
-                            
-                            <div type="text" id="postName" class=" border-none text-center text-uppercase fw-bold mb-2 mt-1"> User Name Here {{username}} </div>
-                           
+
+                            <div type="text" id="postName"
+                                class=" border-none text-center text-uppercase fw-bold mb-2 mt-1"> User Name Here
+                                {{username}} </div>
+
 
                         </div>
 
@@ -75,8 +74,13 @@
                                     </label>
                                     <textarea type="text" id="description" name="description" rows="3"
                                         class="form-control md-textarea"></textarea>
-                                        <p class="text-center"> *All fields required.</p>
+                                    <p class="text-center"> *All fields required.</p>
 
+                                </div>
+                                <input class="form-control form-control-lg" id="postFormFileData" type="file" />
+                                <div class="clearfix my-1"> <span
+                                        class="badge rounded-pill bg-success px-2 fw-bold">Accepted
+                                        File Types</span> <span class="px-1 fw-bold ">JPEG, MOV, PDF,WAV,MP4, MP3</span>
                                 </div>
                             </div>
 
@@ -87,11 +91,15 @@
                             <button type="button" class="btn btn-success btn-block text-center btn-lg mt-3 ">Make
                                 Post</button>
                             <div class="d-flex justify-content-center mx-5 px-4">
-                                <a href="/"><button type="button" class="btn btn-warning btn-block text-center btn-lg mt-3">Cancel
-                                    Post</button></a>
-                                
+                                <a href="/"><button type="button"
+                                        class="btn btn-warning btn-block text-center btn-lg mt-3">Cancel
+                                        Post</button></a>
+
                             </div>
 
+                        </div>
+                        <div class="text-center text-danger mt-1">
+                            <p> Posts may take up to 24 hours to be approved. </p>
                         </div>
 
 
