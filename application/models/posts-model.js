@@ -25,7 +25,6 @@ PostModel.getALLRecentPosts = () => {
 }
 
 PostModel.search = (searchTerm, category) =>{
-    // let baseSQL = "SELECT post_id, title, post_description, post_thumbnail, post_category, concat_ws(' ', title, post_description) AS haystack FROM posts, categories HAVING haystack like ?;"
     let baseSQL = "SELECT post_id, title, price, post_description, post_thumbnail, post_category, concat_ws(' ', title, post_description) AS haystack  FROM posts  JOIN categories on categories.category_id WHERE categories.category_id = post_category AND categories.category_name LIKE ? HAVING haystack LIKE ?"
     let sqlReadySearchTerm = "%"+searchTerm+"%";
     return db.execute(baseSQL, [category,sqlReadySearchTerm])
@@ -33,6 +32,30 @@ PostModel.search = (searchTerm, category) =>{
             return Promise.resolve(results);
         })
         .catch((err)=> Promise.reject(err));
+}
+
+PostModel.create = (title, post_description, post_path, post_thumbnail, author_id, price, category) => {
+    console.log(title, post_description, post_path, post_thumbnail, author_id, price, category);
+    let baseSQL = 'INSERT INTO posts (title, post_description, post_path, post_thumbnail, post_creation_time, author_id, price, post_category) VALUE (?,?,?,?,now(),?,?,?);';
+    return db.execute(baseSQL,[title, post_description, post_path, post_thumbnail, author_id, price, category])
+        .then(([results,fields])=>{
+            return Promise.resolve(results && results.affectedRows);
+
+        })
+        .catch((err) => Promise.reject(err));
+}
+
+PostModel.determineCategory = (categoryName) =>{
+    console.log(categoryName);
+
+    let baseSQL = 'SELECT category_id FROM copy_EC2_DB.categories WHERE category_name=?';
+    return db.execute(baseSQL,[categoryName])
+        .then(([results,fields])=>{
+            console.log(results[0]);
+            return Promise.resolve(results[0].category_id);
+
+        })
+        .catch((err) => Promise.reject(err));
 }
 
 module.exports = PostModel;
