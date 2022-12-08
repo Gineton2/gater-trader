@@ -12,6 +12,8 @@
 
 var express = require('express');
 var db = require('../database/database');
+const fs = require('fs-extra')
+
 
 
 var router = express.Router();
@@ -31,10 +33,30 @@ const {doTheSearch} = require('../middleware/postsMiddleware');
 var PostModel = require("../models/posts-model");
 
 var storage = multer.diskStorage({
+
     destination: function (req, file, cb){
-        cb(null, "public/uploads");
+
+        let { category } = req.body;
+
+        if(category==1){
+            category="Videos";
+        }
+        if(category==2){
+            category="Music";
+        }
+        if(category==3){
+            category="Ebooks";
+        }
+        if(category==4){
+            category="Slides";
+        }
+        if(category==5){
+            category="Images";
+        }
+
+        cb(null, `public/uploads/${category}`);
     },
-    filename: function(req, file,cb){
+    filename: function(req, file, cb){
         let fileExt = file.mimetype.split('/')[1];
         let randomName = crypto.randomBytes(22).toString("hex");
         cb(null,`${randomName}.${fileExt}`);
@@ -50,10 +72,10 @@ router.post('/search', doTheSearch, function(req,res,next) {
     
 });
 
-router.post('/createPost',uploader.single("upload"), postValidation, (req,res,next) =>{
+router.post('/createPost', uploader.single("upload"), postValidation, (req,res,next) =>{
 
     let fileUploaded = req.file.path;
-    // fileUploaded = "/../"+fileUploaded;
+    
     let fileAsThumbNail = `thumbnail-${req.file.filename}`;
     let destinationOfThumbnail = req.file.destination + "/" + fileAsThumbNail;
     let title = req.body.PostTitle;
@@ -64,12 +86,44 @@ router.post('/createPost',uploader.single("upload"), postValidation, (req,res,ne
 
     // category = PostModel.determineCategory(category);
 
+    if(category == 1){ //VIDEOS
+          
+        
+        const p1 =   new Promise ((resolve,reject)=>{
+            fs.copy(fileUploaded, destinationOfThumbnail, err => {
+                if (err) return console.error(err)
+                console.log('success video uploaded!');
+              })
+            destinationOfThumbnail = "../"+destinationOfThumbnail;
+            resolve(PostModel.create(title,description,fileUploaded,destinationOfThumbnail,fk_userId, price, category));
+        })
+        .then((postWasCreated)=>{
+            if(postWasCreated){
+                req.flash('success', "Your Post was created successfully!");
+                res.redirect('/');
+            }else{
+                throw new PostError('Post could not be created!!', '/post', 200);
+            }
+        })
+        .catch((err) =>{
+            if(err instanceof PostError){
+                errorPrint(err.getMessage());
+                req.flash('error', err.getMessage());
+                res.status(err.getStatus());
+                res.redirect(err.getRedirectURL());
+            }else{
+                next(err);
+            }
 
+        })
+    
+    }else if(category == 5){ //IMAGES
 
-    sharp(fileUploaded)
+        sharp(fileUploaded)
         .resize(200)
         .toFile(destinationOfThumbnail)
         .then(()=>{
+            destinationOfThumbnail = "../"+destinationOfThumbnail;
             return PostModel.create(title,description,fileUploaded,destinationOfThumbnail,fk_userId, price, category);
         })
         .then((postWasCreated)=>{
@@ -91,6 +145,12 @@ router.post('/createPost',uploader.single("upload"), postValidation, (req,res,ne
             }
 
         })
+        
+    }
+
+    
+
+   
 
 });
 

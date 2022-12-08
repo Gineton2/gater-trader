@@ -17,6 +17,7 @@ const postsRouter = require("./routes/posts");
 const path = require("path");
 const { engine } = require("express-handlebars");
 const favicon = require("serve-favicon");
+const cors = require("cors");
 const {
   requestPrint,
   errorPrint,
@@ -57,6 +58,8 @@ app.use(
 
 app.use(flash());
 
+
+
 app.engine(
   "handlebars",
   engine({
@@ -70,6 +73,10 @@ app.engine(
           return !(obj.constructor === Object && Object.keys(obj).length == 0);
         }
       },
+      isVideo: (category)=> {
+        return category==1;
+      },
+      
     }, //adding new helpers to handlebars for extra functionality
   })
 );
@@ -82,6 +89,13 @@ app.use((req,res,next) => {
   }
   next();
 });
+
+app.use((req, res, next) => {
+  requestPrint(`Method: ${req.method}, Route: ${req.url}, Session username: ${req.session.username}`);
+  next();
+});
+
+app.use(cors());
 
 // view engine setup
 app.set("view engine", "handlebars");
@@ -97,7 +111,7 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.use(cookieParser());
 
-app.listen(1234, () => console.log("Server running on port 1234"));
+// app.listen(1234, () => console.log("Server running on port 1234"));
 
 /*
  * Catch all route, if we get to here then the

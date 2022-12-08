@@ -1,16 +1,5 @@
 <div id="post-{{post_id}}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto border-0">
-    {{#if (isVideo post_category)}}
-    <div id="post-{{post_id}}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto border-0"></div>
-    <video autoplay muted loop playsinline class="card-image w-100"
-  width="200" 
-  controls
->
-  <source
-    src={{post_thumbnail}}
-    type="video/mp4" /> </video>
-    
-    {{else}}<img class="card-image w-100" src={{post_thumbnail}} alt="Missing Image">{{/if}}
-    
+    <img class="card-image w-100" src={{post_thumbnail}} alt="Missing Image">
     <div class="card-body bg-lightgreen w-100 text-white py-0">
         <p class="card-title w-100">{{title}}</p>
         <p clas="card-text w-100">{{post_description}}</p>

@@ -21,8 +21,22 @@ if (logout) {
 
 }
 
+
 input.addEventListener('input', checkSearchtext);
 searchButton.addEventListener('click', checkSearchtext);
+
+let postButton = document.getElementById("post-button");
+if(postButton){
+  postButton.addEventListener('click', checkPost);
+
+}
+
+function checkPost (event) {
+  let file = document.getElementById('formFileLg');
+  if (file.value==null) {
+      event.preventDefault();
+  }
+}
 
 function checkSearchtext (event) {
     let validText = /\W/;
@@ -106,33 +120,6 @@ dropdowns.forEach((dropdown) => {
   });
 });
 
-// function setflashMessageFadeOut(flashMessage) {
-//   setTimeout(() => {
-//     let currentOpacity = 1.0;
-//     let timer = setInterval(() => {
-//       if (currentOpacity < 0.5) {
-//         clearInterval(timer);
-//         flashMessage.remove();
-//       }
-//       currentOpacity = currentOpacity - 0.05;
-//       flashMessage.style.opacity = currentOpacity;
-//     }, 50);
-//   }, 3000);
-// }
-
-// function addFlashFromFrontEnd(message) {
-//   let flashMessageDiv = document.createElement("div");
-//   let innerFlashDiv = document.createElement("div");
-//   let innerTextNode = document.createTextNode(message);
-//   innerFlashDiv.appendChild(innerTextNode);
-//   flashMessageDiv.appendChild(innerFlashDiv);
-//   flashMessageDiv.setAttribute("id", "flashMessage");
-//   innerFlashDiv.setAttribute("class", "alert alert-success");
-//   document.getElementsByTagName("body")[0].appendChild(flashMessageDiv);
-//   console.log(document.getElementsByTagName("body")[0]);
-//   setflashMessageFadeOut(flashMessageDiv);
-// }
-
 function createSearchConditionMessage(categorySearch, searchText) {
   let innerTextNode = document.createTextNode(
     categorySearch + " > " + searchText
@@ -151,9 +138,10 @@ function createResultMessage(messageData) {
 }
 
 function createCard(postData) {
-  return `
+  if(postData.post_category==1){
+    return `
         <div id="post-${postData.post_id}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto my-2">
-            <img class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image">
+            <src class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image" type="video/mp4">
             <div class="card-body bg-grey w-100">
                 <p class="card-title w-100">${postData.title}</p>
                 <p clas="card-text w-100">${postData.post_description}</p>
@@ -161,6 +149,20 @@ function createCard(postData) {
                 <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary w-100 m-auto">Post Details</a>
             </div>
         </div>`;
+
+  }else{
+    return `
+    <div id="post-${postData.post_id}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto my-2">
+        <img class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image">
+        <div class="card-body bg-grey w-100">
+            <p class="card-title w-100">${postData.title}</p>
+            <p clas="card-text w-100">${postData.post_description}</p>
+            <p class="card-price w-100">$ ${postData.price}</p>
+            <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary w-100 m-auto">Post Details</a>
+        </div>
+    </div>`;
+  }
+  
 }
 
 function examplePlaceholder() {
@@ -180,3 +182,30 @@ function examplePlaceholder() {
     searchText.placeholder = " e.g. csc648";
   }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    var lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(video) {
+        if (video.isIntersecting) {
+          for (var source in video.target.children) {
+            var videoSource = video.target.children[source];
+            if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+              videoSource.src = videoSource.dataset.src;
+            }
+          }
+
+          video.target.load();
+          video.target.classList.remove("lazy");
+          lazyVideoObserver.unobserve(video.target);
+        }
+      });
+    });
+
+    lazyVideos.forEach(function(lazyVideo) {
+      lazyVideoObserver.observe(lazyVideo);
+    });
+  }
+});
