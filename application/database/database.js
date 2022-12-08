@@ -37,10 +37,10 @@ const db = mysql.createPool({
     // password : 'passyoshi'
 
      // // local Rai'd M.
-    host: 'localhost',
-    user : 'root',
-    database : 'teamschema',
-    password : 'nap765gUp!'
+    // host: 'localhost',
+    // user : 'root',
+    // database : 'teamschema',
+    // password : 'nap765gUp!'
 });
 
 module.exports = db.promise();

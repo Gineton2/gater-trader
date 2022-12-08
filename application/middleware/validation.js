@@ -72,7 +72,7 @@ const postValidation = (req, res, next) => {
         req.flash('error', 'Invalid File');
         req.session.save(err => {
 
-            res.redirect("/post");
+            res.redirect("/make-post");
         });
     } else {
 
@@ -81,21 +81,21 @@ const postValidation = (req, res, next) => {
             req.flash('error', 'Invalid Title');
             req.session.save(err => {
 
-                res.redirect("/post");
+                res.redirect("/make-post");
             });
         } else {
             if (description == null) {
                 req.flash('error', 'Invalid Description');
                 req.session.save(err => {
 
-                    res.redirect("/post");
+                    res.redirect("/make-post");
                 });
             } else {
                 if (fk_userId == null) {
-                    req.flash('error', 'Invalid UserId');
+                    req.flash('error', 'Invalid User');
                     req.session.save(err => {
 
-                        res.redirect("/post");
+                        res.redirect("/make-post");
                     });
                 } else {
                     next();
