@@ -1,3 +1,14 @@
+/* 
+    Filename: users-model.js
+
+    Purpose: handles interaction with database: create users and queries to select data 
+
+    Author: Duccio Rocca & Yoshimasa Iwano, Team: 07
+
+    Course: CSC648 SFSU
+
+ */
+
 
 const UserModel = {};
 var bcrypt = require('bcrypt');

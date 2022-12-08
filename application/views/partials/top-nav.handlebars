@@ -1,21 +1,35 @@
+{{!-- /*
+Filename: top-nav.handlebars
 
-<div class="px-2 w-100 text-center">
+Purpose: Navigation Bar
+
+Author: Duccio Rocca & Yoshimasa Iwano, Team: 07
+
+Course: CSC648 SFSU
+
+*/ --}}
+
+
+<div class=" w-100 text-center bg-greenOne">
   <div class="text-white">
-    <p  class="font-italic mb-0 text-white">SFSU Software Engineering Project CSC 648-848, Fall 2022. 
+    <p class="font-italic mb-0 text-white" style="font-size:20px; font-family: serif">SFSU Software Engineering Project
+      CSC 648-848, Fall 2022.
       For Demonstration Only
     </p>
   </div>
+
   <nav class="navbar navbar-expand navbar-dark d-flex flex-row justify-content-between flex-wrap ">
     <a class="navbar text-white text-decoration-none" href="/">
-      <span class="neonText bold px-1 "> 
-        <h4>Gater<span class="border-white" style="color: purple">T</span>rader</h4>
+      <span class="neonText bold px-1 ">
+        <h2 class="mx-5">Gater<span class="border-white" style="color: rgb(163, 22, 163)">T</span>rader</h2>
+
       </span>
     </a>
     <div class="navbar-container mx-auto" id="navbarSupportedContent">
       <ul class="navbar-nav align-items-center d-flex flex-row flex-wrap mx-auto">
         <li class="nav-item btn-group-search active m-auto px-2 my-1 " role="group">
-          <form class="container-search input-group rounded-3 bg-grey " method="POST" action="/posts/search">
-            <div class="input-group-btn search-panel form-outline ">
+          <form class="container-search input-group rounded-2 bg-grey px-2" method="POST" action="/posts/search">
+            <div class="input-group-btn search-panel form-outline  ">
               <button type="button" class="btn btn-default dropdown-toggle select" id="dropdownMenuButton"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span id="search_concept selected" class="selected w-100">All</span>
@@ -32,43 +46,61 @@
                 <li><a class="dropdown-item">Slides</a></li>
               </ul>
             </div>
-            <input type="text" class="search-text" id="search-text" name="searchText" placeholder=" e.g. Janis Joplin" />
-            {{!-- <input class="search-text" id="search-text" name="search-text" type="text">  --}}
+
+            <input type="text" class=" search-text px-5 mt-1 mb-2" id="search-text" name="searchText"
+              placeholder=" e.g. Janis Joplin" />
+            {{!-- <input class="search-text" id="search-text" name="search-text" type="text"> --}}
             {{#if searchTerm}}
-              <script defer>
-                document.getElementById("search-text").setAttribute('placeholder', '{{searchTerm}}');
-              </script>
+            <script defer>
+              document.getElementById("search-text").setAttribute('placeholder', '{{searchTerm}}');
+            </script>
             {{/if}}
             {{#if categorySearch}}
-              <script defer>
-                  let innerTextNode = document.createTextNode('{{categorySearch}}');
-                  let searchCondition = document.getElementById('search_concept selected');
-                  searchCondition.innerText='';
-                  searchCondition.appendChild(innerTextNode);
-              </script>
+            <script defer>
+              let innerTextNode = document.createTextNode('{{categorySearch}}');
+              let searchCondition = document.getElementById('search_concept selected');
+              searchCondition.innerText = '';
+              searchCondition.appendChild(innerTextNode);
+            </script>
             {{/if}}
-            <button id="search-button" class="btn btn-default search-button rounded-end" type="submit" method="POST" action="/posts/search">
+            <button id="search-button" class="btn btn-default search-button rounded-end" type="submit" method="POST"
+              action="/posts/search">
               <i class="bi bi-search"></i>
             </button>
           </form>
         </li>
+
         <li class="nav-item active m-auto px-2 my-1 ">
           {{#if logged}}<a class="nav-link rounded-3 bg-dark px-4 " id="logout" href="">Logout</a> {{else}} <a class="nav-link rounded-3 bg-dark px-4 " href="/login">Login</a>{{/if}} 
           
         </li>
+
         <li class="nav-item active m-auto px-2 my-1">
-          <a class="nav-link rounded-3 bg-dark px-4 " href="/signup">Sign Up</a>
+          <a class="nav-link rounded-3 bg-dark px-4" href="/make-post">Make a Post</a>
         </li>
         <li class="nav-item active m-auto px-2 my-1">
           <a class="nav-link rounded-3 bg-dark px-4" href="/about-team">About</a>
         </li>
+
+        <li class="nav-item active m-auto px-2 my-1">
+          <a class="nav-link rounded-3 bg-dark px-4 " href="/signup">Register</a>
+        </li>
+
+       
+       
+
+
           </ul>
         
        
  {{#if logged}} 
  <li class="navbar-text"> <span id="logged" class="logged"> Hi {{username}}!</span></li>
  {{/if}}
+
       </ul>
-    </div> 
+
+    </div>
+
+
   </nav>
 </div>

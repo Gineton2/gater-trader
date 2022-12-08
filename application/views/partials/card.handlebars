@@ -1,3 +1,14 @@
+{{!-- /* 
+    Filename: card.handlebars
+
+    Purpose: Formats content card 
+
+    Author: Duccio Rocca & Yoshimasa Iwano, Team: 07
+
+    Course: CSC648 SFSU
+
+ */ --}}
+
 <div id="post-{{post_id}}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto border-0">
   {{#if (isVideo post_category)}}
     <video muted playsinline 
@@ -11,6 +22,7 @@
     {{else}} {{#if (isMusic post_category)}}
     
     <img class="card-image w-100" src={{post_thumbnail}} alt="Missing Image">
+
     <audio class="card-image w-100"
         controls controlslist="nodownload" 
         src="../{{post_path}}">
@@ -20,11 +32,15 @@
     {{else}} <img class="card-image w-100" src={{post_thumbnail}} alt="Missing Image">{{/if}}{{/if}}
     
     <div class="card-body bg-lightgreen w-100 text-white py-0">
+
         <p class="card-title w-100">{{title}}</p>
         <p clas="card-text w-100">{{post_description}}</p>
        
         <p class="card-price w-100">$ {{price}}</p>
+
+       
         
         <a href="" class="anchor-buttons btn btn-success w-100">Contact Seller</a>
+
     </div>
 </div>
