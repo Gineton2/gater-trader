@@ -61,5 +61,50 @@ const passwordValidation = (req, res, next) => {
     }
 };
 
+const postValidation = (req, res, next) => {
 
-module.exports = {usernameValidation, passwordValidation};
+    let title = req.body.PostTitle;
+    let description = req.body.PostDescription;
+    let fk_userId = req.session.userId;
+    let fileUploaded = req.file.path;
+
+    if (fileUploaded == null) {
+        req.flash('error', 'Invalid File');
+        req.session.save(err => {
+
+            res.redirect("/post");
+        });
+    } else {
+
+
+        if (title == null) {
+            req.flash('error', 'Invalid Title');
+            req.session.save(err => {
+
+                res.redirect("/post");
+            });
+        } else {
+            if (description == null) {
+                req.flash('error', 'Invalid Description');
+                req.session.save(err => {
+
+                    res.redirect("/post");
+                });
+            } else {
+                if (fk_userId == null) {
+                    req.flash('error', 'Invalid UserId');
+                    req.session.save(err => {
+
+                        res.redirect("/post");
+                    });
+                } else {
+                    next();
+                }
+            }
+
+        }
+    }
+};
+
+
+module.exports = {usernameValidation, passwordValidation, postValidation};

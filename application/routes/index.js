@@ -22,12 +22,13 @@ var db = require('../database/database');
 
 const {getRecentPosts}  = require('../middleware/postsMiddleware');
 
-
 /*
 The app.get() method specifies a callback function that will be invoked whenever there is an HTTP GET request with a path ('/') relative to the site root
  */
 /* GET home page. */
 router.get('/', getRecentPosts, function(req, res, next) {
+    console.log(res.locals.username);
+    
     res.render('index');
 });
 
@@ -90,11 +91,6 @@ router.get('/signup', function(req, res, next) {
 
 router.get('/message', function(req, res, next) {
   res.render('message');
-
-});
-
-router.get('/login', function(req, res, next) {
-  res.render('login');
 
 });
 
