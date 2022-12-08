@@ -1,3 +1,15 @@
+{{!-- /* 
+    Filename: flash-message.handlebars
+    
+    Purpose: formats and shows flash message for error/success 
+
+    Author: Duccio Rocca & Yoshimasa Iwano, Team: 07
+
+    Course: CSC648 SFSU
+
+ */
+ --}}
+
 <div id="flashMessage">
   {{#if messages.error}}
     <div id="alert" class="alert alert-danger">{{messages.error}}</div>
