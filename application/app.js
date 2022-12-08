@@ -76,6 +76,10 @@ app.engine(
       isVideo: (category)=> {
         return category==1;
       },
+      isMusic: (category)=> {
+        return category==2;
+      },
+
       
     }, //adding new helpers to handlebars for extra functionality
   })

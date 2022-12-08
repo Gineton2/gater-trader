@@ -84,17 +84,17 @@ router.post('/createPost', uploader.single("upload"), postValidation, (req,res,n
     let category = req.body.category;
     let price = req.body.price;
 
-    // category = PostModel.determineCategory(category);
+    
+
 
     if(category == 1){ //VIDEOS
           
-        
         const p1 =   new Promise ((resolve,reject)=>{
-            fs.copy(fileUploaded, destinationOfThumbnail, err => {
-                if (err) return console.error(err)
-                console.log('success video uploaded!');
-              })
-            destinationOfThumbnail = "../"+destinationOfThumbnail;
+            // fs.copy(fileUploaded, destinationOfThumbnail, err => {
+            //     if (err) return console.error(err)
+            //     console.log('success video uploaded!');
+            //   });
+            destinationOfThumbnail = "../"+fileUploaded;
             resolve(PostModel.create(title,description,fileUploaded,destinationOfThumbnail,fk_userId, price, category));
         })
         .then((postWasCreated)=>{
@@ -117,7 +117,36 @@ router.post('/createPost', uploader.single("upload"), postValidation, (req,res,n
 
         })
     
-    }else if(category == 5){ //IMAGES
+    }else if(category == 2){ //IMAGES
+
+        const p1 =   new Promise ((resolve,reject)=>{
+
+             
+
+            destinationOfThumbnail = "../public/images/audio_image.jpg";
+            resolve(PostModel.create(title,description,fileUploaded,destinationOfThumbnail,fk_userId, price, category));
+        })
+        .then((postWasCreated)=>{
+            if(postWasCreated){
+                req.flash('success', "Your Post was created successfully!");
+                res.redirect('/');
+            }else{
+                throw new PostError('Post could not be created!!', '/post', 200);
+            }
+        })
+        .catch((err) =>{
+            if(err instanceof PostError){
+                errorPrint(err.getMessage());
+                req.flash('error', err.getMessage());
+                res.status(err.getStatus());
+                res.redirect(err.getRedirectURL());
+            }else{
+                next(err);
+            }
+
+        })
+        
+    }else if(category == 5){  //IMAGES
 
         sharp(fileUploaded)
         .resize(200)
@@ -125,6 +154,64 @@ router.post('/createPost', uploader.single("upload"), postValidation, (req,res,n
         .then(()=>{
             destinationOfThumbnail = "../"+destinationOfThumbnail;
             return PostModel.create(title,description,fileUploaded,destinationOfThumbnail,fk_userId, price, category);
+        })
+        .then((postWasCreated)=>{
+            if(postWasCreated){
+                req.flash('success', "Your Post was created successfully!");
+                res.redirect('/');
+            }else{
+                throw new PostError('Post could not be created!!', '/post', 200);
+            }
+        })
+        .catch((err) =>{
+            if(err instanceof PostError){
+                errorPrint(err.getMessage());
+                req.flash('error', err.getMessage());
+                res.status(err.getStatus());
+                res.redirect(err.getRedirectURL());
+            }else{
+                next(err);
+            }
+
+        })
+        
+    }else if(category == 3){ //Ebooks
+
+        const p1 =   new Promise ((resolve,reject)=>{
+
+             
+
+            destinationOfThumbnail = "../public/images/icons/eBook1.jpeg";
+            resolve(PostModel.create(title,description,fileUploaded,destinationOfThumbnail,fk_userId, price, category));
+        })
+        .then((postWasCreated)=>{
+            if(postWasCreated){
+                req.flash('success', "Your Post was created successfully!");
+                res.redirect('/');
+            }else{
+                throw new PostError('Post could not be created!!', '/post', 200);
+            }
+        })
+        .catch((err) =>{
+            if(err instanceof PostError){
+                errorPrint(err.getMessage());
+                req.flash('error', err.getMessage());
+                res.status(err.getStatus());
+                res.redirect(err.getRedirectURL());
+            }else{
+                next(err);
+            }
+
+        })
+        
+    }else if(category == 4){ //Slides
+
+        const p1 =   new Promise ((resolve,reject)=>{
+
+             
+
+            destinationOfThumbnail = "../public/images/icons/course.jpeg";
+            resolve(PostModel.create(title,description,fileUploaded,destinationOfThumbnail,fk_userId, price, category));
         })
         .then((postWasCreated)=>{
             if(postWasCreated){

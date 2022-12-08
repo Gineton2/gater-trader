@@ -28,6 +28,7 @@ The app.get() method specifies a callback function that will be invoked whenever
 /* GET home page. */
 router.get('/', getRecentPosts, function(req, res, next) {
     console.log(res.locals.username);
+    
     res.render('index');
 });
 
