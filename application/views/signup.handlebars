@@ -1,4 +1,13 @@
+ {{!-- /* 
+    Filename: signup.handlebars
 
+    Purpose: Sign Up Form Page
+
+    Author:  Rai'd M., Duccio Rocca Team: 07
+
+    Course: CSC648 SFSU
+
+ */  --}}
 <div>
 
   <div class="mask d-flex align-items-center h-100 mt-2 position-relative">
@@ -10,43 +19,47 @@
             <div class="card-body p-5 ">
               <h2 class="text-uppercase text-center mb-5 bg-dark text-white bold">SIGN UP</h2>
 
-              <form class="needs-validation"  method="POST" action="/users/register">
-              <fieldset>
-                <div class="form-outline mb-4 form-group">
-                  <div class="fields-one text-center bold">
-                    <label class="form-label " for="username">Your Name</label>
+              <form class="needs-validation" method="POST" action="/users/register">
+                <fieldset>
+                  <div class="form-outline mb-4 form-group">
+                    <div class="fields-one text-center bold">
+                      <label class="form-label " for="username">Your Name</label>
+                    </div>
+                    <input type="text" id="username" name="username"
+                      class="form-control form-control-lg border border-dark" placeholder="Enter Full Name"
+                      minlength="2" pattern="^\D\w{2,}" required />
                   </div>
-                  <input type="text" id="username" name="username" class="form-control form-control-lg border border-dark"
-                    placeholder="Enter Full Name" minlength="2" pattern="^\D\w{2,}" required />
-                </div>
-               
 
-                <div class="form-outline mb-4 form-group">
-                  <div class="fields-two text-center bold">
-                    <label class="form-label" for="email">Your Email</label>
+
+                  <div class="form-outline mb-4 form-group">
+                    <div class="fields-two text-center bold">
+                      <label class="form-label" for="email">Your Email</label>
+                    </div>
+                    <input type="email" id="email" name="email" class="form-control form-control-lg border border-dark"
+                      placeholder="Enter Your Email (ends in @ mail.sfsu.edu or sfsu.edu)" 
+                      required />
+
                   </div>
-                  <input type="email" id="email" name="email" class="form-control form-control-lg border border-dark"
-                    placeholder="Enter Your Email" required />
 
-                </div>
+                  <div class="form-outline mb-4 form-group" id="div-input-password">
+                    <div class="fields-three text-center bold">
+                      <label class="form-label" for="password">Password</label>
+                    </div>
+                    <input type="password" id="password" name="password"
+                      class="form-control form-control-lg border border-dark" placeholder="Enter Your Password"
+                      minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required />
 
-                <div class="form-outline mb-4 form-group" id="div-input-password">
-                  <div class="fields-three text-center bold">
-                    <label class="form-label" for="password">Password</label>
                   </div>
-                  <input type="password" id="password" name="password" class="form-control form-control-lg border border-dark"
-                    placeholder="Enter Your Password" minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  required />
 
-                </div>
+                  <div class="form-outline mb-4 form-group">
+                    <div class="fields-four text-center bold">
+                      <label class="form-label" for="matchPassword">Repeat your password</label>
+                    </div>
+                    <input type="password" id="matchPassword" name="matchPassword"
+                      class="form-control form-control-lg border border-dark" placeholder="Re Enter Your Password"
+                      minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required />
 
-                <div class="form-outline mb-4 form-group">
-                  <div class="fields-four text-center bold">
-                    <label class="form-label" for="matchPassword">Repeat your password</label>
                   </div>
-                  <input type="password" id="matchPassword" name="matchPassword" class="form-control form-control-lg border border-dark"
-                    placeholder="Re Enter Your Password" minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  required />
-
-                </div>
 
                 </fieldset>
 
@@ -75,8 +88,7 @@
     </div>
   </div>
   <!-- Background image -->
-</header>
+  </header>
 
 
-{{!-- ///////////////////////////////////// --}}
-
+  {{!-- ///////////////////////////////////// --}}
