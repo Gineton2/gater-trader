@@ -3,7 +3,7 @@ Filename: top-nav.handlebars
 
 Purpose: Navigation Bar
 
-Author: Duccio Rocca & Yoshimasa Iwano, Team: 07
+Author: Duccio Rocca, Yoshimasa Iwano, Rai'd M. Team: 07
 
 Course: CSC648 SFSU
 
@@ -70,34 +70,46 @@ Course: CSC648 SFSU
           </form>
         </li>
 
-        <li class="nav-item active m-auto px-2 my-1 ">
-          {{#if logged}}<a class="nav-link rounded-3 bg-dark px-4 " id="logout" href="">Logout</a> {{else}} <a class="nav-link rounded-3 bg-dark px-4 " href="/login">Login</a>{{/if}} 
-          
-        </li>
-
-        <li class="nav-item active m-auto px-2 my-1">
-          <a class="nav-link rounded-3 bg-dark px-4" href="/make-post">Make a Post</a>
-        </li>
         <li class="nav-item active m-auto px-2 my-1">
           <a class="nav-link rounded-3 bg-dark px-4" href="/about-team">About</a>
         </li>
 
         <li class="nav-item active m-auto px-2 my-1">
-          <a class="nav-link rounded-3 bg-dark px-4 " href="/signup">Register</a>
+          <a class="nav-link rounded-3 bg-dark px-4" href="/make-post">Make a Post</a>
+        </li>
+        <li class="nav-item active m-auto px-2 my-1 ">
+          {{#if logged}}<a class="nav-link rounded-3 bg-dark px-4 " id="logout" href="">Logout</a> {{else}} <a
+            class="nav-link rounded-3 bg-dark px-4 " href="/login">Login</a>{{/if}}
+
         </li>
 
-       
-       
+        <li class="nav-item active m-auto px-2 my-1">
+
+          {{#if logged}} <a class="nav-link rounded-3 bg-dark px-4 d-none " href="/signup">Register</a>  {{else}} <a
+            class="nav-link rounded-3 bg-dark px-4 " href="/signup">Register</a>{{/if}}
+        </li>
 
 
-          </ul>
-        
-       
- {{#if logged}} 
- <li class="navbar-text"> <span id="logged" class="logged"> Hi {{username}}!</span></li>
- {{/if}}
+
+
+
+
+
+
+
+
+
+
 
       </ul>
+
+
+      {{#if logged}}
+      <li class="nav-item active m-auto px-3 my-3 pt-2"> <span id="logged" class="logged"> Hi, {{username}} !</span>
+      </li>
+      {{/if}}
+
+
 
     </div>
 

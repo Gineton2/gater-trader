@@ -1,7 +1,7 @@
 <!--- 
     Filename: login.handlebars
 
-    Purpose: Login Page Form 
+    Purpose: Login Form Page
 
     Author: Eddie Fu, Rai'd Muhammad Team: 07
 
@@ -19,14 +19,16 @@
 
             <h3 class=" text-center mb-3 text-white bold">Login Page</h3>
 
-            <form class="bg-green rounded-5 shadow-5-strong p-5 " enctype="application/x-www-form-urlencoded" method="POST" action="/users/login">
-            
+            <form class="bg-green rounded-5 shadow-5-strong p-5 " enctype="application/x-www-form-urlencoded"
+              method="POST" action="/users/login">
+
               <h2 class="text-uppercase text-center mb-5 bg-dark text-white">LOGIN</h2>
               <!-- Email input -->
               <div class="form-outline mb-4 text-center bold text-white">
                 <label class="form-label" for="email">Email address</label>
                 <input type="email" id="form11" class="form-control border border-dark"
-                  placeholder="Enter Your Email" name="email" />
+                  placeholder="Enter Your Email (ends in @ mail.sfsu.edu or sfsu.edu)" minlength="6"
+                  pattern="([a-z0-9]+@[mail]+\.sfsu\.edu|([a-z0-9]+@[sfsu]+\.edu))" name="email" />
 
               </div>
 
@@ -35,7 +37,6 @@
               <div class="form-outline mb-2 text-center bold text-white">
                 <label class="form-label" for="password">Password</label>
                 <input type="password" name="password" id="form12" class="form-control border border-dark"
-
                   placeholder="Enter Your Password" />
 
               </div>
@@ -62,7 +63,7 @@
               <!-- Submit button -->
 
               <button type="submit" class="btn btn-success btn-block text-center btn-lg ">Log in</button>
-              
+
             </form>
           </div>
         </div>
