@@ -1,69 +1,108 @@
+ /* 
+    Filename: front-end.js
+
+    Purpose: Handles User Search, Login, and Registration Errors
+
+    Author: Duccio Rocca, Yoshimasa Iwano, Rai'd M. Team: 07
+
+    Course: CSC648 SFSU
+
+ */ 
+
 let searchButton = document.getElementById("search-button");
 let input = document.getElementById("search-text");
 let dropdowns = document.querySelectorAll(".search-panel");
 let password = document.getElementById("password");
 let matchPassword = document.getElementById("password");
-const warningText = document.getElementById('warning');
+const warningText = document.getElementById("warning");
+let email = document.getElementById("email");
+let login = document.getElementById("login");
 
-let logout = document.getElementById('logout');
-if (logout) {
-    logout.onclick = (event) => {
-        fetch('users/logout', {
-            method: "POST"
-        })
-        .then((data) => {
-            // data.locals.logged = false;
-            console.log("logout");
-            location.replace('/');
+if (email) {
+  email.addEventListener("click", function () {
+    let emailChecker =
+      /^([a-z0-9]+@[mail]+\.sfsu\.edu|([a-z0-9]+@[sfsu]+\.edu))/;
+      console.log(emailChecker.test(email.value));
+    return emailChecker.test(email);
+  });
 
-        })
+  if (!emailChecker.test(email.value)) {
+    preventDefault();
+    displayWarning();
+
+
+    if (document.getElementById("text-alert-email") == null) {
+      let divMessageEmail = document.createElement("div");
+      let divMessageEmailText = document.createTextNode("Email is not valid");
+      divMessageEmail.appendChild(divMessageEmailText);
+      divMessageEmail.setAttribute("id", "text-alert-email");
+      divMessageEmail.className = "text-danger text-center";
+      document.getElementById("div-input-email").appendChild(divMessageEmail);
+    } else {
+      document.getElementById("text-alert-email").textContent =
+        "Email is not valid";
     }
-
-}
-
-
-input.addEventListener('input', checkSearchtext);
-searchButton.addEventListener('click', checkSearchtext);
-
-let postButton = document.getElementById("post-button");
-if(postButton){
-  postButton.addEventListener('click', checkPost);
-
-}
-
-function checkPost (event) {
-  let file = document.getElementById('formFileLg');
-  if (file.value==null) {
-      event.preventDefault();
+  } else {
+    if (document.getElementById("text-alert-email") != null) {
+      document.getElementById("text-alert-email").textContent = "";
+    }
   }
 }
 
-function checkSearchtext (event) {
-    let validText = /\W/;
-    if (validText.test(input.value)) {
-        event.preventDefault();
-        displayWarning();
-    }
+let logout = document.getElementById("logout");
+if (logout) {
+  logout.onclick = (event) => {
+    fetch("users/logout", {
+      method: "POST",
+    }).then((data) => {
+      // data.locals.logged = false;
+      console.log("logout");
+      location.replace("/");
+    });
+  };
+}
+
+input.addEventListener("input", checkSearchtext);
+searchButton.addEventListener("click", checkSearchtext);
+
+let postButton = document.getElementById("post-button");
+if (postButton) {
+  postButton.addEventListener("click", checkPost);
+}
+
+function checkPost(event) {
+  let file = document.getElementById("formFileLg");
+  if (file.value == null) {
+    event.preventDefault();
+  }
+}
+
+function checkSearchtext(event) {
+  let validText = /\W/;
+  if (validText.test(input.value)) {
+    event.preventDefault();
+    displayWarning();
+  }
 }
 let warningTimeout;
 function displayWarning() {
-    if (!warningText.hidden) {
-        clearTimeout(warningTimeout);
-    } else {
-        warningText.hidden = false;
-    }
-    warningTimeout = setTimeout(() => {
-        warningText.hidden = true;
-        warningTimeout = -1;
-    }, 3000)
+  if (!warningText.hidden) {
+    clearTimeout(warningTimeout);
+  } else {
+    warningText.hidden = false;
+  }
+  warningTimeout = setTimeout(() => {
+    warningText.hidden = true;
+    warningTimeout = -1;
+  }, 3000);
 }
 
-if(password){
-  password.addEventListener('focusout', function(){
+if (password) {
+  password.addEventListener("focusout", function () {
     let passwordChecker = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
     // if(!passwordChecker.test(password.value)){
-        
+
     //     if(document.getElementById("text-alert-password")==null){
     //         let divMessagePassword = document.createElement("div");
     //         let divMessagePasswordText = document.createTextNode("Password must have at least one lower case, one upper case and one digit");
@@ -74,15 +113,14 @@ if(password){
     //     }else{
     //         console.log("Check not passed and not null")
     //         document.getElementById("text-alert-password").textContent ="Password must have at least one lower case, one upper case and one digit";
-    //     }  
+    //     }
     // }else{
     //     if(document.getElementById("text-alert-password")!=null){
     //         document.getElementById("text-alert-password").textContent = "";
     //     }
     // }
-});
+  });
 }
-
 
 dropdowns.forEach((dropdown) => {
   let select = dropdown.querySelector(".select");
@@ -138,7 +176,7 @@ function createResultMessage(messageData) {
 }
 
 function createCard(postData) {
-  if(postData.post_category==1){
+  if (postData.post_category == 1) {
     return `
         <div id="post-${postData.post_id}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto my-2">
             <src class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image" type="video/mp4">
@@ -149,8 +187,7 @@ function createCard(postData) {
                 <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary w-100 m-auto">Post Details</a>
             </div>
         </div>`;
-
-  }else{
+  } else {
     return `
     <div id="post-${postData.post_id}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto my-2">
         <img class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image">
@@ -162,7 +199,6 @@ function createCard(postData) {
         </div>
     </div>`;
   }
-  
 }
 
 function examplePlaceholder() {
