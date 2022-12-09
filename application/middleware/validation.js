@@ -1,9 +1,9 @@
 /* 
     Filename: validation.js
 
-    Purpose: handles user signup validation 
+    Purpose: handles user signup and Post validation
 
-    Author: Duccio Rocca & Yoshimasa Iwano, Team: 07
+    Author: Duccio Rocca, Yoshimasa Iwano, Rai'd Muhammad Team: 07
 
     Course: CSC648 SFSU
 
@@ -16,10 +16,31 @@ const checkUsername = (username) => {
     return usernameChecker.test(username);
 };
 
+const checkEmail = (email) => {
+    let emailChecker =
+       /^([a-z0-9]+@[mail]+\.sfsu\.edu|([a-z0-9]+@[sfsu]+\.edu))/;
+      console.log(emailChecker.test(email.value));
+    return emailChecker.test(email);
+}
+
 const checkPassword = (password) => {
     let passwordChecker = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
     return passwordChecker.test(password);
 };
+
+const emailValidation = (req, res, next) => {
+    let email = req.body.email;
+      if (!checkEmail(email)) {
+  
+          req.flash('error', 'Invalid email; Minimum length 6 and it must end with @mail.sfsu.edu or @sfsu.edu');
+          req.session.save(err => {
+  
+              res.redirect("/signup");
+          });
+      } else {
+          next();
+      }
+}
 
 const usernameValidation = (req, res, next) => {
     let username = req.body.username;
@@ -27,7 +48,8 @@ const usernameValidation = (req, res, next) => {
 
         req.flash('error', 'Invalid username; Minimum length 2 and it must start with an alphabetical character');
         req.session.save(err => {
-
+            if(err) throw err
+            console.log("there was an error with the login")
             res.redirect("/signup");
         });
     } else {
@@ -107,4 +129,4 @@ const postValidation = (req, res, next) => {
 };
 
 
-module.exports = {usernameValidation, passwordValidation, postValidation};
+module.exports = {usernameValidation, passwordValidation, postValidation, emailValidation};
