@@ -15,7 +15,7 @@ const {requestPrint, errorPrint, successPrint} = require('../helpers/debugprinte
 var flash = require('express-flash');
 const UserError = require("../helpers/error/UserError");
 const UserModel = require('../models/users-model');
-const {usernameValidation, passwordValidation, loginValidation} = require('../middleware/validation');
+const {usernameValidation, passwordValidation, loginValidation, emailValidation} = require('../middleware/validation');
 
 //The top-level express object has a Router() method that creates a new router object.
 var router = express.Router();
@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/register', usernameValidation, passwordValidation, (req, res, next) => {
+router.post('/register', usernameValidation, passwordValidation, emailValidation, (req, res, next) => {
 
     
     let password = req.body.password;
@@ -111,7 +111,7 @@ router.post('/login', (req, res, next) => {
                 res.locals.username = userInfo.username;
                 
                 console.log(res.locals);
-                req.flash('success', 'You have successfully logged in');
+                req.flash('success', 'Hi, You have successfully logged in');
                 req.session.save(err => {res.redirect('/')});
                 
             } else {
