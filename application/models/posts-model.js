@@ -58,4 +58,18 @@ PostModel.determineCategory = (categoryName) =>{
         .catch((err) => Promise.reject(err));
 }
 
+PostModel.getPostById = (postId) => {
+    let baseSQL = 
+        `SELECT u.user_id, u.username, p.post_id, p.title, p.price, p.post_description, p.post_thumbnail, p.post_category 
+        FROM posts p
+        JOIN users u
+        ON p.author_id=u.user_id
+        WHERE p.post_id=?;`
+    return db.execute(baseSQL, [postId])
+        .then(([results, fields]) => {
+            return Promise.resolve(results);
+        })
+        .catch(err => Promise.reject(err));
+}
+
 module.exports = PostModel;

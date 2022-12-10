@@ -17,7 +17,7 @@ var db = require("../database/database");
 
 // var bodyParser = require("body-parser");
 
-const { search, getALLRecentPosts } = require("../models/posts-model");
+const { search, getALLRecentPosts, getPostById } = require("../models/posts-model");
 
 const doTheSearch = async function (req, res, next) {
 
@@ -149,4 +149,21 @@ const getRecentPosts = async function(req,res,next) {
   }
 }
 
-module.exports = { doTheSearch, getRecentPosts };
+const getTargetPostById = async function(req, res, next) {
+  try {
+    let postId = req.params.id;
+    let results = await getPostById(postId);
+    if (results && results.length) {
+      res.locals.currentPost = results[0];
+      next();
+    }
+    else {
+      req.flash('error', 'There are not posts you are looking for.');
+      res.redirect('/');
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { doTheSearch, getRecentPosts, getTargetPostById };
