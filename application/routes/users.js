@@ -10,25 +10,24 @@
     Course: CSC648 SFSU 
 */
 
-
 var express = require('express');
 const {requestPrint, errorPrint, successPrint} = require('../helpers/debugprinters');
 var flash = require('express-flash');
 const UserError = require("../helpers/error/UserError");
 const UserModel = require('../models/users-model');
-const {usernameValidation, passwordValidation, loginValidation} = require('../middleware/validation');
+const {usernameValidation, passwordValidation, loginValidation, emailValidation} = require('../middleware/validation');
 
 //The top-level express object has a Router() method that creates a new router object.
 var router = express.Router();
-var bodyParser = require('body-parser');
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+router.use(express.urlencoded({extended: false}));
 
 router.get('/', function(req, res, next) {
     res.render('index');
 });
 
-router.post('/register',urlencodedParser, usernameValidation, passwordValidation, (req, res, next) => {
+
+router.post('/register', usernameValidation, passwordValidation, emailValidation, (req, res, next) => {
 
     
     let password = req.body.password;
@@ -72,13 +71,6 @@ router.post('/register',urlencodedParser, usernameValidation, passwordValidation
             res.redirect('/login');
         }
     })
-    // let sqlCommand = "INSERT INTO users (username, email, password, creation_time) VALUES (?,?,?, now())";
-    
-    // db.execute(sqlCommand, [username, email, password])
-    // .then(()=>{
-    //     res.send("Data sent to database");
-        
-    // })
     .catch((err) => {
 
         errorPrint("User could not be made", err);
@@ -101,6 +93,70 @@ router.post('/register',urlencodedParser, usernameValidation, passwordValidation
     
   });
 
+router.post('/login', (req, res, next) => {
+
+    let email = req.body.email;
+    let password = req.body.password;
+
+    UserModel.authenticate(email,password)
+        .then((userInfo) => {
+            if (userInfo != -1) {
+
+                successPrint(`User ${userInfo.username} is logged in`);
+
+                req.session.username = userInfo.username;
+                req.session.userId = userInfo.userId;
+
+                res.locals.logged = true;
+                res.locals.username = userInfo.username;
+                
+                console.log(res.locals);
+                req.flash('success', 'Hi, You have successfully logged in');
+                req.session.save(err => {res.redirect('/')});
+                
+            } else {
+                throw new UserError("Invalid Email or Password", '/login', 200);
+            }
+
+        })
+        .catch((err) => {
+            errorPrint("user login failed")
+            if (err instanceof UserError) {
+
+                req.flash('error', err.getMessage());
+                errorPrint(err.getMessage());
+                res.status(err.getStatus());
+                res.render('login');
+                
+
+            } else {
+                res.render('login');
+                
+            }
+
+        });
 
 
-  module.exports = router;
+});
+
+router.post('/logout', (req, res, next) => {
+    req.session.destroy((err) => {
+        if (err) {
+            errorPrint(err.getMessage());
+            next(err);
+        } else {
+            
+            successPrint('Session was destroyed');
+            res.clearCookie('csID');
+            req.session = null;
+            res.locals.logged = false;
+            res.json({status: "Ok", message: "user is logged out"});
+            
+        }
+
+    });
+
+});
+
+
+module.exports = router;

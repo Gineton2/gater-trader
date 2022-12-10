@@ -1,7 +1,7 @@
 <!--- 
     Filename: login.handlebars
 
-    Purpose: Login Page Form 
+    Purpose: Login Form Page
 
     Author: Eddie Fu, Rai'd Muhammad Team: 07
 
@@ -12,36 +12,42 @@
 <header>
   <!-- Background image -->
   <div id="intro" class="bg-image shadow-2-strong">
-    <div class="mask d-flex align-items-center h-100 mt-5">
+    <div class="mask d-flex align-items-center h-100 mt-3">
       <div class="container">
         <div class="row justify-content-center ">
           <div class="col-xl-5 col-md-8 text-center ">
-            <h3 class=" text-center mb-5 text-white bold">Login Page</h3>
-            <form class="bg-green  rounded-5 shadow-5-strong p-5 ">
+
+            <h3 class=" text-center mb-3 text-white bold">Login Page</h3>
+
+            <form class="bg-green rounded-5 shadow-5-strong p-5 " enctype="application/x-www-form-urlencoded"
+              method="POST" action="/users/login">
+
               <h2 class="text-uppercase text-center mb-5 bg-dark text-white">LOGIN</h2>
               <!-- Email input -->
               <div class="form-outline mb-4 text-center bold text-white">
-                <label class="form-label" for="form11">Email address</label>
+                <label class="form-label" for="email">Email address</label>
                 <input type="email" id="form11" class="form-control border border-dark"
-                  placeholder="Enter Your Email" />
+                  placeholder="Enter Your Email (ends in @ mail.sfsu.edu or sfsu.edu)" minlength="6"
+                  pattern="([a-z0-9]+@[mail]+\.sfsu\.edu|([a-z0-9]+@[sfsu]+\.edu))" name="email" />
 
               </div>
 
               <!-- Password input -->
-              <div class="form-outline mb-4 text-center bold text-white">
-                <label class="form-label" for="form12">Password</label>
-                <input type="password" id="form12" class="form-control border border-dark"
+
+              <div class="form-outline mb-2 text-center bold text-white">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" name="password" id="form12" class="form-control border border-dark"
                   placeholder="Enter Your Password" />
 
               </div>
 
               <!-- 2 column grid layout for inline styling -->
-              <div class="row mb-4">
+              <div class="row mb-2">
                 <div class="col d-flex justify-content-center">
                   <!-- Checkbox -->
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="form13" checked />
-                    <label class="form-check-label" for="form13">
+                    <input class="form-check-input" type="checkbox" value="" id="password" checked />
+                    <label class="form-check-label text-white" for="password">
                       Remember me
                     </label>
                   </div>
@@ -49,12 +55,15 @@
 
                 <div class="col text-center ">
                   <!-- Simple link -->
-                  <a href="/forgot-password" class="text-decoration-none text-white">Forgot password?</a>
+                  <a href="/forgot-password" class="text-decoration-none text-warning">Forgot password?</a>
                 </div>
               </div>
-
+              <!-- Reset button -->
+              <button type="reset" class="btn btn-light btn-block text-center btn-lg ">Reset</button>
               <!-- Submit button -->
-              <button type="submit" class="btn btn-success btn-block text-center btn-lg  ">Sign in</button>
+
+              <button type="submit" class="btn btn-success btn-block text-center btn-lg ">Log in</button>
+
             </form>
           </div>
         </div>
@@ -63,9 +72,3 @@
   </div>
   <!-- Background image -->
 </header>
-
-<footer class="pb-5 text-white">
-    <div class="container text-center">
-        <p class="font-italic mb-0 text-white py-5">SFSU CSC648 Team 7</p>
-    </div>
-</footer>

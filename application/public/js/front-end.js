@@ -1,60 +1,126 @@
+ /* 
+    Filename: front-end.js
+
+    Purpose: Handles User Search, Login, and Registration Errors
+
+    Author: Duccio Rocca, Yoshimasa Iwano, Rai'd M. Team: 07
+
+    Course: CSC648 SFSU
+
+ */ 
+
 let searchButton = document.getElementById("search-button");
 let input = document.getElementById("search-text");
 let dropdowns = document.querySelectorAll(".search-panel");
 let password = document.getElementById("password");
 let matchPassword = document.getElementById("password");
-const warningText = document.getElementById('warning');
+const warningText = document.getElementById("warning");
+let email = document.getElementById("email");
+let login = document.getElementById("login");
 
-input.addEventListener('input', checkSearchtext);
-searchButton.addEventListener('click', checkSearchtext);
+if (email) {
+  email.addEventListener("click", function () {
+    let emailChecker =
+      /^([a-z0-9]+@[mail]+\.sfsu\.edu|([a-z0-9]+@[sfsu]+\.edu))/;
+      console.log(emailChecker.test(email.value));
+    return emailChecker.test(email);
+  });
 
-function checkSearchtext (event) {
-    let validText = /\W/;
-    if (validText.test(input.value)) {
-        event.preventDefault();
-        displayWarning();
+  if (!emailChecker.test(email.value)) {
+    preventDefault();
+    displayWarning();
+
+
+    if (document.getElementById("text-alert-email") == null) {
+      let divMessageEmail = document.createElement("div");
+      let divMessageEmailText = document.createTextNode("Email is not valid");
+      divMessageEmail.appendChild(divMessageEmailText);
+      divMessageEmail.setAttribute("id", "text-alert-email");
+      divMessageEmail.className = "text-danger text-center";
+      document.getElementById("div-input-email").appendChild(divMessageEmail);
+    } else {
+      document.getElementById("text-alert-email").textContent =
+        "Email is not valid";
     }
+  } else {
+    if (document.getElementById("text-alert-email") != null) {
+      document.getElementById("text-alert-email").textContent = "";
+    }
+  }
+}
+
+let logout = document.getElementById("logout");
+if (logout) {
+  logout.onclick = (event) => {
+    fetch("users/logout", {
+      method: "POST",
+    }).then((data) => {
+      // data.locals.logged = false;
+      console.log("logout");
+      location.replace("/");
+    });
+  };
+}
+
+input.addEventListener("input", checkSearchtext);
+searchButton.addEventListener("click", checkSearchtext);
+
+let postButton = document.getElementById("post-button");
+if (postButton) {
+  postButton.addEventListener("click", checkPost);
+}
+
+function checkPost(event) {
+  let file = document.getElementById("formFileLg");
+  if (file.value == null) {
+    event.preventDefault();
+  }
+}
+
+function checkSearchtext(event) {
+  let validText = /\W/;
+  if (validText.test(input.value)) {
+    event.preventDefault();
+    displayWarning();
+  }
 }
 let warningTimeout;
 function displayWarning() {
-    if (!warningText.hidden) {
-        clearTimeout(warningTimeout);
-    } else {
-        warningText.hidden = false;
-    }
-    warningTimeout = setTimeout(() => {
-        warningText.hidden = true;
-        warningTimeout = -1;
-    }, 3000)
+  if (!warningText.hidden) {
+    clearTimeout(warningTimeout);
+  } else {
+    warningText.hidden = false;
+  }
+  warningTimeout = setTimeout(() => {
+    warningText.hidden = true;
+    warningTimeout = -1;
+  }, 3000);
 }
 
-if(password){
-  password.addEventListener('focusout', function(){
+if (password) {
+  password.addEventListener("focusout", function () {
     let passwordChecker = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
-    if(!passwordChecker.test(password.value)){
-        
-        if(document.getElementById("text-alert-password")==null){
-            let divMessagePassword = document.createElement("div");
-            let divMessagePasswordText = document.createTextNode("Password must have at least one lower case, one upper case and one digit");
-            divMessagePassword.appendChild(divMessagePasswordText);
-            divMessagePassword.setAttribute("id", "text-alert-password");
-            divMessagePassword.className = "text-danger text-center"
-            document.getElementById("div-input-password").appendChild(divMessagePassword);
-        }else{
-            console.log("Check not passed and not null")
-            document.getElementById("text-alert-password").textContent ="Password must have at least one lower case, one upper case and one digit";
-        }  
-    }else{
-        if(document.getElementById("text-alert-password")!=null){
-            document.getElementById("text-alert-password").textContent = "";
-        }
-    }
-});
+    // if(!passwordChecker.test(password.value)){
+
+    //     if(document.getElementById("text-alert-password")==null){
+    //         let divMessagePassword = document.createElement("div");
+    //         let divMessagePasswordText = document.createTextNode("Password must have at least one lower case, one upper case and one digit");
+    //         divMessagePassword.appendChild(divMessagePasswordText);
+    //         divMessagePassword.setAttribute("id", "text-alert-password");
+    //         divMessagePassword.className = "text-danger text-center"
+    //         document.getElementById("div-input-password").appendChild(divMessagePassword);
+    //     }else{
+    //         console.log("Check not passed and not null")
+    //         document.getElementById("text-alert-password").textContent ="Password must have at least one lower case, one upper case and one digit";
+    //     }
+    // }else{
+    //     if(document.getElementById("text-alert-password")!=null){
+    //         document.getElementById("text-alert-password").textContent = "";
+    //     }
+    // }
+  });
 }
-
-
-
 
 dropdowns.forEach((dropdown) => {
   let select = dropdown.querySelector(".select");
@@ -92,33 +158,6 @@ dropdowns.forEach((dropdown) => {
   });
 });
 
-function setflashMessageFadeOut(flashMessage) {
-  setTimeout(() => {
-    let currentOpacity = 1.0;
-    let timer = setInterval(() => {
-      if (currentOpacity < 0.5) {
-        clearInterval(timer);
-        flashMessage.remove();
-      }
-      currentOpacity = currentOpacity - 0.05;
-      flashMessage.style.opacity = currentOpacity;
-    }, 50);
-  }, 3000);
-}
-
-function addFlashFromFrontEnd(message) {
-  let flashMessageDiv = document.createElement("div");
-  let innerFlashDiv = document.createElement("div");
-  let innerTextNode = document.createTextNode(message);
-  innerFlashDiv.appendChild(innerTextNode);
-  flashMessageDiv.appendChild(innerFlashDiv);
-  flashMessageDiv.setAttribute("id", "flashMessage");
-  innerFlashDiv.setAttribute("class", "alert alert-success");
-  document.getElementsByTagName("body")[0].appendChild(flashMessageDiv);
-  console.log(document.getElementsByTagName("body")[0]);
-  setflashMessageFadeOut(flashMessageDiv);
-}
-
 function createSearchConditionMessage(categorySearch, searchText) {
   let innerTextNode = document.createTextNode(
     categorySearch + " > " + searchText
@@ -137,9 +176,10 @@ function createResultMessage(messageData) {
 }
 
 function createCard(postData) {
-  return `
+  if (postData.post_category == 1) {
+    return `
         <div id="post-${postData.post_id}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto my-2">
-            <img class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image">
+            <src class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image" type="video/mp4">
             <div class="card-body bg-grey w-100">
                 <p class="card-title w-100">${postData.title}</p>
                 <p clas="card-text w-100">${postData.post_description}</p>
@@ -147,75 +187,19 @@ function createCard(postData) {
                 <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary w-100 m-auto">Post Details</a>
             </div>
         </div>`;
-}
-
-function executeSearch() {
-  console.log("searching...");
-
-  let searchText = document.getElementById("search-text").value;
-
-  let inputChecker = /\w+/;
-  if (!inputChecker.test(searchText)) {
-    searchText = "";
-  }
-  let categorySearch = document.getElementById(
-    "search_concept selected"
-  ).innerText;
-
-  categorySearch.toString();
-
-  console.log("cat:" + categorySearch);
-
-  let searchTerm = searchText + "-" + categorySearch;
-  let searchURL = `/posts/search?search=${searchTerm}`;
-
-  //
-
-  let mainContent = document.getElementById("main-content");
-
-  console.log(window.location.href);
-
-  fetch(searchURL)
-    .then((data) => {
-      console.log(data);
-      return data.json();
-    })
-    .then((data_json) => {
-      if (data_json.message) {
-        // addFlashFromFrontEnd(data_json.message);
-        createSearchConditionMessage(categorySearch, searchText);
-        createResultMessage(data_json.message);
-      }
-      let newMainContentHTML = "";
-      data_json.results.forEach((row) => {
-        console.log(row);
-        newMainContentHTML += createCard(row);
-      });
-      mainContent.innerHTML = newMainContentHTML;
-    })
-    .catch((err) => console.log(err));
-
-  let mainpagePicture = document.getElementById("mainpage-picture");
-  if (mainpagePicture) {
-    mainpagePicture.style.display = "none";
+  } else {
+    return `
+    <div id="post-${postData.post_id}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto my-2">
+        <img class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image">
+        <div class="card-body bg-grey w-100">
+            <p class="card-title w-100">${postData.title}</p>
+            <p clas="card-text w-100">${postData.post_description}</p>
+            <p class="card-price w-100">$ ${postData.price}</p>
+            <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary w-100 m-auto">Post Details</a>
+        </div>
+    </div>`;
   }
 }
-
-// if (searchButton) {
-//     searchButton.onclick = executeSearch;
-
-// }
-
-// if(input)
-// {
-//     input.addEventListener('keydown', function(event) {
-//     if(event.key === 'Enter'){
-//         console.log("Enter pressed");
-//         executeSearch();
-
-//     }
-// })
-// }
 
 function examplePlaceholder() {
   let category = document.getElementById("search_concept selected").innerText;
@@ -234,3 +218,30 @@ function examplePlaceholder() {
     searchText.placeholder = " e.g. csc648";
   }
 }
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+
+//   if ("IntersectionObserver" in window) {
+//     var lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
+//       entries.forEach(function(video) {
+//         if (video.isIntersecting) {
+//           for (var source in video.target.children) {
+//             var videoSource = video.target.children[source];
+//             if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+//               videoSource.src = videoSource.dataset.src;
+//             }
+//           }
+
+//           video.target.load();
+//           video.target.classList.remove("lazy");
+//           lazyVideoObserver.unobserve(video.target);
+//         }
+//       });
+//     });
+
+//     lazyVideos.forEach(function(lazyVideo) {
+//       lazyVideoObserver.observe(lazyVideo);
+//     });
+//   }
+// });

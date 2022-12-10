@@ -15,7 +15,7 @@ const postsMiddleware = {};
 
 var db = require("../database/database");
 
-var bodyParser = require("body-parser");
+// var bodyParser = require("body-parser");
 
 const { search, getALLRecentPosts } = require("../models/posts-model");
 
@@ -29,9 +29,6 @@ const doTheSearch = async function (req, res, next) {
     if(!inputChecker.test(searchTerm)){
       searchTerm = "";
     }
-
-    // console.log("search:" + searchTerm);
-    // console.log("cat: " + categorySearch);
 
     if (categorySearch === "All") {
       categorySearch = "%";
@@ -57,7 +54,7 @@ const doTheSearch = async function (req, res, next) {
       } else {
         // nothing within the category so let's show all the posts
         let [results, fields] = await db.query(
-          'SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC'
+          'SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail, post_path FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC'
         );
        
 
@@ -89,7 +86,7 @@ const doTheSearch = async function (req, res, next) {
       } else {
         // nothing found therefore let's show all the posts within the selected category
         let [results, fields] = await db.query(
-          "SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE ? ORDER BY post_creation_time DESC",
+          "SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail, post_path FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE ? ORDER BY post_creation_time DESC",
           [categorySearch]
         );
         if (results.length) {
@@ -113,7 +110,7 @@ const doTheSearch = async function (req, res, next) {
         } else {
           // nothing within the category so let's show all the posts
           let [results, fields] = await db.query(
-            'SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC'
+            'SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail, post_path FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC'
           );
 
           if (categorySearch === "%") {
