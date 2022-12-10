@@ -10,7 +10,7 @@
  */ 
 
 let searchButton = document.getElementById("search-button");
-let input = document.getElementById("search-text");
+let searchText = document.getElementById("search-text");
 let dropdowns = document.querySelectorAll(".search-panel");
 let password = document.getElementById("password");
 let matchPassword = document.getElementById("password");
@@ -62,7 +62,7 @@ if (logout) {
   };
 }
 
-input.addEventListener("input", checkSearchtext);
+searchText.addEventListener("input", checkSearchtext);
 searchButton.addEventListener("click", checkSearchtext);
 
 let postButton = document.getElementById("post-button");
@@ -78,8 +78,8 @@ function checkPost(event) {
 }
 
 function checkSearchtext(event) {
-  let validText = /\W/;
-  if (validText.test(input.value)) {
+  let validText = /(\W)|(\w{40,})/;
+  if (validText.test(searchText.value)) {
     event.preventDefault();
     displayWarning();
   }
