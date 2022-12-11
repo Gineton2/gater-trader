@@ -232,6 +232,10 @@ h1 {
   width: 100px;
 }
 
+.h-30px {
+  height: 30px;
+}
+
 .navbar-container {
   display: flex;
 }

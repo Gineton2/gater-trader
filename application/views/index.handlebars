@@ -8,11 +8,11 @@
 <h5 id="photo-count" class="photo-count text-left text-white px-2 my-2 mx-2" >
     {{#if message}} {{message}} {{/if}}
 </h5>
-<div id="container" class="container px-0">
+<div id="container" class="container ">
     <p id="greeting" class="text-center font-weight-bold text-white text-uppercase" style="font-size:25px; font-family: serif">Buy, sell, and share
   digital
   media. By Gaters, for Gaters!</p>
-    <div id="main-content" class="main-content d-flex flex-row flex-wrap mx-0 px-0">
+    <div id="main-content" class="row flex-wrap justify-content-center mx-0 px-0">
         {{#each results}}
             {{> card this}}
         {{/each}}
