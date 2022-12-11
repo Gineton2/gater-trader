@@ -29,13 +29,14 @@
     type="video/mp4" /> </video>
     
     {{else}} {{#if (isMusic currentPost.post_category)}}
-    
-    <img src="{{currentPost.post_thumbnail}}" alt="PostImage" class="img-fluid">
+    <div class="img-fluid flex-column align-content-center">
+    <img class="p-2" src="{{currentPost.post_thumbnail}}" alt="PostImage" >
 
-    <audio class="card-image w-100"
+    <audio class="p-2"
         controls controlslist="nodownload" 
         src="../{{currentPost.post_path}}">
     </audio>
+    </div>
     
     
     {{else}} <img src="{{currentPost.post_thumbnail}}" alt="PostImage" class="img-fluid">{{/if}}{{/if}}

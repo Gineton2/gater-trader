@@ -36,7 +36,11 @@
         <p class="card-title w-100">{{title}}</p>
         <p clas="card-text w-100">{{post_description}}</p>
        
+       {{#if (isFree price)}}
+       <p class="card-price w-100">Free</p>
+       {{else}}
         <p class="card-price w-100">$ {{price}}</p>
+        {{/if}}
 
        
         

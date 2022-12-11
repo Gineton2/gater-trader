@@ -79,6 +79,9 @@ app.engine(
       isMusic: (category)=> {
         return category==2;
       },
+      isFree: (price)=>{
+        return price==0;
+      }
 
       
     }, //adding new helpers to handlebars for extra functionality
