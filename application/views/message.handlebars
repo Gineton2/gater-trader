@@ -52,7 +52,13 @@
                 <h4 style="color:white ;" class="px-2">{{currentPost.post_description}}</h4>
             </div>
             <div class="bg-success bg-opacity-25 py-2 my-3 rounded">
-                <h4 style="color:white ;" class="px-2">Price: {{currentPost.price}}</h4>
+
+                {{#if (isFree currentPost.price)}}
+       <h4 style="color:white ;" class="px-2">Price: Free</h4>
+       {{else}}
+        <h4 style="color:white ;" class="px-2">Price: {{currentPost.price}}</h4>
+        {{/if}}
+                
             </div>   
         </div>
 
