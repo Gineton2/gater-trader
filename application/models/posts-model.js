@@ -60,7 +60,7 @@ PostModel.determineCategory = (categoryName) =>{
 
 PostModel.getPostById = (postId) => {
     let baseSQL = 
-        `SELECT u.user_id, u.username, p.post_id, p.title, p.price, p.post_description, p.post_thumbnail, p.post_category 
+        `SELECT u.user_id, u.username, p.post_id, p.title, p.price, p.post_description, p.post_thumbnail, p.post_category, p.post_path
         FROM posts p
         JOIN users u
         ON p.author_id=u.user_id
