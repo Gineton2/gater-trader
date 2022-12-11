@@ -172,10 +172,12 @@ h1 {
 
 .word-about {
   padding: 0.5rem;
+  
 }
 
 .lead-word {
   padding: 0.7rem;
+  text-decoration: underline;
 }
 
 .bg-grey {
