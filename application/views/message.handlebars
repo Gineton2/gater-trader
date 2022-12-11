@@ -18,7 +18,29 @@
     <h1 class="display-4 text-center font-weight-bold text-white bg-green ">Message Owner</h1> 
     <div class="row align-items-center justify-content-center my-4 mx-auto w-75">
         <div class="col-lg-6 d-lg-block px-2 mx-auto">
-            <img src="{{currentPost.post_thumbnail}}" alt="PostImage" class="img-fluid">
+            {{#if (isVideo currentPost.post_category)}}
+    <video muted playsinline 
+    class="img-fluid"
+  width="400" 
+  controls controlslist="nodownload"
+> 
+  <source
+    src={{currentPost.post_thumbnail}}
+    type="video/mp4" /> </video>
+    
+    {{else}} {{#if (isMusic currentPost.post_category)}}
+    <div class="img-fluid flex-column align-content-center">
+    <img class="p-2" src="{{currentPost.post_thumbnail}}" alt="PostImage" >
+
+    <audio class="p-2"
+        controls controlslist="nodownload" 
+        src="../{{currentPost.post_path}}">
+    </audio>
+    </div>
+    
+    
+    {{else}} <img src="{{currentPost.post_thumbnail}}" alt="PostImage" class="img-fluid">{{/if}}{{/if}}
+            
         </div>
         <div class="col-lg-6 px-5 mx-auto">
             <p class="my-2 text-center text-white display-4 p-2">{{currentPost.title}}</p>

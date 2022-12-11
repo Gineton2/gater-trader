@@ -79,6 +79,9 @@ app.engine(
       isMusic: (category)=> {
         return category==2;
       },
+      isFree: (price)=>{
+        return price==0;
+      }
 
       
     }, //adding new helpers to handlebars for extra functionality
@@ -115,7 +118,7 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.use(cookieParser());
 
-app.listen(1234, () => console.log("Server running on port 1234"));
+// app.listen(1234, () => console.log("Server running on port 1234"));
 
 /*
  * Catch all route, if we get to here then the
