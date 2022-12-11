@@ -9,38 +9,33 @@
 
  */ --}}
 
-<div id="post-{{post_id}}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto border-0">
-  {{#if (isVideo post_category)}}
-    <video muted playsinline 
-  width="200" 
-  controls controlslist="nodownload"
-> 
-  <source
-    src={{post_thumbnail}}
-    type="video/mp4" /> </video>
-    
-    {{else}} {{#if (isMusic post_category)}}
-    
-    <img class="card-image w-100" src={{post_thumbnail}} alt="Missing Image">
+<div id="post-{{post_id}}" class="card text-center col-md-2 col-sm-4 px-0 mx-3 my-2 border-0 ">
+  <div class="h-50 ">
+    {{#if (isVideo post_category)}}
+    <video muted playsinline controls controlslist="nodownload" class="w-100 h-100">  
+    <source src={{post_thumbnail}} type="video/mp4" /> 
+    </video>
+      
+    {{else}} 
+      {{#if (isMusic post_category)}}
+        <div class="h-100 w-100">
+          <img class="card-image w-100 img-fluid " src={{post_thumbnail}} alt="Missing Image">
+          <audio class="w-100 h-30px my-1 px-1"
+              controls controlslist="nodownload" 
+              src="../{{post_path}}">
+          </audio>
+        </div>
+      {{else}} <img class="card-image w-100 h-100 img-fluid" src={{post_thumbnail}} alt="Missing Image">
+      {{/if}}
+    {{/if}}
+  </div>
+  <div class="card-body bg-lightgreen w-100 text-white py-0">
 
-    <audio class="card-image w-100"
-        controls controlslist="nodownload" 
-        src="../{{post_path}}">
-    </audio>
-    
-    
-    {{else}} <img class="card-image w-100" src={{post_thumbnail}} alt="Missing Image">{{/if}}{{/if}}
-    
-    <div class="card-body bg-lightgreen w-100 text-white py-0">
+      <p class="card-title w-100">{{title}}</p>
+      <p clas="card-text w-100">{{post_description}}</p>
+      
+      <p class="card-price w-100">$ {{price}}</p>
+      <a href="/post/{{post_id}}" class="anchor-buttons btn btn-success w-100">Contact Seller</a>
 
-        <p class="card-title w-100">{{title}}</p>
-        <p clas="card-text w-100">{{post_description}}</p>
-       
-        <p class="card-price w-100">$ {{price}}</p>
-
-       
-        
-        <a href="/message" class="anchor-buttons btn btn-success w-100">Contact Seller</a>
-
-    </div>
+  </div>
 </div>

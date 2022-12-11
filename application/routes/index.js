@@ -20,7 +20,7 @@ var router = express.Router();
 
 var db = require('../database/database');
 
-const {getRecentPosts}  = require('../middleware/postsMiddleware');
+const {getRecentPosts, getTargetPostById}  = require('../middleware/postsMiddleware');
 
 /*
 The app.get() method specifies a callback function that will be invoked whenever there is an HTTP GET request with a path ('/') relative to the site root
@@ -109,7 +109,9 @@ router.get('/forgot-password', function(req, res, next) {
 
 });
 
-
+router.get('/post/:id(\\d+)', getTargetPostById, (req, res, next) => {
+  res.render('message')
+})
 
   /*
 To make objects available outside of a module
