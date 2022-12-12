@@ -109,9 +109,6 @@ router.get('/forgot-password', function(req, res, next) {
 
 });
 
-router.get('/post/:id(\\d+)', getTargetPostById, (req, res, next) => {
-  res.render('message')
-})
 
   /*
 To make objects available outside of a module

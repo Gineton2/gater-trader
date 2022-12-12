@@ -18,7 +18,7 @@ const checkUsername = (username) => {
 
 const checkEmail = (email) => {
     let emailChecker =
-       /^([a-z0-9]+@[mail]+\.sfsu\.edu|([a-z0-9]+@[sfsu]+\.edu))/;
+       /^([A-Za-z0-9]+@[mail]+\.sfsu\.edu|([A-Za-z0-9]+@[sfsu]+\.edu))/;
       console.log(emailChecker.test(email.value));
     return emailChecker.test(email);
 }

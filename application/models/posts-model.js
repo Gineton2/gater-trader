@@ -72,4 +72,13 @@ PostModel.getPostById = (postId) => {
         .catch(err => Promise.reject(err));
 }
 
+PostModel.sendMessage = (post_id, author_id, receiver_id, message_text) =>{
+    let baseSQL = 'INSERT INTO messages (post_id, author_id, receiver_id, message_text, creation_time) VALUE (?,?,?,?,now());';
+    return db.execute(baseSQL,[post_id, author_id, receiver_id, message_text])
+        .then(([results,fields])=>{
+            return Promise.resolve(results && results.affectedRows);
+        })
+        .catch((err) => Promise.reject(err));
+}
+
 module.exports = PostModel;

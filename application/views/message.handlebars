@@ -1,16 +1,3 @@
-<!--- 
-    Filename: message.handlebars
-
-    Purpose: Message Author Form 
-
-    Author: Rai'd Muhammad, Team: 07
-
-    Course: CSC648 SFSU
---->
-
-
-{{!-- This page is the message page. Must be implemented when user is logged in --}}
-
 
 
 
@@ -71,53 +58,12 @@
     <div class="row justify-content-center w-75 mx-auto">
         <!--Grid column-->
         <div class="col-md-12 mb-md-2 mb-3">
-            <form id="contact-form" name="contact-form">
+            <form id="contact-form" name="contact-form" method="POST"  action="./send">
 
                 <!--Grid row-->
                 <div class="row">
 
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0 text-center text-white ">
-                            <label for="name" class="">
-                                <h4>Your name</h4>
-                            </label>
-                            <input type="text" id="name" name="name" class="form-control">
-
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-3 text-center text-white">
-                            <label for="email" class="">
-                                <h4>Your email</h4>
-                            </label>
-                            <input type="text" id="email" name="email" class="form-control">
-
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
-                </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="md-form mb-3 text-center text-white">
-                            <label for="subject" class="">
-                                <h4>Subject</h4>
-                            </label>
-                            <input type="text" id="subject" name="subject" class="form-control">
-
-                        </div>
-                    </div>
-                </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
+                    
                 <div class="row">
 
                     <!--Grid column-->
@@ -136,16 +82,167 @@
                 </div>
                 <!--Grid row-->
 
-            </form>
+            <input id="author_id" name="author_id" type="number" hidden value="">
+            <input id="post_id" name="post_id" type="number" value="{{currentPost.post_id}}" hidden>
             <br>
-            <div class="text-center text-md-left">
-                <a class="btn btn-success btn-lg " onclick="document.getElementById('contact-form').submit();">Send</a>
+            <br>
+            <div class="text-center text-md-left m-2">
+                <button id="send-button" class="btn btn-success btn-lg" type="submit">Send</a>
             </div>
+            </form>
             <div class="status"></div>
         </div>
 
     </div>
 </section>
+
+<div class="modal fade" id="ModalToggle" aria-hidden="true" aria-labelledby="ModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h3 class="modal-title" id="ModalToggleLabel">You’re almost done!</h3>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+        <h6 class="modal-header">Please Register to send the message</h6>
+      <div class="modal-body">
+        <h2 class="text-uppercase text-center mb-5 bg-dark text-white bold">SIGN UP</h2>
+
+              <form id="registerSend" class="needs-validation" method="POST" action="/users/registerSend">
+                <fieldset>
+                  <div class="form-outline mb-4 form-group">
+                    <div class="fields-one text-center bold">
+                      <label class="form-label " for="username">Your Name</label>
+                    </div>
+                    <input type="text" id="username" name="username"
+                      class="form-control form-control-lg border border-dark" placeholder="Enter Full Name"
+                      minlength="2" pattern="^\D\w{2,}" required />
+                  </div>
+
+
+                  <div class="form-outline mb-4 form-group">
+                    <div class="fields-two text-center bold">
+                      <label class="form-label" for="email">Your Email</label>
+                    </div>
+                    <input type="email" id="email" name="email" class="form-control form-control-lg border border-dark"
+                      placeholder="Enter Your SFSU Email" 
+                      required />
+
+                  </div>
+
+                  <div class="form-outline mb-4 form-group" id="div-input-password">
+                    <div class="fields-three text-center bold">
+                      <label class="form-label" for="password">Password</label>
+                    </div>
+                    <input type="password" id="password" name="password"
+                      class="form-control form-control-lg border border-dark" placeholder="Enter Your Password"
+                      minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required />
+
+                  </div>
+
+                  <div class="form-outline mb-4 form-group">
+                    <div class="fields-four text-center bold">
+                      <label class="form-label" for="matchPassword">Repeat your password</label>
+                    </div>
+                    <input type="password" id="matchPassword" name="matchPassword"
+                      class="form-control form-control-lg border border-dark" placeholder="Re Enter Your Password"
+                      minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required />
+
+                  </div>
+
+                </fieldset>
+
+                <div class="form-check d-flex justify-content-center mb-5 bold">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" required />
+                  <label class="form-check-label" for="form2Example3g">
+                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                  </label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button id="regSendButton" type="submit" class="btn btn-success btn-block text-center btn-lg ">Sign
+                    Up!</button>
+                </div>
+                <input id="post_idReg" name="post_idReg" type="number" value="{{currentPost.post_id}}" hidden>
+                <input id="messageReg" name="messageReg" type="text" value="" hidden>
+                </form>
+      </div>
+      <div class="modal-footer">
+        <p>Already Registered?</p>
+        <a class="btn btn-primary" data-bs-target="#ModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Log in</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="ModalToggle2" aria-hidden="true" aria-labelledby="ModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h3 class="modal-title" id="ModalToggleLabel">You’re almost done!   </h3>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+        <h6 class="modal-header">Please Login to send the message</h6>
+      <div class="modal-body">
+       <h3 class=" text-center mb-3 text-white bold">Login Page</h3>
+
+            <form id="loginSend" class="bg-green rounded-5 shadow-5-strong p-5 " enctype="application/x-www-form-urlencoded"
+              method="POST" action="/users/loginSend">
+
+              <h2 class="text-uppercase text-center mb-5 bg-dark text-white">LOGIN</h2>
+              <!-- Email input -->
+              <div class="form-outline mb-4 text-center bold text-white">
+                <label class="form-label" for="email">Email address</label>
+                <input name="loginEmail" type="email" id="loginEmail" class="form-control border border-dark"
+                  placeholder="Enter Your SFSU Email" minlength="6"
+                name="loginEmail" autocomplete="on"/>
+
+              </div>
+
+              <!-- Password input -->
+
+              <div class="form-outline mb-2 text-center bold text-white">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" name="loginPassword" id="form12" class="form-control border border-dark"
+                  placeholder="Enter Your Password" autocomplete="on"/>
+
+              </div>
+
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row mb-2">
+                <div class="col d-flex justify-content-center">
+                  <!-- Checkbox -->
+                  <div class="form-check">
+                  
+                  </div>
+                </div>
+
+                <div class="col text-center ">
+                  <!-- Simple link -->
+                  <a href="/forgot-password" class="text-decoration-none text-warning">Forgot password?</a>
+                </div>
+              </div>
+              <!-- Reset button -->
+              <button type="reset" class="btn btn-light btn-block text-center btn-lg ">Reset</button>
+              <!-- Submit button -->
+              <input id="post_idLog" name="post_idLog" type="number" value="{{currentPost.post_id}}" hidden>
+              <input id="messageLog" name="messageLog" type="text" value="" hidden>
+
+              <button id="logSendButton" type="submit" class="btn btn-success btn-block text-center btn-lg ">Log in</button>
+                
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#ModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to Register</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- <button class="btn btn-primary" data-bs-toggle="modal" href="#ModalToggle">Open first modal</button> --}}
 
 {{!-- Footer --}}
 {{!-- <footer class="pb-3 text-white">
