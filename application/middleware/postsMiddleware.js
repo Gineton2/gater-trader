@@ -17,7 +17,7 @@ var db = require("../database/database");
 
 // var bodyParser = require("body-parser");
 
-const { search, getALLRecentPosts, getPostById, getUserPostById } = require("../models/posts-model");
+const { search, getALLRecentPosts, getPostById, getUserPostById, sortByPrice } = require("../models/posts-model");
 
 const doTheSearch = async function (req, res, next) {
 
@@ -168,7 +168,7 @@ const getTargetPostById = async function(req, res, next) {
 
 const getUserPosts = async function(req, res, next) {
   try {
-    let userId = res.locals.userId;
+    const userId = res.locals.userId;
     // console.log(res.locals);
     let results = await getUserPostById(userId);
     if (results && results.length) {
@@ -183,4 +183,22 @@ const getUserPosts = async function(req, res, next) {
     next(err);
   }
 }
-module.exports = { doTheSearch, getRecentPosts, getTargetPostById, getUserPosts };
+
+const sortUserPostsByPrice = async function(req, res, next) {
+  try {
+    const userId = res.locals.userId;
+    let results = await sortByPrice(userId);
+    if (results && results.length) {
+      res.locals.userPost = results;
+      next();
+    }
+    else {
+      req.flash('error', 'There is not an user you are looking for.');
+      res.redirect('/dashboard');
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { doTheSearch, getRecentPosts, getTargetPostById, getUserPosts, sortUserPostsByPrice };
