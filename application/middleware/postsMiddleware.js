@@ -17,7 +17,7 @@ var db = require("../database/database");
 
 // var bodyParser = require("body-parser");
 
-const { search, getALLRecentPosts, getPostById } = require("../models/posts-model");
+const { search, getALLRecentPosts, getPostById, getUserPostById } = require("../models/posts-model");
 
 const doTheSearch = async function (req, res, next) {
 
@@ -152,6 +152,7 @@ const getRecentPosts = async function(req,res,next) {
 const getTargetPostById = async function(req, res, next) {
   try {
     let postId = req.params.id;
+    console.log(req.locals);
     let results = await getPostById(postId);
     if (results && results.length) {
       res.locals.currentPost = results[0];
@@ -166,4 +167,21 @@ const getTargetPostById = async function(req, res, next) {
   }
 }
 
-module.exports = { doTheSearch, getRecentPosts, getTargetPostById };
+const getUserPosts = async function(req, res, next) {
+  try {
+    let userId = res.locals.userId;
+    // console.log(res.locals);
+    let results = await getUserPostById(userId);
+    if (results && results.length) {
+      res.locals.userPost = results;
+      next();
+    }
+    else {
+      req.flash('error', 'There is not an user you are looking for.');
+      res.redirect('/dashboard');
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+module.exports = { doTheSearch, getRecentPosts, getTargetPostById, getUserPosts };

@@ -109,6 +109,7 @@ router.post('/login', (req, res, next) => {
 
                 res.locals.logged = true;
                 res.locals.username = userInfo.username;
+                res.locals.userId = userInfo.userId;
                 
                 console.log(res.locals);
                 req.flash('success', 'Hi, You have successfully logged in');

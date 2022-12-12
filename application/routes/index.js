@@ -20,7 +20,7 @@ var router = express.Router();
 
 var db = require('../database/database');
 
-const {getRecentPosts, getTargetPostById}  = require('../middleware/postsMiddleware');
+const {getRecentPosts, getTargetPostById, getUserPosts}  = require('../middleware/postsMiddleware');
 
 /*
 The app.get() method specifies a callback function that will be invoked whenever there is an HTTP GET request with a path ('/') relative to the site root
@@ -99,7 +99,7 @@ router.get('/make-post', function(req, res, next) {
 
 });
 
-router.get('/dashboard', function(req, res, next) {
+router.get('/dashboard', getUserPosts, function(req, res, next) {
   res.render('dashboard');
 
 });

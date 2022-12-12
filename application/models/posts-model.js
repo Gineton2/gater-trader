@@ -72,4 +72,19 @@ PostModel.getPostById = (postId) => {
         .catch(err => Promise.reject(err));
 }
 
+PostModel.getUserPostById = (userId) => {
+    let baseSQL = 
+        `SELECT u.user_id, u.username, p.post_id, p.title, p.price, p.post_description, p.post_creation_time
+        FROM users u
+        JOIN posts p
+        ON u.user_id=p.author_id
+        WHERE u.user_id=?;`
+    return db.execute(baseSQL, [userId])
+        .then(([results, fields]) => {
+            console.log(results[0]);
+            return Promise.resolve(results[0]);
+        })
+        .catch(err => Promise.reject(err));
+}
+
 module.exports = PostModel;
