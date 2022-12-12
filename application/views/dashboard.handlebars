@@ -54,7 +54,24 @@
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                     data-bs-parent="#accordionFlush">
-                    <div class="accordion-body text-center">You have created <a href="#"> 3 Posts</a></div>
+                    {{!-- <div class="accordion-body text-center">You have created <a href="#"> 3 Posts</a></div> --}}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">title</th>
+                                <th scope="col">price</th>
+                                <th scope="col">date</th>
+                                <th scope="col">description</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <tbody>
+                        {{#each userPost}}
+                            {{> post-list this}}
+                        {{/each}}
+                    </tbody>
+                        
                 </div>
             </div>
             <div class="accordion-item">
