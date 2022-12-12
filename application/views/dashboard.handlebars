@@ -3,17 +3,17 @@
 
     Purpose: User Dashboard
 
-    Author:Rai'd Muhammad, Gineton Alencar Team: 07
+    Author:Rai'd Muhammad, Gineton Alencar, Yoshimasa Iwano Team: 07
 
     Course: CSC648 SFSU 
 --->
 
 
-<div class="container py-5">
+<div class="container">
 
-    <div class="row h-100 align-items-center py-1 m-2">
-        <h2>
-            <p class="text-center text-white ">User Dashboard</p>
+    <div class="row align-items-center py-1 m-2">
+        <h2 class="text-center text-white m-auto">
+            User Dashboard
         </h2>
         <div class="btn-toolbar justify-content-center " role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group mr-2 m-3" role="group" aria-label="Button group">
@@ -22,20 +22,17 @@
                 <button type="button" class="btn btn-secondary btn-lg btn-block me-4">Account</button>
             </div>
 
-
         </div>
         {{!-- Hardcoded Name for Idea of Dashboard Style --}}
-        <div class="col-lg-3 ">
-            <h2 class="text-white px-5">
-                <p>Hi, Jonah</p>
-            </h2>
-            <img src="/public/images/icons/user.jpeg" alt="profile" class="mx-3">
-            <div>
-
+        <div class="col-lg-3 m-auto">
+            <h3 class="text-white text-wrap m-auto my-3">
+                Hi, {{username}}
+            </h3>
+            <div class="w-100 h-100">
+                <img src="/public/images/icons/user.jpeg" alt="profile" class="mx-auto img-fluid">
             </div>
-
         </div>
-        <div class="accordion accordion-flush col-9 px-5" id="accordionFlush">
+        <div class="accordion accordion-flush col-lg-9 m-auto py-3 " id="accordionFlush">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
                     <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse"
