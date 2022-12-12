@@ -42,7 +42,31 @@
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                     data-bs-parent="#accordionFlush">
-                    <div class="accordion-body text-center">You have 1 unread <a href="#">message.</a></div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">From</th>
+                                <th scope="col">To</th>
+                                <th scope="col">
+                                    <button type="button" class="btn dropdown-toggle select border-0 " id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Date
+                                    </button>
+                                    <ul class="dropdown-menu scrollable-dropdown" id="dropdown-menu" role="menu">
+                                        <li><a class="dropdown-item" href="/sort-by-date-asc">ASC</a></li>
+                                        <li><a class="dropdown-item" href="/sort-by-date-desc">DESC</a></li>
+                                    </ul>
+                                </th>
+                                <th scope="col">Content</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each userMessage}}
+                                {{> message-list this}}
+                            {{/each}}
+                        </tbody>
+                    </table> 
                 </div>
             </div>
             <div class="accordion-item">
