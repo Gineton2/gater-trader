@@ -85,31 +85,19 @@ Course: CSC648 SFSU
 
         <li class="nav-item active m-auto px-2 my-1">
 
-          {{#if logged}} <a class="nav-link rounded-3 bg-dark px-4 d-none " href="/signup">Register</a>  {{else}} <a
+          {{#if logged}} <a class="nav-link rounded-3 bg-dark px-4" href="/dashboard">Dashboard</a>  {{else}} <a
             class="nav-link rounded-3 bg-dark px-4 " href="/signup">Register</a>{{/if}}
         </li>
-
-
-
-
-
-
-
-
-
-
-
-
 
       </ul>
 
 
-      {{#if logged}}
-      <li class="nav-item active m-auto px-3 my-3 pt-2"> <span id="logged" class="logged"> Hi, {{username}} !</span>
+      {{!-- {{#if logged}}
+      <li class="nav-item active m-auto px-3 my-3 pt-2">
+        <a class="nav-link rounded-3 bg-dark px-4 " href="/dashboard">dashboard</a>
+        <span id="logged" class="logged"> Hi, {{username}} !</span>
       </li>
-      {{/if}}
-
-
+      {{/if}} --}}
 
     </div>
 
