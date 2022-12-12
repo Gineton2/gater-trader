@@ -26,8 +26,7 @@ MessageModel.getUserMessageById = (userId) => {
         JOIN users r
         ON r.user_id=m.receiver_id
         WHERE u.user_id=?
-        ORDER BY date DESC
-        LIMIT 5;`
+        ORDER BY date DESC;`
     return db.execute(baseSQL, [userId])
         .then(([results, fields]) => {
             console.log(results);

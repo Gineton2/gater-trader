@@ -81,7 +81,7 @@ PostModel.getUserPostById = (userId) => {
         WHERE u.user_id=? AND p.active=1;`
     return db.execute(baseSQL, [userId])
         .then(([results, fields]) => {
-            console.log(results);
+            // console.log(results);
             return Promise.resolve(results);
         })
         .catch(err => Promise.reject(err));
@@ -97,7 +97,7 @@ PostModel.sortByPriceASC = (userId) => {
         ORDER BY p.price ASC;`
     return db.execute(baseSQL, [userId])
         .then(([results, fields]) => {
-            console.log(results);
+            // console.log(results);
             return Promise.resolve(results);
         })
         .catch(err => Promise.reject(err));
@@ -113,7 +113,7 @@ PostModel.sortByPriceDESC = (userId) => {
         ORDER BY p.price DESC;`
     return db.execute(baseSQL, [userId])
         .then(([results, fields]) => {
-            console.log(results);
+            // console.log(results);
             return Promise.resolve(results);
         })
         .catch(err => Promise.reject(err));
@@ -129,7 +129,7 @@ PostModel.sortByDateASC = (userId) => {
         ORDER BY date ASC;`
     return db.execute(baseSQL, [userId])
         .then(([results, fields]) => {
-            console.log(results);
+            // console.log(results);
             return Promise.resolve(results);
         })
         .catch(err => Promise.reject(err));
@@ -145,7 +145,7 @@ PostModel.sortByDateDESC = (userId) => {
         ORDER BY date DESC;`
     return db.execute(baseSQL, [userId])
         .then(([results, fields]) => {
-            console.log(results);
+            // console.log(results);
             return Promise.resolve(results);
         })
         .catch(err => Promise.reject(err));

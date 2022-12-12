@@ -238,6 +238,10 @@ h1 {
   height: 30px;
 }
 
+.mh-300 {
+  max-height: 300px;
+}
+
 .navbar-container {
   display: flex;
 }
