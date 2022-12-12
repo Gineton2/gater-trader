@@ -9,10 +9,10 @@
 
  */ --}}
 
- <tr>
-    <th scope="col">{{userPost.postId}}</th>
-    <th scope="col">{{userPost.title}}</th>
-    <th scope="col">{{userPost.price}}</th>
-    <th scope="col">{{userPost.post_creation_time}}</th>
-    <th scope="col">{{userPost.post_description}}</th>
- </tr>
+<tr>
+    <th scope="col">{{post_id}}</th>
+    <th scope="col"><a href="/post/{{post_id}}">{{title}}</a></th>
+    <th scope="col">$ {{price}}</th>
+    <th scope="col">{{date}}</th>
+    <th scope="col">{{post_description}}</th>
+</tr>

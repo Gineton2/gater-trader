@@ -54,6 +54,7 @@
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                     data-bs-parent="#accordionFlush">
+                    
                     {{!-- <div class="accordion-body text-center">You have created <a href="#"> 3 Posts</a></div> --}}
                     <table class="table">
                         <thead>
@@ -65,13 +66,14 @@
                                 <th scope="col">description</th>
                             </tr>
                         </thead>
-                    </table>
-                    <tbody>
-                        {{#each userPost}}
-                            {{> post-list this}}
-                        {{/each}}
-                    </tbody>
-                        
+                        <tbody>
+                            {{#each userPost}}
+                                {{#if approved}}
+                                    {{> post-list this}}
+                                {{/if}}
+                            {{/each}}
+                        </tbody>
+                    </table>    
                 </div>
             </div>
             <div class="accordion-item">
@@ -83,7 +85,25 @@
                 </h2>
                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
                     data-bs-parent="#accordionFlush">
-                    <div class="accordion-body text-center">You have <a href="#">2 Pending Posts</a></div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">title</th>
+                                <th scope="col">price</th>
+                                <th scope="col">date</th>
+                                <th scope="col">description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each userPost}}
+                                {{#if approved}}
+                                {{else}}
+                                    {{> post-list this}}
+                                {{/if}}
+                            {{/each}}
+                        </tbody>
+                    </table>    
                 </div>
             </div>
         </div>

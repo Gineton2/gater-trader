@@ -152,7 +152,6 @@ const getRecentPosts = async function(req,res,next) {
 const getTargetPostById = async function(req, res, next) {
   try {
     let postId = req.params.id;
-    console.log(req.locals);
     let results = await getPostById(postId);
     if (results && results.length) {
       res.locals.currentPost = results[0];
