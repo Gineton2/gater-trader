@@ -17,7 +17,7 @@ var db = require("../database/database");
 
 // var bodyParser = require("body-parser");
 
-const { search, getALLRecentPosts, getPostById, getUserPostById, sortByPriceASC, sortByPriceDESC } = require("../models/posts-model");
+const { search, getALLRecentPosts, getPostById, getUserPostById, sortByPriceASC, sortByPriceDESC, sortByDateASC, sortByDateDESC } = require("../models/posts-model");
 
 const doTheSearch = async function (req, res, next) {
 
@@ -218,4 +218,38 @@ const sortUserPostsByPriceDESC = async function(req, res, next) {
   }
 }
 
-module.exports = { doTheSearch, getRecentPosts, getTargetPostById, getUserPosts, sortUserPostsByPriceASC, sortUserPostsByPriceDESC };
+const sortUserPostsByDateASC = async function(req, res, next) {
+  try {
+    const userId = res.locals.userId;
+    let results = await sortByDateASC(userId);
+    if (results && results.length) {
+      res.locals.userPost = results;
+      next();
+    }
+    else {
+      req.flash('error', 'There is not an user you are looking for.');
+      res.redirect('/dashboard');
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+const sortUserPostsByDateDESC = async function(req, res, next) {
+  try {
+    const userId = res.locals.userId;
+    let results = await sortByDateDESC(userId);
+    if (results && results.length) {
+      res.locals.userPost = results;
+      next();
+    }
+    else {
+      req.flash('error', 'There is not an user you are looking for.');
+      res.redirect('/dashboard');
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { doTheSearch, getRecentPosts, getTargetPostById, getUserPosts, sortUserPostsByPriceASC, sortUserPostsByPriceDESC, sortUserPostsByDateASC, sortUserPostsByDateDESC };

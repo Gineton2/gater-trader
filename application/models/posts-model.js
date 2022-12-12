@@ -119,4 +119,36 @@ PostModel.sortByPriceDESC = (userId) => {
         .catch(err => Promise.reject(err));
 }
 
+PostModel.sortByDateASC = (userId) => {
+    let baseSQL = 
+        `SELECT u.user_id, u.username, p.post_id, p.title, p.price, p.post_description, p.approved, p.active, date_format(p.post_creation_time, '%M-%D-%Y %T') as date
+        FROM users u
+        JOIN posts p
+        ON u.user_id=p.author_id
+        WHERE u.user_id=? AND p.active=1
+        ORDER BY date ASC;`
+    return db.execute(baseSQL, [userId])
+        .then(([results, fields]) => {
+            console.log(results);
+            return Promise.resolve(results);
+        })
+        .catch(err => Promise.reject(err));
+}
+
+PostModel.sortByDateDESC = (userId) => {
+    let baseSQL = 
+        `SELECT u.user_id, u.username, p.post_id, p.title, p.price, p.post_description, p.approved, p.active, date_format(p.post_creation_time, '%M-%D-%Y %T') as date
+        FROM users u
+        JOIN posts p
+        ON u.user_id=p.author_id
+        WHERE u.user_id=? AND p.active=1
+        ORDER BY date DESC;`
+    return db.execute(baseSQL, [userId])
+        .then(([results, fields]) => {
+            console.log(results);
+            return Promise.resolve(results);
+        })
+        .catch(err => Promise.reject(err));
+}
+
 module.exports = PostModel;
