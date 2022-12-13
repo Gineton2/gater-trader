@@ -17,36 +17,130 @@ let matchPassword = document.getElementById("password");
 const warningText = document.getElementById("warning");
 let email = document.getElementById("email");
 let login = document.getElementById("login");
+let sendButton = document.getElementById("send-button");
+let regSendButton = document.getElementById('regSendButton');
+let logSendButton = document.getElementById('logSendButton');
+
+if(logSendButton){
+  logSendButton.addEventListener('click', (event)=>{
+    event.preventDefault();
+    let messageLog = document.getElementById('messageLog');
+    let message = document.getElementById('message');
+    messageLog.value = message.value;
+    console.log("messageLog.value : "+ messageLog.value );
+    let formLog = document.getElementById('loginSend');
+    formLog.submit();
+  })
+}
+
+if(regSendButton){
+  regSendButton.addEventListener('click', (event)=>{
+    event.preventDefault();
+    let messageReg = document.getElementById('messageReg');
+    let message = document.getElementById('message');
+    messageReg.value = message.value;
+    let formReg = document.getElementById('registerSend');
+    formReg.submit();
+  })
+}
+
+if(sendButton){
+  
+  sendButton.addEventListener('click', (event)=>{
+    event.preventDefault();
+    fetch("./logged", {
+      method: "POST",
+    }).then((data) => {
+      return data.json();
+  })
+  .then((data_json) => {
+
+      console.log(data_json.logged)
+      if(data_json.logged===false){
+          var myModal = new bootstrap.Modal(document.getElementById('ModalToggle'));
+          myModal.toggle();
+      }else{
+        let form = document.getElementById('contact-form');
+        let user_id = data_json.author_id;
+        let author_id = document.getElementById('author_id');
+        author_id.value = user_id;
+        console.log("SESSION ID: "+user_id);
+        form.submit();
+
+      }
+      
+  })
+  .catch((err) => console.log(err));
+
+  
+    
+    
+    
+    // .then((data) => {
+    //   console.log("send");
+    //   console.log(data.logged);
+      
+      // data.locals.logged = false;
+      // if(data.locals.logged===false){
+      //   event.preventDefault();
+      //   new bootstrap.Modal(document.getElementById('ModalToggle'));
+      // }
+      
+    // })
+  
+  })
+}
 
 if (email) {
-  email.addEventListener("click", function () {
+  email.addEventListener("click", (event) => {
     let emailChecker =
       /^([a-z0-9]+@[mail]+\.sfsu\.edu|([a-z0-9]+@[sfsu]+\.edu))/;
       console.log(emailChecker.test(email.value));
-    return emailChecker.test(email);
+      if (!emailChecker.test(email.value)) {
+        preventDefault();
+        displayWarning();
+    
+    
+        if (document.getElementById("text-alert-email") == null) {
+          let divMessageEmail = document.createElement("div");
+          let divMessageEmailText = document.createTextNode("Email is not valid");
+          divMessageEmail.appendChild(divMessageEmailText);
+          divMessageEmail.setAttribute("id", "text-alert-email");
+          divMessageEmail.className = "text-danger text-center";
+          document.getElementById("div-input-email").appendChild(divMessageEmail);
+        } else {
+          document.getElementById("text-alert-email").textContent =
+            "Email is not valid";
+        }
+      } else {
+        if (document.getElementById("text-alert-email") != null) {
+          document.getElementById("text-alert-email").textContent = "";
+        }
+      }
   });
+  
 
-  if (!emailChecker.test(email.value)) {
-    preventDefault();
-    displayWarning();
+  // if (!emailChecker.test(email.value)) {
+  //   preventDefault();
+  //   displayWarning();
 
 
-    if (document.getElementById("text-alert-email") == null) {
-      let divMessageEmail = document.createElement("div");
-      let divMessageEmailText = document.createTextNode("Email is not valid");
-      divMessageEmail.appendChild(divMessageEmailText);
-      divMessageEmail.setAttribute("id", "text-alert-email");
-      divMessageEmail.className = "text-danger text-center";
-      document.getElementById("div-input-email").appendChild(divMessageEmail);
-    } else {
-      document.getElementById("text-alert-email").textContent =
-        "Email is not valid";
-    }
-  } else {
-    if (document.getElementById("text-alert-email") != null) {
-      document.getElementById("text-alert-email").textContent = "";
-    }
-  }
+  //   if (document.getElementById("text-alert-email") == null) {
+  //     let divMessageEmail = document.createElement("div");
+  //     let divMessageEmailText = document.createTextNode("Email is not valid");
+  //     divMessageEmail.appendChild(divMessageEmailText);
+  //     divMessageEmail.setAttribute("id", "text-alert-email");
+  //     divMessageEmail.className = "text-danger text-center";
+  //     document.getElementById("div-input-email").appendChild(divMessageEmail);
+  //   } else {
+  //     document.getElementById("text-alert-email").textContent =
+  //       "Email is not valid";
+  //   }
+  // } else {
+  //   if (document.getElementById("text-alert-email") != null) {
+  //     document.getElementById("text-alert-email").textContent = "";
+  //   }
+  // }
 }
 
 let logout = document.getElementById("logout");
@@ -218,30 +312,3 @@ function examplePlaceholder() {
     searchText.placeholder = " e.g. csc648";
   }
 }
-
-// document.addEventListener("DOMContentLoaded", function() {
-//   var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
-
-//   if ("IntersectionObserver" in window) {
-//     var lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
-//       entries.forEach(function(video) {
-//         if (video.isIntersecting) {
-//           for (var source in video.target.children) {
-//             var videoSource = video.target.children[source];
-//             if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
-//               videoSource.src = videoSource.dataset.src;
-//             }
-//           }
-
-//           video.target.load();
-//           video.target.classList.remove("lazy");
-//           lazyVideoObserver.unobserve(video.target);
-//         }
-//       });
-//     });
-
-//     lazyVideos.forEach(function(lazyVideo) {
-//       lazyVideoObserver.observe(lazyVideo);
-//     });
-//   }
-// });

@@ -14,10 +14,11 @@
 const postsMiddleware = {};
 
 var db = require("../database/database");
+const PostError = require("../helpers/error/PostError");
 
 // var bodyParser = require("body-parser");
 
-const { search, getALLRecentPosts, getPostById, getUserPostById, sortByPriceASC, sortByPriceDESC, sortByDateASC, sortByDateDESC } = require("../models/posts-model");
+const { search, getALLRecentPosts, getPostById, sendMessage, getUserPostById, sortByPriceASC, sortByPriceDESC, sortByDateASC, sortByDateDESC } = require("../models/posts-model");
 
 const doTheSearch = async function (req, res, next) {
 
@@ -25,7 +26,7 @@ const doTheSearch = async function (req, res, next) {
     let searchTerm = req.body.searchText;
     let categorySearch = req.body.selectedCat;
 
-    let inputChecker = /^[_A-z0-9]{1,}$/;
+    let inputChecker = /^[_A-z0-9]{1,40}$/;
     if(!inputChecker.test(searchTerm)){
       searchTerm = "";
     }
@@ -132,6 +133,36 @@ const doTheSearch = async function (req, res, next) {
     next(err);
   }
 };
+
+const findReceiver = async function(req, res, next) {
+  try {
+
+    let post_id = req.body.post_id;
+    let author_id = req.body.author_id;
+    console.log("AUTHOR MESSAGE: "+author_id);
+    let message_text = req.body.message;
+    console.log("POST ID: "+post_id);
+    let [results, fields] = await db.query(
+      'SELECT u.user_id FROM users u JOIN posts p ON p.author_id = u.user_id WHERE p.post_id = ? ',[post_id]
+    );
+    console.log("RESULTS: "+results);
+    let receiver_id = results[0].user_id;
+    console.log("RECEIVER ID: "+receiver_id);
+    console.log("AUTHOR MESSAGE: "+author_id);
+
+    let success = await sendMessage(post_id, author_id, receiver_id, message_text);
+    if(success==-1){
+      throw new PostError;
+    }else{
+      req.flash("success", "Your message was sent successfully!");
+    }
+
+    next();
+
+  } catch (err) {
+    next(err);
+  }
+}
 
 const getRecentPosts = async function(req,res,next) {
 
@@ -252,4 +283,4 @@ const sortUserPostsByDateDESC = async function(req, res, next) {
   }
 }
 
-module.exports = { doTheSearch, getRecentPosts, getTargetPostById, getUserPosts, sortUserPostsByPriceASC, sortUserPostsByPriceDESC, sortUserPostsByDateASC, sortUserPostsByDateDESC };
+module.exports = { doTheSearch, getRecentPosts, getTargetPostById, findReceiver, getUserPosts, sortUserPostsByPriceASC, sortUserPostsByPriceDESC, sortUserPostsByDateASC, sortUserPostsByDateDESC };

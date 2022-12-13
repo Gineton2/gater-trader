@@ -22,6 +22,7 @@ UserModel.create = (username, password, email) => {
     })
         .then(([results,fields])=> {
             if(results && results.affectedRows){
+                console.log("INSERTID: "+results.insertId)
                 return Promise.resolve(results.insertId);
             }else{
                 return Promise.resolve(-1);
@@ -82,6 +83,25 @@ UserModel.authenticate = (email, password) =>{
         .catch((err)=> {
             console.log("failed no results from db");
             return Promise.resolve(-1)});
+}
+
+UserModel.sendMessage = (author_id, post_id, message_text) =>{
+    return db.execute("SELECT u.user_id FROM users u JOIN posts p ON p.author_id = u.user_id WHERE p.post_id = ?",[post_id])
+        
+            .then(([results,fields]) => {
+                console.log("RESULTS: "+results);
+                let receiver_id = results[0].user_id;
+                console.log("RECEIVER ID: "+receiver_id);
+                console.log("AUTHOR MESSAGE: "+author_id);
+
+                let baseSQL = 'INSERT INTO messages (post_id, author_id, receiver_id, message_text, creation_time) VALUE (?,?,?,?,now());';
+                return db.execute(baseSQL,[post_id, author_id, receiver_id, message_text])
+                    
+            }).then(([results,fields])=>{
+                console.log("RESULTS before resolve: "+results);
+                return Promise.resolve(results && results.affectedRows);
+        })
+        .catch((err) => Promise.reject(err));
 }
 
 module.exports = UserModel;

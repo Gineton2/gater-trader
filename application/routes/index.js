@@ -124,6 +124,7 @@ router.get('/sort-by-date-desc', sortUserPostsByDateDESC, getUserMessages,(req, 
   res.render('dashboard');
 })
 
+
   /*
 To make objects available outside of a module
 you just need to expose them as additional properties on the exports object.
