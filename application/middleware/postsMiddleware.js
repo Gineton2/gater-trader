@@ -208,7 +208,7 @@ const getUserPosts = async function(req, res, next) {
     }
     else {
       req.flash('error', 'There is not an user you are looking for.');
-      res.redirect('/dashboard');
+      res.redirect('/');
     }
   } catch (err) {
     next(err);
@@ -224,7 +224,7 @@ const sortUserPostsByPriceASC = async function(req, res, next) {
       next();
     }
     else {
-      req.flash('error', 'There is not an user you are looking for.');
+      req.flash('error', 'There are no posts yet.');
       res.redirect('/dashboard');
     }
   } catch (err) {
@@ -241,7 +241,7 @@ const sortUserPostsByPriceDESC = async function(req, res, next) {
       next();
     }
     else {
-      req.flash('error', 'There is not an user you are looking for.');
+      req.flash('error', 'There are no posts yet.');
       res.redirect('/dashboard');
     }
   } catch (err) {
@@ -258,7 +258,7 @@ const sortUserPostsByDateASC = async function(req, res, next) {
       next();
     }
     else {
-      req.flash('error', 'There is not an user you are looking for.');
+      req.flash('error', 'There are no posts yet.');
       res.redirect('/dashboard');
     }
   } catch (err) {
@@ -275,7 +275,7 @@ const sortUserPostsByDateDESC = async function(req, res, next) {
       next();
     }
     else {
-      req.flash('error', 'There is not an user you are looking for.');
+      req.flash('error', 'There are no posts yet.');
       res.redirect('/dashboard');
     }
   } catch (err) {

@@ -25,7 +25,7 @@ const getUserMessages = async function(req, res, next) {
       }
       else {
         req.flash('error', 'There is not an user you are looking for.');
-        res.redirect('/dashboard');
+        res.redirect('/');
       }
     } catch (err) {
       next(err);
