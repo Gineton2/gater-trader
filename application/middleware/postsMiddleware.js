@@ -18,7 +18,7 @@ const PostError = require("../helpers/error/PostError");
 
 // var bodyParser = require("body-parser");
 
-const { search, getALLRecentPosts, getPostById, sendMessage } = require("../models/posts-model");
+const { search, getALLRecentPosts, getPostById, sendMessage, getUserPostById, sortByPriceASC, sortByPriceDESC, sortByDateASC, sortByDateDESC } = require("../models/posts-model");
 
 const doTheSearch = async function (req, res, next) {
 
@@ -197,4 +197,90 @@ const getTargetPostById = async function(req, res, next) {
   }
 }
 
-module.exports = { doTheSearch, getRecentPosts, getTargetPostById, findReceiver };
+const getUserPosts = async function(req, res, next) {
+  try {
+    const userId = res.locals.userId;
+    // console.log(res.locals);
+    let results = await getUserPostById(userId);
+    if (results && results.length) {
+      res.locals.userPost = results;
+      next();
+    }
+    else {
+      req.flash('error', 'There is not an user you are looking for.');
+      res.redirect('/dashboard');
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+const sortUserPostsByPriceASC = async function(req, res, next) {
+  try {
+    const userId = res.locals.userId;
+    let results = await sortByPriceASC(userId);
+    if (results && results.length) {
+      res.locals.userPost = results;
+      next();
+    }
+    else {
+      req.flash('error', 'There is not an user you are looking for.');
+      res.redirect('/dashboard');
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+const sortUserPostsByPriceDESC = async function(req, res, next) {
+  try {
+    const userId = res.locals.userId;
+    let results = await sortByPriceDESC(userId);
+    if (results && results.length) {
+      res.locals.userPost = results;
+      next();
+    }
+    else {
+      req.flash('error', 'There is not an user you are looking for.');
+      res.redirect('/dashboard');
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+const sortUserPostsByDateASC = async function(req, res, next) {
+  try {
+    const userId = res.locals.userId;
+    let results = await sortByDateASC(userId);
+    if (results && results.length) {
+      res.locals.userPost = results;
+      next();
+    }
+    else {
+      req.flash('error', 'There is not an user you are looking for.');
+      res.redirect('/dashboard');
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+const sortUserPostsByDateDESC = async function(req, res, next) {
+  try {
+    const userId = res.locals.userId;
+    let results = await sortByDateDESC(userId);
+    if (results && results.length) {
+      res.locals.userPost = results;
+      next();
+    }
+    else {
+      req.flash('error', 'There is not an user you are looking for.');
+      res.redirect('/dashboard');
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { doTheSearch, getRecentPosts, getTargetPostById, findReceiver, getUserPosts, sortUserPostsByPriceASC, sortUserPostsByPriceDESC, sortUserPostsByDateASC, sortUserPostsByDateDESC };

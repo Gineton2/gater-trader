@@ -20,7 +20,8 @@ var router = express.Router();
 
 var db = require('../database/database');
 
-const {getRecentPosts, getTargetPostById}  = require('../middleware/postsMiddleware');
+const {getRecentPosts, getUserPosts, sortUserPostsByPriceASC, sortUserPostsByPriceDESC, sortUserPostsByDateASC, sortUserPostsByDateDESC}  = require('../middleware/postsMiddleware');
+const {getUserMessages} = require('../middleware/messagesMiddleware.js');
 
 /*
 The app.get() method specifies a callback function that will be invoked whenever there is an HTTP GET request with a path ('/') relative to the site root
@@ -39,8 +40,6 @@ router.get('/signup', function(req, res, next) {
 router.get('/login', function(req,res,next) {
   res.render('login');
 })
-
-
 
 router.get('/about-team', function(req, res, next) {
   res.render('about-team');
@@ -99,7 +98,7 @@ router.get('/make-post', function(req, res, next) {
 
 });
 
-router.get('/dashboard', function(req, res, next) {
+router.get('/dashboard', getUserPosts, getUserMessages, function(req, res, next) {
   res.render('dashboard');
 
 });
@@ -108,6 +107,22 @@ router.get('/forgot-password', function(req, res, next) {
   res.render('forgot-password');
 
 });
+
+router.get('/sort-by-price-asc', sortUserPostsByPriceASC, getUserMessages,(req, res, next) => {
+  res.render('dashboard');
+})
+
+router.get('/sort-by-price-desc', sortUserPostsByPriceDESC, getUserMessages, (req, res, next) => {
+  res.render('dashboard');
+})
+
+router.get('/sort-by-date-asc', sortUserPostsByDateASC, getUserMessages, (req, res, next) => {
+  res.render('dashboard');
+})
+
+router.get('/sort-by-date-desc', sortUserPostsByDateDESC, getUserMessages,(req, res, next) => {
+  res.render('dashboard');
+})
 
 
   /*

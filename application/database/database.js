@@ -25,16 +25,16 @@ const db = mysql.createPool({
     // password: "TEAM07team07",
 
     // local Duccio
-    host: 'localhost',
-    user : 'root',
-    database : 'copy_EC2_DB',
-    password : 'ABB10iote'
-
-    // // local Yoshi
     // host: 'localhost',
     // user : 'root',
     // database : 'copy_EC2_DB',
-    // password : 'passyoshi'
+    // password : 'ABB10iote'
+
+    // // local Yoshi
+    host: 'localhost',
+    user : 'root',
+    database : 'copy_EC2_DB',
+    password : 'passyoshi'
 
      // // local Rai'd M.
     // host: 'localhost',

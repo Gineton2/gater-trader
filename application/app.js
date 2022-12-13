@@ -92,6 +92,7 @@ app.use((req,res,next) => {
 
       res.locals.logged = true;
       res.locals.username = req.session.username;
+      res.locals.userId = req.session.userId;
 
   }
   next();
