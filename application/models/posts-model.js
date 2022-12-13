@@ -149,6 +149,7 @@ PostModel.sortByDateDESC = (userId) => {
             return Promise.resolve(results);
         })
         .catch(err => Promise.reject(err));
+}
 
 PostModel.sendMessage = (post_id, author_id, receiver_id, message_text) =>{
     let baseSQL = 'INSERT INTO messages (post_id, author_id, receiver_id, message_text, creation_time) VALUE (?,?,?,?,now());';
