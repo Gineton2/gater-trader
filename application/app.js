@@ -112,6 +112,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use("/", indexRouter); // route middleware from ./routes/index.js
 app.use("/users", usersRouter); // route middleware from ./routes/users.js
 app.use("/posts", postsRouter); // route middleware from ./routes/posts.js
+app.use("/posts/users", usersRouter); // route middleware from ./routes/posts.js
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 

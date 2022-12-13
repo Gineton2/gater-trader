@@ -20,7 +20,7 @@ var router = express.Router();
 
 var db = require('../database/database');
 
-const {getRecentPosts, getTargetPostById, getUserPosts, sortUserPostsByPriceASC, sortUserPostsByPriceDESC, sortUserPostsByDateASC, sortUserPostsByDateDESC}  = require('../middleware/postsMiddleware');
+const {getRecentPosts, getUserPosts, sortUserPostsByPriceASC, sortUserPostsByPriceDESC, sortUserPostsByDateASC, sortUserPostsByDateDESC}  = require('../middleware/postsMiddleware');
 const {getUserMessages} = require('../middleware/messagesMiddleware.js');
 
 /*
@@ -40,8 +40,6 @@ router.get('/signup', function(req, res, next) {
 router.get('/login', function(req,res,next) {
   res.render('login');
 })
-
-
 
 router.get('/about-team', function(req, res, next) {
   res.render('about-team');
@@ -109,10 +107,6 @@ router.get('/forgot-password', function(req, res, next) {
   res.render('forgot-password');
 
 });
-
-router.get('/post/:id(\\d+)', getTargetPostById, (req, res, next) => {
-  res.render('message')
-})
 
 router.get('/sort-by-price-asc', sortUserPostsByPriceASC, getUserMessages,(req, res, next) => {
   res.render('dashboard');

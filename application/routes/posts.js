@@ -29,7 +29,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const {requestPrint, errorPrint, successPrint} = require('../helpers/debugprinters');
 var PostError = require('../helpers/error/PostError');
 const {postValidation} = require('../middleware/validation');
-const {doTheSearch} = require('../middleware/postsMiddleware');
+const {doTheSearch, getTargetPostById} = require('../middleware/postsMiddleware');
 var PostModel = require("../models/posts-model");
 
 var storage = multer.diskStorage({
@@ -241,4 +241,8 @@ router.post('/createPost', uploader.single("upload"), postValidation, (req,res,n
 
 });
 
-     module.exports = router;
+router.get("/:id(\\d+)", getTargetPostById, (req, res, next) => {
+    res.render("message");
+});
+
+module.exports = router;
