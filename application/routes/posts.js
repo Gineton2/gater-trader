@@ -23,6 +23,9 @@ var crypto = require("crypto");
 var bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+const UserModel = require('../models/users-model');
+const UserError = require("../helpers/error/UserError");
+
 
 const {
   requestPrint,
@@ -101,14 +104,135 @@ router.post("/search", doTheSearch, function (req, res, next) {
   res.render("index");
 });
 
-router.post( "/createPost", uploader.single("upload"), postValidation, (req, res, next) => {
+router.post( "/createPost", uploader.single("upload"), postValidation,  async function (req, res, next) {
+
+  let fk_userId;
+  let username;
+  console.log("req.session.userId: "+req.session.userId);
+  console.log("req.body.usernameSend: "+req.body.usernameSend);
+
+  if(req.session.userId==null && req.body.usernameSend==''){
+    
+    let email = req.body.emailSend;
+    let password = req.body.passSend;
+    
+
+    console.log("inside createPost Login");
+    await UserModel.authenticate(email,password)
+          .then((userInfo) => {
+            if (userInfo != -1) {
+
+                successPrint(`User ${userInfo.username} is logged in`);
+                console.log("userInfo.userId: "+userInfo.userId);
+
+                req.session.username = userInfo.username;
+                req.session.userId = userInfo.userId;
+                
+                fk_userId = userInfo.userId;
+                username = userInfo.username;
+
+                req.session.save();
+                return;
+                
+            } else {
+                throw new UserError("Invalid Email or Password", '', 200);
+            }
+
+        })
+        .catch((err) => {
+            errorPrint("user login failed")
+            if (err instanceof UserError) {
+
+                req.flash('error', err.getMessage());
+                errorPrint(err.getMessage());
+                res.status(err.getStatus());
+                res.redirect('back');
+                
+
+            } else {
+                res.redirect('back');
+                
+            }
+
+        });
+
+
+  }else if(req.session.userId==null && !req.body.usernameSend==''){
+
+    username = req.body.usernameSend;
+    console.log("creating..."+username);
+    let email = req.body.emailSend;
+    let password = req.body.passSend;
+
+    await UserModel.usernameExists(username)
+    .then((usernameDoesExits) => {
+        if(usernameDoesExits){
+            throw new UserError(
+                "Registration failed: Username already exists",
+                "",
+                200
+            );
+        }else{
+            return UserModel.emailExists(email);
+        }
+    })
+    .then((emailDoesExists) => {
+        if(emailDoesExists){
+            throw new UserError(
+                "Registration failed: Email already exists",
+                "",
+                200
+            );
+        }else{
+            return UserModel.create(username, password, email);
+        }
+    })
+    .then((createUserId)=>{
+        if(createUserId < 0){
+            throw new UserError(
+                "Server Error: user could not be created",
+                "",
+                500
+            );
+        }else{
+            fk_userId = createUserId;
+            successPrint("User.js --> User was created");
+            return;
+        }
+    })
+    .catch((err) => {
+
+        errorPrint("User could not be made", err);
+        // req.flash('error', 'Error: user could not be created');
+        req.session.save(err => {
+
+            res.redirect("/make-post");
+        });
+
+        if (err instanceof UserError) {
+            errorPrint(err.getMessage());
+            req.flash('error', err.getMessage());
+            res.status(err.getStatus());
+            res.redirect('/make-post');
+        } else {
+            next(err);
+        }})
+
+  }
+
+  
+    // starts the uploading
+    if(fk_userId == null){
+      fk_userId = req.session.userId;
+    }
+
     let fileUploaded = req.file.path;
 
     let fileAsThumbNail = `thumbnail-${req.file.filename}`;
     let destinationOfThumbnail = req.file.destination + "/" + fileAsThumbNail;
     let title = req.body.PostTitle;
     let description = req.body.PostDescription;
-    let fk_userId = req.session.userId;
+    
     let category = req.body.category;
     let price = req.body.price;
 
@@ -116,10 +240,7 @@ router.post( "/createPost", uploader.single("upload"), postValidation, (req, res
       //VIDEOS
 
       const p1 = new Promise((resolve, reject) => {
-        // fs.copy(fileUploaded, destinationOfThumbnail, err => {
-        //     if (err) return console.error(err)
-        //     console.log('success video uploaded!');
-        //   });
+        
         destinationOfThumbnail = "../" + fileUploaded;
         resolve(
           PostModel.create(
@@ -135,7 +256,9 @@ router.post( "/createPost", uploader.single("upload"), postValidation, (req, res
       })
         .then((postWasCreated) => {
           if (postWasCreated) {
-            req.flash("success", "Your Post was created successfully!");
+            req.flash("success", `Hi ${username}, Your Post was created successfully!`);
+            res.locals.logged = true;
+            res.locals.username = username;
             res.redirect("/");
           } else {
             throw new PostError("Post could not be created!!", "/post", 200);
@@ -152,7 +275,7 @@ router.post( "/createPost", uploader.single("upload"), postValidation, (req, res
           }
         });
     } else if (category == 2) {
-      //IMAGES
+      //MUSIC
 
       const p1 = new Promise((resolve, reject) => {
         destinationOfThumbnail = "../public/images/audio_image.jpg";
@@ -170,8 +293,11 @@ router.post( "/createPost", uploader.single("upload"), postValidation, (req, res
       })
         .then((postWasCreated) => {
           if (postWasCreated) {
-            req.flash("success", "Your Post was created successfully!");
+            req.flash("success",`Hi ${username}, Your Post was created successfully!`);
+            res.locals.logged = true;
+            res.locals.username = username;
             res.redirect("/");
+            next()
           } else {
             throw new PostError("Post could not be created!!", "/post", 200);
           }
@@ -206,8 +332,11 @@ router.post( "/createPost", uploader.single("upload"), postValidation, (req, res
         })
         .then((postWasCreated) => {
           if (postWasCreated) {
-            req.flash("success", "Your Post was created successfully!");
-            res.redirect("/");
+            req.flash("success", `Hi ${username},Your Post was created successfully!`);
+            res.locals.logged = true;
+            res.locals.username = username;
+            // res.redirect("/");
+            req.session.save(err => {res.redirect('/')});
           } else {
             throw new PostError("Post could not be created!!", "/post", 200);
           }
@@ -241,7 +370,9 @@ router.post( "/createPost", uploader.single("upload"), postValidation, (req, res
       })
         .then((postWasCreated) => {
           if (postWasCreated) {
-            req.flash("success", "Your Post was created successfully!");
+            req.flash("success", `Hi ${username}, Your Post was created successfully!`);
+            res.locals.logged = true;
+            res.locals.username = username;
             res.redirect("/");
           } else {
             throw new PostError("Post could not be created!!", "/post", 200);
@@ -276,7 +407,9 @@ router.post( "/createPost", uploader.single("upload"), postValidation, (req, res
       })
         .then((postWasCreated) => {
           if (postWasCreated) {
-            req.flash("success", "Your Post was created successfully!");
+            req.flash("success", `Hi ${username}, Your Post was created successfully!`);
+            res.locals.logged = true;
+            res.locals.username = username;
             res.redirect("/");
           } else {
             throw new PostError("Post could not be created!!", "/post", 200);

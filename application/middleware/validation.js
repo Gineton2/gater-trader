@@ -87,7 +87,7 @@ const postValidation = (req, res, next) => {
 
     let title = req.body.PostTitle;
     let description = req.body.PostDescription;
-    let fk_userId = req.session.userId;
+    // let fk_userId = req.session.userId;
     let fileUploaded = req.file.path;
 
     if (fileUploaded == null) {
@@ -112,16 +112,11 @@ const postValidation = (req, res, next) => {
 
                     res.redirect("/make-post");
                 });
-            } else {
-                if (fk_userId == null) {
-                    req.flash('error', 'Invalid User');
-                    req.session.save(err => {
 
-                        res.redirect("/make-post");
-                    });
-                } else {
+            } else {
+                
                     next();
-                }
+                
             }
 
         }
