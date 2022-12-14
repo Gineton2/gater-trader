@@ -291,7 +291,7 @@ router.post('/logout', (req, res, next) => {
             req.session = null;
             res.locals.logged = false;
             res.json({status: "Ok", message: "user is logged out"});
-            res.redirect('/');
+            // res.redirect('/');
             
         }
 
