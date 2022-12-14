@@ -7,8 +7,13 @@
 
     Course: CSC648 SFSU
 
- */ 
+ */
+// const { checkout } = require("../../routes/posts");
 
+ 
+
+let searchButton = document.getElementById("search-button");
+let searchText = document.getElementById("search-text");
 let dropdowns = document.querySelectorAll(".search-panel");
 let password = document.getElementById("password");
 let matchPassword = document.getElementById("password");
@@ -18,6 +23,55 @@ let login = document.getElementById("login");
 let sendButton = document.getElementById("send-button");
 let regSendButton = document.getElementById('regSendButton');
 let logSendButton = document.getElementById('logSendButton');
+let regSendButtonMake = document.getElementById('regSendButtonMake');
+let logSendButtonMake = document.getElementById('logSendButtonMake');
+let postButton = document.getElementById("post-button");
+let formPost = document.getElementById('post-form');
+
+if(logSendButtonMake){
+  logSendButtonMake.addEventListener('click', (event)=>{
+    
+    event.preventDefault();
+
+    let emailSendPost = document.getElementById('emailSend');
+    let passwordSendPost = document.getElementById('passSend');
+
+    let passwordLog = document.getElementById('passwordLog');
+    let emailLog = document.getElementById('loginEmail');
+    
+    passwordSendPost.value = passwordLog.value;
+    emailSendPost.value = emailLog.value;
+    
+    formPost.submit();
+  })
+}
+
+if(regSendButtonMake){
+  regSendButtonMake.addEventListener('click', (event)=>{
+    event.preventDefault();
+
+    let emailSendPost = document.getElementById('emailSend');
+    let passwordSendPost = document.getElementById('passSend');
+    let matchPassSend = document.getElementById('matchPassSend');
+    let usernameSend = document.getElementById('usernameSend');
+    
+    
+
+    let passwordReg = document.getElementById('passwordReg');
+    let emailReg = document.getElementById('emailReg');
+    let usernameReg = document.getElementById('usernameReg');
+    let matchPasswordReg = document.getElementById('matchPasswordReg');
+    
+    passwordSendPost.value = passwordReg.value;
+    emailSendPost.value = emailReg.value;
+    usernameSend.value = usernameReg.value;
+    matchPassSend.value = matchPasswordReg.value;
+    
+    formPost.submit();
+  })
+}
+
+
 
 if(logSendButton){
   logSendButton.addEventListener('click', (event)=>{
@@ -69,39 +123,23 @@ if(sendButton){
       
   })
   .catch((err) => console.log(err));
-
-  
-    
-    
-    
-    // .then((data) => {
-    //   console.log("send");
-    //   console.log(data.logged);
-      
-      // data.locals.logged = false;
-      // if(data.locals.logged===false){
-      //   event.preventDefault();
-      //   new bootstrap.Modal(document.getElementById('ModalToggle'));
-      // }
-      
-    // })
   
   })
 }
 
+
+
 if (email) {
-  email.addEventListener("click", (event) => {
+  email.addEventListener("focusout", (event) => {
     let emailChecker =
       /^([a-z0-9]+@[mail]+\.sfsu\.edu|([a-z0-9]+@[sfsu]+\.edu))/;
-      console.log(emailChecker.test(email.value));
+      // console.log(emailChecker.test(email.value));
       if (!emailChecker.test(email.value)) {
-        preventDefault();
-        displayWarning();
-    
-    
+        
+      
         if (document.getElementById("text-alert-email") == null) {
           let divMessageEmail = document.createElement("div");
-          let divMessageEmailText = document.createTextNode("Email is not valid");
+          let divMessageEmailText = document.createTextNode("Email is not valid. Only @sfsu.edu");
           divMessageEmail.appendChild(divMessageEmailText);
           divMessageEmail.setAttribute("id", "text-alert-email");
           divMessageEmail.className = "text-danger text-center";
@@ -154,41 +192,68 @@ if (logout) {
   };
 }
 
-let postButton = document.getElementById("post-button");
+searchText.addEventListener("input", checkSearchtext);
+searchButton.addEventListener("click", checkSearchtext);
+
+
+
 if (postButton) {
-  postButton.addEventListener("click", checkPost,);
+  postButton.addEventListener("click", (event)=>{
+    
+    if(!checkPost(event)){
+      console.log("something went wrong");
+      return;
+    }
+    event.preventDefault();
+    fetch("posts/logged", {
+      method: "POST",
+    }).then((data) => {
+      return data.json();
+  })
+  .then((data_json) => {
+
+      console.log(data_json.logged)
+      if(data_json.logged===false){
+          var myModal = new bootstrap.Modal(document.getElementById('ModalToggle'));
+          myModal.toggle();
+      }else{
+        
+        let user_id = data_json.author_id;
+        // let author_id = document.getElementById('author_id');
+        // author_id.value = user_id;
+        console.log("SESSION ID: "+user_id);
+        formPost.submit();
+
+      }
+      
+  })
+  .catch((err) => console.log(err));
+  
+  })
 }
 
 function checkPost(event) {
   let file = document.getElementById("formFileLg");
-  if (file.value == null) {
+  let checkbox = document.getElementById("checkBoxTos");
+  
+  if (file.value == null || !checkbox.checked)  {
+    console.log("something missing");
     event.preventDefault();
+    return false;
+  }else{
+    console.log("nothing missing");
+    event.preventDefault();
+    return true;
   }
 }
 
-// const messageButton = document.getElementById('send-button');
-// const messageText = document.getElementById('message');
-// messageButton.addEventListener('click', checkMessageText, false);
-
-// function checkMessageText(event) {
-//   console.log(messageText.value);
-//   event.preventDefault();
-// }
-  
-
-const searchButton = document.getElementById("search-button");
-const searchText = document.getElementById("search-text");
-searchText.addEventListener("input", checkSearchText);
-searchButton.addEventListener("click", checkSearchText);
-
-function checkSearchText(event) {
+function checkSearchtext(event) {
   let validText = /(\W)|(\w{40,})/;
   if (validText.test(searchText.value)) {
     event.preventDefault();
     displayWarning();
   }
 }
-
 let warningTimeout;
 function displayWarning() {
   if (!warningText.hidden) {
@@ -206,24 +271,24 @@ if (password) {
   password.addEventListener("focusout", function () {
     let passwordChecker = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
-    // if(!passwordChecker.test(password.value)){
+    if(!passwordChecker.test(password.value)){
 
-    //     if(document.getElementById("text-alert-password")==null){
-    //         let divMessagePassword = document.createElement("div");
-    //         let divMessagePasswordText = document.createTextNode("Password must have at least one lower case, one upper case and one digit");
-    //         divMessagePassword.appendChild(divMessagePasswordText);
-    //         divMessagePassword.setAttribute("id", "text-alert-password");
-    //         divMessagePassword.className = "text-danger text-center"
-    //         document.getElementById("div-input-password").appendChild(divMessagePassword);
-    //     }else{
-    //         console.log("Check not passed and not null")
-    //         document.getElementById("text-alert-password").textContent ="Password must have at least one lower case, one upper case and one digit";
-    //     }
-    // }else{
-    //     if(document.getElementById("text-alert-password")!=null){
-    //         document.getElementById("text-alert-password").textContent = "";
-    //     }
-    // }
+        if(document.getElementById("text-alert-password")==null){
+            let divMessagePassword = document.createElement("div");
+            let divMessagePasswordText = document.createTextNode("Password must have at least one lower case, one upper case and one digit");
+            divMessagePassword.appendChild(divMessagePasswordText);
+            divMessagePassword.setAttribute("id", "text-alert-password");
+            divMessagePassword.className = "text-danger text-center"
+            document.getElementById("div-input-password").appendChild(divMessagePassword);
+        }else{
+            console.log("Check not passed and not null")
+            document.getElementById("text-alert-password").textContent ="Password must have at least one lower case, one upper case and one digit";
+        }
+    }else{
+        if(document.getElementById("text-alert-password")!=null){
+            document.getElementById("text-alert-password").textContent = "";
+        }
+    }
   });
 }
 
