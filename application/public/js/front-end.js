@@ -9,8 +9,6 @@
 
  */ 
 
-let searchButton = document.getElementById("search-button");
-let searchText = document.getElementById("search-text");
 let dropdowns = document.querySelectorAll(".search-panel");
 let password = document.getElementById("password");
 let matchPassword = document.getElementById("password");
@@ -156,12 +154,9 @@ if (logout) {
   };
 }
 
-searchText.addEventListener("input", checkSearchtext);
-searchButton.addEventListener("click", checkSearchtext);
-
 let postButton = document.getElementById("post-button");
 if (postButton) {
-  postButton.addEventListener("click", checkPost);
+  postButton.addEventListener("click", checkPost,);
 }
 
 function checkPost(event) {
@@ -171,13 +166,29 @@ function checkPost(event) {
   }
 }
 
-function checkSearchtext(event) {
+// const messageButton = document.getElementById('send-button');
+// const messageText = document.getElementById('message');
+// messageButton.addEventListener('click', checkMessageText, false);
+
+// function checkMessageText(event) {
+//   console.log(messageText.value);
+//   event.preventDefault();
+// }
+  
+
+const searchButton = document.getElementById("search-button");
+const searchText = document.getElementById("search-text");
+searchText.addEventListener("input", checkSearchText);
+searchButton.addEventListener("click", checkSearchText);
+
+function checkSearchText(event) {
   let validText = /(\W)|(\w{40,})/;
   if (validText.test(searchText.value)) {
     event.preventDefault();
     displayWarning();
   }
 }
+
 let warningTimeout;
 function displayWarning() {
   if (!warningText.hidden) {
