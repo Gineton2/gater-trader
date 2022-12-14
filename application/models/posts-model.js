@@ -16,7 +16,7 @@ const db = require("../database/database");
 const PostModel = {};
 
 PostModel.getALLRecentPosts = () => {
-    let baseSQL = 'SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail, post_category, post_path FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC'
+    let baseSQL = 'SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail, post_category, post_path, approved, active FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC'
     return db.execute(baseSQL)
     .then(([results, fields]) => {
         return Promise.resolve(results);
