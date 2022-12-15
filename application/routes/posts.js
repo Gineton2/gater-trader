@@ -106,6 +106,9 @@ router.post("/search", doTheSearch, function (req, res, next) {
 
 router.post( "/createPost", uploader.single("upload"), postValidation,  async function (req, res, next) {
 
+
+  
+
   let fk_userId;
   let username;
   console.log("req.session.userId: "+req.session.userId);
@@ -221,6 +224,9 @@ router.post( "/createPost", uploader.single("upload"), postValidation,  async fu
   }
 
   
+    try{
+
+  
     // starts the uploading
     if(fk_userId == null){
       fk_userId = req.session.userId;
@@ -259,7 +265,7 @@ router.post( "/createPost", uploader.single("upload"), postValidation,  async fu
             req.flash("success", `Hi ${username}, Your Post was created successfully!`);
             res.locals.logged = true;
             res.locals.username = username;
-            res.redirect("/");
+            req.session.save(err => {res.redirect('/')});
           } else {
             throw new PostError("Post could not be created!!", "/post", 200);
           }
@@ -269,9 +275,12 @@ router.post( "/createPost", uploader.single("upload"), postValidation,  async fu
             errorPrint(err.getMessage());
             req.flash("error", err.getMessage());
             res.status(err.getStatus());
-            res.redirect(err.getRedirectURL());
+            req.session.save(err => {res.redirect('/make-post')});
           } else {
-            next(err);
+            errorPrint(err.message);
+            req.flash("error", err.message);
+            res.status(err.status);
+            req.session.save(err => {res.redirect('/make-post')});
           }
         });
     } else if (category == 2) {
@@ -296,8 +305,7 @@ router.post( "/createPost", uploader.single("upload"), postValidation,  async fu
             req.flash("success",`Hi ${username}, Your Post was created successfully!`);
             res.locals.logged = true;
             res.locals.username = username;
-            res.redirect("/");
-            next()
+            req.session.save(err => {res.redirect('/')});
           } else {
             throw new PostError("Post could not be created!!", "/post", 200);
           }
@@ -307,9 +315,12 @@ router.post( "/createPost", uploader.single("upload"), postValidation,  async fu
             errorPrint(err.getMessage());
             req.flash("error", err.getMessage());
             res.status(err.getStatus());
-            res.redirect(err.getRedirectURL());
+            req.session.save(err => {res.redirect('/make-post')});
           } else {
-            next(err);
+            errorPrint(err.message);
+            req.flash("error", err.message);
+            res.status(err.status);
+            req.session.save(err => {res.redirect('/make-post')});
           }
         });
     } else if (category == 5) {
@@ -335,21 +346,25 @@ router.post( "/createPost", uploader.single("upload"), postValidation,  async fu
             req.flash("success", `Hi ${username},Your Post was created successfully!`);
             res.locals.logged = true;
             res.locals.username = username;
-            // res.redirect("/");
             req.session.save(err => {res.redirect('/')});
           } else {
             throw new PostError("Post could not be created!!", "/post", 200);
           }
         })
         .catch((err) => {
+
           if (err instanceof PostError) {
             errorPrint(err.getMessage());
             req.flash("error", err.getMessage());
             res.status(err.getStatus());
-            res.redirect(err.getRedirectURL());
+            req.session.save(err => {res.redirect('/make-post')});
           } else {
-            next(err);
+            errorPrint(err.message);
+            req.flash("error", err.message);
+            res.status(err.status);
+            req.session.save(err => {res.redirect('/make-post')});
           }
+
         });
     } else if (category == 3) {
       //Ebooks
@@ -373,7 +388,7 @@ router.post( "/createPost", uploader.single("upload"), postValidation,  async fu
             req.flash("success", `Hi ${username}, Your Post was created successfully!`);
             res.locals.logged = true;
             res.locals.username = username;
-            res.redirect("/");
+            req.session.save(err => {res.redirect('/')});
           } else {
             throw new PostError("Post could not be created!!", "/post", 200);
           }
@@ -383,9 +398,12 @@ router.post( "/createPost", uploader.single("upload"), postValidation,  async fu
             errorPrint(err.getMessage());
             req.flash("error", err.getMessage());
             res.status(err.getStatus());
-            res.redirect(err.getRedirectURL());
+            req.session.save(err => {res.redirect('/make-post')});
           } else {
-            next(err);
+            errorPrint(err.message);
+            req.flash("error", err.message);
+            res.status(err.status);
+            req.session.save(err => {res.redirect('/make-post')});
           }
         });
     } else if (category == 4) {
@@ -410,7 +428,7 @@ router.post( "/createPost", uploader.single("upload"), postValidation,  async fu
             req.flash("success", `Hi ${username}, Your Post was created successfully!`);
             res.locals.logged = true;
             res.locals.username = username;
-            res.redirect("/");
+            req.session.save(err => {res.redirect('/')});
           } else {
             throw new PostError("Post could not be created!!", "/post", 200);
           }
@@ -420,11 +438,24 @@ router.post( "/createPost", uploader.single("upload"), postValidation,  async fu
             errorPrint(err.getMessage());
             req.flash("error", err.getMessage());
             res.status(err.getStatus());
-            res.redirect(err.getRedirectURL());
+            req.session.save(err => {res.redirect('/make-post')});
           } else {
-            next(err);
+            errorPrint(err.message);
+            req.flash("error", err.message);
+            res.status(err.status);
+            req.session.save(err => {res.redirect('/make-post')});
           }
         });
+    }
+
+    }catch(err){
+
+      console.log("inside catch all errors ");
+      errorPrint(err.message);
+      res.status(err.status);
+      req.flash("error", err.message);
+      req.session.save(err => {res.redirect('/make-post')});
+
     }
   }
 );
