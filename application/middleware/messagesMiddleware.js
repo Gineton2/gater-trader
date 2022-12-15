@@ -19,14 +19,8 @@ const getUserMessages = async function(req, res, next) {
       const userId = res.locals.userId;
       // console.log(res.locals);
       const results = await getUserMessageById(userId);
-      if (results && results.length) {
-        res.locals.userMessage = results;
-        next();
-      }
-      else {
-        req.flash('error', 'There is not an user you are looking for.');
-        res.redirect('/');
-      }
+      res.locals.userMessage = results;
+      next();
     } catch (err) {
       next(err);
     }

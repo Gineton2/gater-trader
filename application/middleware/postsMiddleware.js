@@ -205,14 +205,8 @@ const getUserPosts = async function(req, res, next) {
     const userId = res.locals.userId;
     // console.log(res.locals);
     let results = await getUserPostById(userId);
-    if (results && results.length) {
-      res.locals.userPost = results;
-      next();
-    }
-    else {
-      req.flash('error', 'There is not an user you are looking for.');
-      res.redirect('/');
-    }
+    res.locals.userPost = results;
+    next();
   } catch (err) {
     next(err);
   }
