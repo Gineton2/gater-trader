@@ -29,7 +29,7 @@ MessageModel.getUserMessageById = (userId) => {
         ORDER BY date DESC;`
     return db.execute(baseSQL, [userId])
         .then(([results, fields]) => {
-            console.log(results);
+            // console.log(results);
             return Promise.resolve(results);
         })
         .catch(err => Promise.reject(err));

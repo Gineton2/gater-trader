@@ -54,8 +54,11 @@ const doTheSearch = async function (req, res, next) {
         next();
       } else {
         // nothing within the category so let's show all the posts
+        if (categorySearch === "%") {
+          categorySearch = "All";
+        }
         let [results, fields] = await db.query(
-          'SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail, post_path FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC'
+          'SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail, post_category, post_path, approved, active FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" AND approved=1 AND active=1 ORDER BY post_creation_time DESC'
         );
        
 
@@ -87,7 +90,7 @@ const doTheSearch = async function (req, res, next) {
       } else {
         // nothing found therefore let's show all the posts within the selected category
         let [results, fields] = await db.query(
-          "SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail, post_path FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE ? ORDER BY post_creation_time DESC",
+          "SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail, post_category, post_path, approved, active FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE ? AND approved=1 AND active=1 ORDER BY post_creation_time DESC",
           [categorySearch]
         );
         if (results.length) {
@@ -111,7 +114,7 @@ const doTheSearch = async function (req, res, next) {
         } else {
           // nothing within the category so let's show all the posts
           let [results, fields] = await db.query(
-            'SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail, post_path FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" ORDER BY post_creation_time DESC'
+            'SELECT post_id, price, title, post_description, post_creation_time, post_thumbnail, post_category, post_path, approved, active FROM posts, categories WHERE post_category=categories.category_id AND categories.category_name LIKE "%" AND approved=1 AND active=1 ORDER BY post_creation_time DESC'
           );
 
           if (categorySearch === "%") {

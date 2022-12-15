@@ -14,7 +14,11 @@
   media. By Gaters, for Gaters!</p>
     <div id="main-content" class="row flex-wrap justify-content-center mx-0 px-0">
         {{#each results}}
-            {{> card this}}
+            {{#if approved}}
+                {{#if active}}
+                    {{> card this}}
+                {{/if}}
+            {{/if}}
         {{/each}}
     </div>
 
