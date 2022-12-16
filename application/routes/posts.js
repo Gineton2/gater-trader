@@ -230,6 +230,7 @@ router.post( "/createPost", uploader.single("upload"), postValidation,  async fu
     // starts the uploading
     if(fk_userId == null){
       fk_userId = req.session.userId;
+      username = req.session.username;
     }
 
     let fileUploaded = req.file.path;
