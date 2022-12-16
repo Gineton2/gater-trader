@@ -12,7 +12,7 @@
 
 const checkUsername = (username) => {
 
-    let usernameChecker = /^\D\w{2,}$/;
+    let usernameChecker = /[^\d\s][\w\s]{2,}$/;
     return usernameChecker.test(username);
 };
 
