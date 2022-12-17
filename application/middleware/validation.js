@@ -24,7 +24,7 @@ const checkEmail = (email) => {
 }
 
 const checkPassword = (password) => {
-    let passwordChecker = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    let passwordChecker = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\/*-+!@#$^&*]{6,}$/;
     return passwordChecker.test(password);
 };
 
