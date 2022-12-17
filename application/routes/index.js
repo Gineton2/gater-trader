@@ -125,7 +125,7 @@ router.get('/sort-by-date-desc', sortUserPostsByDateDESC, getUserMessages,(req, 
 })
 
 router.get('/.well-known/pki-validation/C1F698E4294F748AAADBDBA09B48A4B3.txt', function(req, res, next) {
-  res.redirect({"/.well-known/pki-validation/C1F698E4294F748AAADBDBA09B48A4B3.txt"});
+  res.json({"CFE75A095EEB9F58C53A6B6620A6EAECAF4909E44A227F76E67E60908F3E6D50 comodoca.com 639dff050384e"});
 
 });
 
