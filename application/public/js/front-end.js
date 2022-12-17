@@ -161,42 +161,10 @@ if (email) {
       }
   });
   
-
-  // if (!emailChecker.test(email.value)) {
-  //   preventDefault();
-  //   displayWarning();
-
-
-  //   if (document.getElementById("text-alert-email") == null) {
-  //     let divMessageEmail = document.createElement("div");
-  //     let divMessageEmailText = document.createTextNode("Email is not valid");
-  //     divMessageEmail.appendChild(divMessageEmailText);
-  //     divMessageEmail.setAttribute("id", "text-alert-email");
-  //     divMessageEmail.className = "text-danger text-center";
-  //     document.getElementById("div-input-email").appendChild(divMessageEmail);
-  //   } else {
-  //     document.getElementById("text-alert-email").textContent =
-  //       "Email is not valid";
-  //   }
-  // } else {
-  //   if (document.getElementById("text-alert-email") != null) {
-  //     document.getElementById("text-alert-email").textContent = "";
-  //   }
-  // }
 }
 
 let logout = document.getElementById("logout");
-if (logout) {
-  logout.onclick = (event) => {
-    fetch("users/logout", {
-      method: "POST",
-    }).then((data) => {
-      // data.locals.logged = false;
-      console.log("logout");
-      location.replace("/");
-    });
-  };
-}
+
 
 searchText.addEventListener("input", checkSearchtext);
 searchButton.addEventListener("click", checkSearchtext);
