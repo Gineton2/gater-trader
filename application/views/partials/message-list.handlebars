@@ -17,13 +17,13 @@
     <th scope="col">{{message_text}}</th>
 
     {{#if (authorIsDifferent username author)}}
-         <th scope="col"><button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#ModalReplyMessage" data-bs-whatever="@{{author}}">Reply</button></th>
+         <th scope="col"><button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#ModalReplyMessage{{message_id}}" data-bs-whatever="@{{author}}">Reply</button></th>
       {{/if}}
 
    
 
 
-<div class="modal fade" id="ModalReplyMessage" tabindex="-1" aria-labelledby="ModalReplyMessageLabel" aria-hidden="true">
+<div class="modal fade" id="ModalReplyMessage{{message_id}}" tabindex="-1" aria-labelledby="ModalReplyMessageLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

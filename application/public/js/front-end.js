@@ -222,7 +222,7 @@ function checkPost(event) {
 }
 
 function checkSearchtext(event) {
-  let validText = /(\W)|(\w{40,})/;
+  let validText = /(\W)|(^\w{40,})/;
   if (validText.test(searchText.value)) {
     event.preventDefault();
     displayWarning();
