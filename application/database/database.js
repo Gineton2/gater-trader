@@ -19,10 +19,10 @@ const mysql = require('mysql2');
 const db = mysql.createPool({
     
     // EC2
-    host: "localhost",
-    database:"db_test",
-    user: "root", 
-    password: "TEAM07team07",
+    // host: "localhost",
+    // database:"db_test",
+    // user: "root", 
+    // password: "TEAM07team07",
 
     // local Duccio
     // host: 'localhost',
@@ -37,10 +37,10 @@ const db = mysql.createPool({
     // password : 'passyoshi'
 
      // // local Rai'd M.
-    // host: 'localhost',
-    // user : 'root',
-    // database : 'teamschema',
-    // password : 'nap765gUp!'
+    host: 'localhost',
+    user : 'root',
+    database : 'teamschema',
+    password : 'nap765gUp!'
 });
 
 module.exports = db.promise();
