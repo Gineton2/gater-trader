@@ -22,6 +22,8 @@ var db = require('../database/database');
 
 const {getRecentPosts, getUserPosts, sortUserPostsByPriceASC, sortUserPostsByPriceDESC, sortUserPostsByDateASC, sortUserPostsByDateDESC}  = require('../middleware/postsMiddleware');
 const {getUserMessages} = require('../middleware/messagesMiddleware.js');
+// to deliver DCV file
+path = require('path');
 
 /*
 The app.get() method specifies a callback function that will be invoked whenever there is an HTTP GET request with a path ('/') relative to the site root
@@ -123,10 +125,9 @@ router.get('/sort-by-date-asc', sortUserPostsByDateASC, getUserMessages, (req, r
 router.get('/sort-by-date-desc', sortUserPostsByDateDESC, getUserMessages,(req, res, next) => {
   res.render('dashboard');
 })
-
+// router for SSL verification
 router.get('/.well-known/pki-validation/C1F698E4294F748AAADBDBA09B48A4B3.txt', function(req, res, next) {
-  res.json({message : "CFE75A095EEB9F58C53A6B6620A6EAECAF4909E44A227F76E67E60908F3E6D50 comodoca.com 639dff050384e"});
-
+  res.sendFile(path.join(__dirname, '../.well-known/pki-validation', 'C1F698E4294F748AAADBDBA09B48A4B3.txt'));
 });
 
 
