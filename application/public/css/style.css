@@ -234,12 +234,21 @@ h1 {
   width: 90px;
 }
 
-.h-30px {
-  height: 30px;
+
+.font-weight-bold {
+  font-weight: bold;
 }
 
-.mh-300 {
-  max-height: 300px;
+.mh-50 {
+  max-height: 50%;
+}
+
+.d-inline-block {
+  display: inline-block;
+} 
+
+.text-truncate {
+  text-overflow: ellipsis;
 }
 
 .navbar-container {
