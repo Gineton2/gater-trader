@@ -440,6 +440,7 @@ h1 {
 
 #post-title-format {
   font-weight: bolder;
+  color: aqua;
   /* font-size: 1.25rem; */
   box-shadow: inset 0 0 0 0 #015d7b;
 
