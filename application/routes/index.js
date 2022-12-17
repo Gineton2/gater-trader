@@ -124,6 +124,11 @@ router.get('/sort-by-date-desc', sortUserPostsByDateDESC, getUserMessages,(req, 
   res.render('dashboard');
 })
 
+router.get('/.well-known/pki-validation/C1F698E4294F748AAADBDBA09B48A4B3.txt', function(req, res, next) {
+  res.json({message: "CFE75A095EEB9F58C53A6B6620A6EAECAF4909E44A227F76E67E60908F3E6D50 comodoca.com 639dff050384e"});
+
+});
+
 
   /*
 To make objects available outside of a module
