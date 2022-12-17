@@ -242,7 +242,7 @@ function displayWarning() {
 }
 
 if (password) {
-  password.addEventListener("keypress", function () {
+  password.addEventListener("focusout", function () {
     let passwordChecker = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
     if(!passwordChecker.test(password.value)){
