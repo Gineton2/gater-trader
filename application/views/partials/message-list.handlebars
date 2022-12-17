@@ -15,4 +15,42 @@
     <th scope="col">{{receiver}}</th>
     <th scope="col">{{date}}</th>
     <th scope="col">{{message_text}}</th>
+
+    {{#if (authorIsDifferent username author)}}
+         <th scope="col"><button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#ModalReplyMessage" data-bs-whatever="@{{author}}">Reply</button></th>
+      {{/if}}
+
+   
+
+
+<div class="modal fade" id="ModalReplyMessage" tabindex="-1" aria-labelledby="ModalReplyMessageLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="replyMessage" name="replyMessage"  method="POST"  action="./posts/sendReply">
+          <div class="mb-3">
+            <h3 class="col-form-label">Recipient: {{author}}</h3>
+          </div>
+          <div class="mb-3">
+            <label for="messageText" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="messageText" name="messageText"></textarea>
+          </div>
+          <input id="author_id" name="author_id" type="text" hidden value="{{user_id}}">
+          <input id="post_id" name="post_id" type="text" hidden value="{{post_id}}">
+          <input id="receiver_id" name="receiver_id" type="text" hidden value="{{author_id}}">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send message</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 </tr>

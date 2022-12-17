@@ -167,6 +167,37 @@ const findReceiver = async function(req, res, next) {
   }
 }
 
+const sendReply = async function(req, res, next) {
+  try {
+
+    let post_id = req.body.post_id;
+    let author_id = req.body.author_id;
+    
+    let message_text = req.body.messageText;
+    
+    // let [results, fields] = await db.query(
+    //   'SELECT u.user_id FROM users u JOIN posts p ON p.author_id = u.user_id WHERE p.post_id = ? ',[post_id]
+    // );
+    // console.log("RESULTS: "+results);
+    let receiver_id = req.body.receiver_id;
+    console.log("RECEIVER ID: "+receiver_id);
+    console.log("AUTHOR REPLY: "+author_id);
+    console.log("POST ID: "+post_id);
+
+    let success = await sendMessage(post_id, author_id, receiver_id, message_text);
+    if(success==-1){
+      throw new PostError;
+    }else{
+      req.flash("success", "Your message was sent successfully!");
+    }
+
+    next();
+
+  } catch (err) {
+    next(err);
+  }
+}
+
 const getRecentPosts = async function(req,res,next) {
 
   try {
@@ -280,4 +311,4 @@ const sortUserPostsByDateDESC = async function(req, res, next) {
   }
 }
 
-module.exports = { doTheSearch, getRecentPosts, getTargetPostById, findReceiver, getUserPosts, sortUserPostsByPriceASC, sortUserPostsByPriceDESC, sortUserPostsByDateASC, sortUserPostsByDateDESC };
+module.exports = { doTheSearch, getRecentPosts, getTargetPostById, findReceiver, getUserPosts, sortUserPostsByPriceASC, sortUserPostsByPriceDESC, sortUserPostsByDateASC, sortUserPostsByDateDESC, sendReply };

@@ -81,6 +81,9 @@ app.engine(
       },
       isFree: (price)=>{
         return price==0;
+      },
+      authorIsDifferent: (username,author)=>{
+        return !(username===author);
       }
 
       
