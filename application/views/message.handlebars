@@ -1,177 +1,167 @@
-
-
-
 <div class="container py-4 p-3">
-    <h1 class="display-4 text-center font-weight-bold text-white bg-green ">Message Owner</h1> 
-    <div class="row align-items-center justify-content-center my-4 mx-auto w-75">
-        <div class="col-lg-6 d-lg-block px-2 mx-auto">
-            {{#if (isVideo currentPost.post_category)}}
-    <video muted playsinline 
-    class="img-fluid"
-  width="400" 
-  controls controlslist="nodownload"
-> 
-  <source
-    src={{currentPost.post_thumbnail}}
-    type="video/mp4" /> </video>
-    
-    {{else}} {{#if (isMusic currentPost.post_category)}}
-    <div class="flex-column align-content-center">
-    <img class="p-2 img-fluid" src="{{currentPost.post_thumbnail}}" alt="PostImage" >
+  <h1 class="display-4 text-center font-weight-bold text-white bg-green ">Message Owner</h1>
+  <div class="row align-items-center justify-content-center my-4 mx-auto w-75">
+    <div class="col-lg-6 d-lg-block px-2 mx-auto d-flex justify-content-center">
+      {{#if (isVideo currentPost.post_category)}}
+      <video muted playsinline class="img-fluid m-auto" width="400" controls controlslist="nodownload">
+        <source src={{currentPost.post_thumbnail}} type="video/mp4" />
+      </video>
 
-    <audio class="p-2"
-        controls controlslist="nodownload" 
-        src="../{{currentPost.post_path}}">
-    </audio>
+      {{else}} {{#if (isMusic currentPost.post_category)}}
+      <div class="flex-column d-flex justify-content-center">
+        <img class="p-2 img-fluid" classname="" src="{{currentPost.post_thumbnail}}" alt="PostImage">
+
+        <audio class="p-2 m-auto" controls controlslist="nodownload" src="../{{currentPost.post_path}}">
+        </audio>
+      </div>
+      {{else}} <img src="{{currentPost.post_thumbnail}}" alt="PostImage" class="img-fluid">{{/if}}{{/if}}
+
+
     </div>
-    
-    
-    {{else}} <img src="{{currentPost.post_thumbnail}}" alt="PostImage" class="img-fluid">{{/if}}{{/if}}
-            
-        </div>
-        <div class="col-lg-6 px-5 mx-auto">
-            <p class="my-2 text-center text-white display-4 p-2">{{currentPost.title}}</p>
-            <div class="bg-success bg-opacity-25 py-2 my-3 rounded">
-                <h4 style="color:white ;" class="px-2"> Owner: {{currentPost.username}}</h4>
-            </div>
-            <div class="bg-success bg-opacity-25 py-2 my-3 rounded">
-                <h4 style="color:white ;" class="px-2"> Description:</h4>
-                <h4 style="color:white ;" class="px-2">{{currentPost.post_description}}</h4>
-            </div>
-            <div class="bg-success bg-opacity-25 py-2 my-3 rounded">
+    <div class="col-lg-6 px-5 mx-auto">
+      <p class="h1 my-2 text-center text-white p-2 text-uppercase">{{currentPost.title}}</p>
+      <div class="bg-success bg-opacity-25 py-2 my-3 rounded">
+        <h4 class="my-2 text-center text-warning mb-3"> Owner </h4>
+        <h4 style="color:white ;" class="px-2 text-center text-uppercase fst-italic">{{currentPost.username}}</h4>
+      </div>
+      <div class="bg-success bg-opacity-25 py-2 my-3 rounded">
+        <h4  class="px-2 text-center mb-3 text-warning"> Description</h4>
+        <h5 style="color:white ;" class="px-2 fst-italic text-center">{{currentPost.post_description}}</h5>
+      </div>
+      <div class="bg-success bg-opacity-25 py-2 my-3 rounded">
 
-                {{#if (isFree currentPost.price)}}
-       <h4 style="color:white ;" class="px-2">Price: Free</h4>
-       {{else}}
-        <h4 style="color:white ;" class="px-2">Price: {{currentPost.price}}</h4>
+        {{#if (isFree currentPost.price)}}
+        <h4 class="my-2 text-center text-warning mb-3">Price: </h4>
+        <h5 style="color:white ;" class="px-2"> Free</h5>
+        {{else}}
+        <h4 class="my-2 text-center text-warning mb-3">Price</h4>
+        <h5 style="color:white ;" class="px-2 text-center">{{currentPost.price}}</h5>
         {{/if}}
-                
-            </div>   
-        </div>
 
+      </div>
     </div>
+
+  </div>
 </div>
 
 
 <section class="container ">
-    <h1 class="h1-responsive font-weight-bold text-center my-4 text-white bg-green">Message Owner Form</h1>
-    <div class="row justify-content-center w-75 mx-auto">
-        <!--Grid column-->
-        <div class="col-md-12 mb-md-2 mb-3">
-            <form id="contact-form" name="contact-form" method="POST"  action="./send">
+  <h1 class="h1-responsive font-weight-bold text-center my-4 text-warning ">Message Owner Form</h1>
+  <div class="row justify-content-center w-75 mx-auto">
+    <!--Grid column-->
+    <div class="col-md-12 mb-md-2 mb-3">
+      <form id="contact-form" name="contact-form" method="POST" action="./send">
 
-                <!--Grid row-->
-                <div class="row">
+        <!--Grid row-->
+        <div class="row">
 
-                    
-                <div class="row">
 
-                    <!--Grid column-->
-                    <div class="col-md-12">
+          <div class="row">
 
-                        <div class="md-form text-center text-white ">
-                            <label for="message">
-                                <h4>Enter your Message</h4>
-                            </label>
-                            <textarea type="text" id="message" name="message" rows="4"
-                                class="form-control md-textarea"></textarea>
+            <!--Grid column-->
+            <div class="col-md-12">
 
-                        </div>
+              <div class="md-form text-center text-white ">
+                <label for="message">
+                  <h4>Enter your Message</h4>
+                </label>
+                <textarea type="text" id="message" name="message" rows="4" class="form-control md-textarea"></textarea>
 
-                    </div>
-                </div>
-                <!--Grid row-->
-
-              <input id="author_id" name="author_id" type="number" hidden value="">
-              <input id="post_id" name="post_id" type="number" value="{{currentPost.post_id}}" hidden>
-              <br>
-              <br>
-              <div class="text-center text-md-left m-2">
-                  <button id="send-button" class="btn btn-success btn-lg" type="submit">Send</button>
               </div>
-            </form>
-            <div class="status"></div>
-        </div>
 
+            </div>
+          </div>
+          <!--Grid row-->
+
+          <input id="author_id" name="author_id" type="number" hidden value="">
+          <input id="post_id" name="post_id" type="number" value="{{currentPost.post_id}}" hidden>
+          <br>
+          <br>
+          <div class="text-center text-md-left m-2">
+            <button id="send-button" class="btn btn-success btn-lg" type="submit">Send</button>
+          </div>
+      </form>
+      <div class="status"></div>
     </div>
+
+  </div>
 </section>
 
 <div class="modal fade" id="ModalToggle" aria-hidden="true" aria-labelledby="ModalToggleLabel" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        
+
         <h3 class="modal-title" id="ModalToggleLabel">You’re almost done!</h3>
-        
+
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
       </div>
-        <h6 class="modal-header">Please Register to send the message</h6>
+      <h6 class="modal-header">Please Register to send the message</h6>
       <div class="modal-body">
         <h2 class="text-uppercase text-center mb-5 bg-dark text-white bold">SIGN UP</h2>
 
-              <form id="registerSend" class="needs-validation" method="POST" action="/users/registerSend">
-                <fieldset>
-                  <div class="form-outline mb-4 form-group">
-                    <div class="fields-one text-center bold">
-                      <label class="form-label " for="username">Your Name</label>
-                    </div>
-                    <input type="text" id="username" name="username"
-                      class="form-control form-control-lg border border-dark" placeholder="Enter Full Name"
-                      minlength="2" pattern="^\D\w{2,}" required />
-                  </div>
+        <form id="registerSend" class="needs-validation" method="POST" action="/users/registerSend">
+          <fieldset>
+            <div class="form-outline mb-4 form-group">
+              <div class="fields-one text-center bold">
+                <label class="form-label " for="username">Your Name</label>
+              </div>
+              <input type="text" id="username" name="username" class="form-control form-control-lg border border-dark"
+                placeholder="Enter Full Name" minlength="2" pattern="^\D\w{2,}" required />
+            </div>
 
 
-                  <div class="form-outline mb-4 form-group">
-                    <div class="fields-two text-center bold">
-                      <label class="form-label" for="email">Your Email</label>
-                    </div>
-                    <input type="email" id="email" name="email" class="form-control form-control-lg border border-dark"
-                      placeholder="Enter Your SFSU Email" 
-                      required />
+            <div class="form-outline mb-4 form-group">
+              <div class="fields-two text-center bold">
+                <label class="form-label" for="email">Your Email</label>
+              </div>
+              <input type="email" id="email" name="email" class="form-control form-control-lg border border-dark"
+                placeholder="Enter Your SFSU Email" required />
 
-                  </div>
+            </div>
 
-                  <div class="form-outline mb-4 form-group" id="div-input-password">
-                    <div class="fields-three text-center bold">
-                      <label class="form-label" for="password">Password</label>
-                    </div>
-                    <input type="password" id="password" name="password"
-                      class="form-control form-control-lg border border-dark" placeholder="Enter Your Password"
-                      minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required />
+            <div class="form-outline mb-4 form-group" id="div-input-password">
+              <div class="fields-three text-center bold">
+                <label class="form-label" for="password">Password</label>
+              </div>
+              <input type="password" id="password" name="password"
+                class="form-control form-control-lg border border-dark" placeholder="Enter Your Password" minlength="6"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required />
 
-                  </div>
+            </div>
 
-                  <div class="form-outline mb-4 form-group">
-                    <div class="fields-four text-center bold">
-                      <label class="form-label" for="matchPassword">Repeat your password</label>
-                    </div>
-                    <input type="password" id="matchPassword" name="matchPassword"
-                      class="form-control form-control-lg border border-dark" placeholder="Re Enter Your Password"
-                      minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required />
+            <div class="form-outline mb-4 form-group">
+              <div class="fields-four text-center bold">
+                <label class="form-label" for="matchPassword">Repeat your password</label>
+              </div>
+              <input type="password" id="matchPassword" name="matchPassword"
+                class="form-control form-control-lg border border-dark" placeholder="Re Enter Your Password"
+                minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required />
 
-                  </div>
+            </div>
 
-                </fieldset>
+          </fieldset>
 
-                <div class="form-check d-flex justify-content-center mb-5 bold">
-                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" required />
-                  <label class="form-check-label" for="form2Example3g">
-                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                  </label>
-                </div>
+          <div class="form-check d-flex justify-content-center mb-5 bold">
+            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" required />
+            <label class="form-check-label" for="form2Example3g">
+              I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+            </label>
+          </div>
 
-                <div class="d-flex justify-content-center">
-                  <button id="regSendButton" type="submit" class="btn btn-success btn-block text-center btn-lg ">Sign
-                    Up!</button>
-                </div>
-                <input id="post_idReg" name="post_idReg" type="number" value="{{currentPost.post_id}}" hidden>
-                <input id="messageReg" name="messageReg" type="text" value="" hidden>
-                </form>
+          <div class="d-flex justify-content-center">
+            <button id="regSendButton" type="submit" class="btn btn-success btn-block text-center btn-lg ">Sign
+              Up!</button>
+          </div>
+          <input id="post_idReg" name="post_idReg" type="number" value="{{currentPost.post_id}}" hidden>
+          <input id="messageReg" name="messageReg" type="text" value="" hidden>
+        </form>
       </div>
       <div class="modal-footer">
         <p>Already Registered?</p>
-        <a class="btn btn-primary" data-bs-target="#ModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Log in</a>
+        <a class="btn btn-primary" data-bs-target="#ModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Log
+          in</a>
       </div>
     </div>
   </div>
@@ -180,64 +170,64 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        
-        <h3 class="modal-title" id="ModalToggleLabel">You’re almost done!   </h3>
-        
+
+        <h3 class="modal-title" id="ModalToggleLabel">You’re almost done! </h3>
+
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
       </div>
-        <h6 class="modal-header">Please Login to send the message</h6>
+      <h6 class="modal-header">Please Login to send the message</h6>
       <div class="modal-body">
-       <h3 class=" text-center mb-3 text-white bold">Login Page</h3>
+        <h3 class=" text-center mb-3 text-white bold">Login Page</h3>
 
-            <form id="loginSend" class="bg-green rounded-5 shadow-5-strong p-5 " enctype="application/x-www-form-urlencoded"
-              method="POST" action="/users/loginSend">
+        <form id="loginSend" class="bg-green rounded-5 shadow-5-strong p-5 " enctype="application/x-www-form-urlencoded"
+          method="POST" action="/users/loginSend">
 
-              <h2 class="text-uppercase text-center mb-5 bg-dark text-white">LOGIN</h2>
-              <!-- Email input -->
-              <div class="form-outline mb-4 text-center bold text-white">
-                <label class="form-label" for="email">Email address</label>
-                <input name="loginEmail" type="email" id="loginEmail" class="form-control border border-dark"
-                  placeholder="Enter Your SFSU Email" minlength="6"
-                name="loginEmail" autocomplete="on"/>
+          <h2 class="text-uppercase text-center mb-5 bg-dark text-white">LOGIN</h2>
+          <!-- Email input -->
+          <div class="form-outline mb-4 text-center bold text-white">
+            <label class="form-label" for="email">Email address</label>
+            <input name="loginEmail" type="email" id="loginEmail" class="form-control border border-dark"
+              placeholder="Enter Your SFSU Email" minlength="6" name="loginEmail" autocomplete="on" />
+
+          </div>
+
+          <!-- Password input -->
+
+          <div class="form-outline mb-2 text-center bold text-white">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" name="loginPassword" id="form12" class="form-control border border-dark"
+              placeholder="Enter Your Password" autocomplete="on" />
+
+          </div>
+
+          <!-- 2 column grid layout for inline styling -->
+          <div class="row mb-2">
+            <div class="col d-flex justify-content-center">
+              <!-- Checkbox -->
+              <div class="form-check">
 
               </div>
+            </div>
 
-              <!-- Password input -->
+            <div class="col text-center ">
+              <!-- Simple link -->
+              <a href="/forgot-password" class="text-decoration-none text-warning">Forgot password?</a>
+            </div>
+          </div>
+          <!-- Reset button -->
+          <button type="reset" class="btn btn-light btn-block text-center btn-lg ">Reset</button>
+          <!-- Submit button -->
+          <input id="post_idLog" name="post_idLog" type="number" value="{{currentPost.post_id}}" hidden>
+          <input id="messageLog" name="messageLog" type="text" value="" hidden>
 
-              <div class="form-outline mb-2 text-center bold text-white">
-                <label class="form-label" for="password">Password</label>
-                <input type="password" name="loginPassword" id="form12" class="form-control border border-dark"
-                  placeholder="Enter Your Password" autocomplete="on"/>
+          <button id="logSendButton" type="submit" class="btn btn-success btn-block text-center btn-lg ">Log in</button>
 
-              </div>
-
-              <!-- 2 column grid layout for inline styling -->
-              <div class="row mb-2">
-                <div class="col d-flex justify-content-center">
-                  <!-- Checkbox -->
-                  <div class="form-check">
-                  
-                  </div>
-                </div>
-
-                <div class="col text-center ">
-                  <!-- Simple link -->
-                  <a href="/forgot-password" class="text-decoration-none text-warning">Forgot password?</a>
-                </div>
-              </div>
-              <!-- Reset button -->
-              <button type="reset" class="btn btn-light btn-block text-center btn-lg ">Reset</button>
-              <!-- Submit button -->
-              <input id="post_idLog" name="post_idLog" type="number" value="{{currentPost.post_id}}" hidden>
-              <input id="messageLog" name="messageLog" type="text" value="" hidden>
-
-              <button id="logSendButton" type="submit" class="btn btn-success btn-block text-center btn-lg ">Log in</button>
-                
-            </form>
+        </form>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#ModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to Register</button>
+        <button class="btn btn-primary" data-bs-target="#ModalToggle" data-bs-toggle="modal"
+          data-bs-dismiss="modal">Back to Register</button>
       </div>
     </div>
   </div>
@@ -246,9 +236,9 @@
 
 {{!-- Footer --}}
 {{!-- <footer class="pb-3 text-white">
-    <div class="container text-center">
-        <a href="/about-team" class="text-decoration-none">
-            <p class="font-italic mb-0 text-white py-2">SFSU CSC648 Team 7</p>
-        </a>
-    </div>
+  <div class="container text-center">
+    <a href="/about-team" class="text-decoration-none">
+      <p class="font-italic mb-0 text-white py-2">SFSU CSC648 Team 7</p>
+    </a>
+  </div>
 </footer> --}}
