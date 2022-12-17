@@ -254,9 +254,9 @@ h1 {
   width: 550px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 300px) and (max-width:1200px) {
   #search-text {
-    width: 212px;
+    width: 215px;
   }
 }
 
