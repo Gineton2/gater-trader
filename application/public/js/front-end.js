@@ -27,6 +27,7 @@ let regSendButtonMake = document.getElementById('regSendButtonMake');
 let logSendButtonMake = document.getElementById('logSendButtonMake');
 let postButton = document.getElementById("post-button");
 let formPost = document.getElementById('post-form');
+let message = document.getElementById('message')
 
 if(logSendButtonMake){
   logSendButtonMake.addEventListener('click', (event)=>{
@@ -100,6 +101,11 @@ if(sendButton){
   
   sendButton.addEventListener('click', (event)=>{
     event.preventDefault();
+    if(message.value===''){
+      
+      addFlashFromFrontEnd('Cannot send. Message field is empty');
+      return;
+    }
     fetch("./logged", {
       method: "POST",
     }).then((data) => {
@@ -345,31 +351,31 @@ function createResultMessage(messageData) {
   return;
 }
 
-function createCard(postData) {
-  if (postData.post_category == 1) {
-    return `
-        <div id="post-${postData.post_id}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto my-2">
-            <src class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image" type="video/mp4">
-            <div class="card-body bg-grey w-100">
-                <p class="card-title w-100">${postData.title}</p>
-                <p clas="card-text w-100">${postData.post_description}</p>
-                <p class="card-price w-100">$ ${postData.price}</p>
-                <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary w-100 m-auto">Post Details</a>
-            </div>
-        </div>`;
-  } else {
-    return `
-    <div id="post-${postData.post_id}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto my-2">
-        <img class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image">
-        <div class="card-body bg-grey w-100">
-            <p class="card-title w-100">${postData.title}</p>
-            <p clas="card-text w-100">${postData.post_description}</p>
-            <p class="card-price w-100">$ ${postData.price}</p>
-            <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary w-100 m-auto">Post Details</a>
-        </div>
-    </div>`;
-  }
-}
+// function createCard(postData) {
+//   if (postData.post_category == 1) {
+//     return `
+//         <div id="post-${postData.post_id}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto my-2">
+//             <src class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image" type="video/mp4">
+//             <div class="card-body bg-grey w-100">
+//                 <p class="card-title w-100">${postData.title}</p>
+//                 <p clas="card-text w-100">${postData.post_description}</p>
+//                 <p class="card-price w-100">$ ${postData.price}</p>
+//                 <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary w-100 m-auto">Post Details</a>
+//             </div>
+//         </div>`;
+//   } else {
+//     return `
+//     <div id="post-${postData.post_id}" class="card text-center mw-xl-15 mw-md-20 mw-sm-25 m-auto my-2">
+//         <img class="card-image bg-grey w-100" src="${postData.post_thumbnail}" alt="Missing Image">
+//         <div class="card-body bg-grey w-100">
+//             <p class="card-title w-100">${postData.title}</p>
+//             <p clas="card-text w-100">${postData.post_description}</p>
+//             <p class="card-price w-100">$ ${postData.price}</p>
+//             <a href="/post/${postData.post_id}" class="anchor-buttons btn btn-primary w-100 m-auto">Post Details</a>
+//         </div>
+//     </div>`;
+//   }
+// }
 
 function examplePlaceholder() {
   let category = document.getElementById("search_concept selected").innerText;
@@ -387,4 +393,31 @@ function examplePlaceholder() {
   } else if (category === "Slides") {
     searchText.placeholder = " e.g. csc648";
   }
+}
+
+function addFlashFromFrontEnd(message) {
+  let flashMessageDiv = document.createElement('div');
+  let innerFlashDiv = document.createElement('div');
+  let innerTextNode = document.createTextNode(message);
+  innerFlashDiv.appendChild(innerTextNode);
+  flashMessageDiv.appendChild(innerFlashDiv);
+  flashMessageDiv.setAttribute('id','flashMessage');
+  innerFlashDiv.setAttribute('class', 'alert alert-danger');
+  document.getElementById('top-nav').appendChild(flashMessageDiv);
+  console.log(document.getElementsByTagName('body')[0]);
+  setflashMessageFadeOut(flashMessageDiv);
+}
+
+function setflashMessageFadeOut(flashMessage) {
+  setTimeout(() => {
+      let currentOpacity = 1.0;
+      let timer = setInterval(() => {
+          if (currentOpacity < 0.5) {
+              clearInterval(timer);
+              flashMessage.remove();
+          }
+          currentOpacity = currentOpacity - 0.05;
+          flashMessage.style.opacity = currentOpacity;
+      }, 50)
+  }, 3000)
 }
