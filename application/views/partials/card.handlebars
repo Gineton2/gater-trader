@@ -1,0 +1,54 @@
+{{!-- /*
+Filename: card.handlebars
+
+Purpose: Formats content card
+
+Author: Duccio Rocca & Yoshimasa Iwano, Team: 07
+
+Course: CSC648 SFSU
+
+*/ --}}
+
+<div id="post-{{post_id}}" class="card text-center col-lg-2 col-md-3 col-sm-4 px-0 mx-3 my-2 border-0 ">
+  <div class="h-50 ">
+    {{#if (isVideo post_category)}}
+    <video muted playsinline controls controlslist="nodownload" class="w-100 h-100">
+      <source src={{post_thumbnail}} type="video/mp4" />
+    </video>
+
+    {{else}}
+    {{#if (isMusic post_category)}}
+    <div class="h-100 w-100 d-flex flex-column">
+      <img class="w-100 img-fluid " src={{post_thumbnail}} alt="Missing Image">
+      <audio class="w-100 my-1 px-1" controls controlslist="nodownload" src="../{{post_path}}">
+      </audio>
+    </div>
+    {{else}} <img class="card-image w-100 h-100 img-fluid" src={{post_thumbnail}} alt="Missing Image">
+    {{/if}}
+    {{/if}}
+  </div>
+  <div class="card-body bg-lightgreen w-100 text-white py-0 mh-50 d-flex flex-column justify-content-between">
+    <div class="my-1">
+      <a href="/posts/{{post_id}}" class="text-decoration-none text-white">
+        <p class="card-title w-100 my-0" id="post-title-format">
+          {{title}}
+        </p>
+      </a>
+    </div>
+    <div class="w-100 overflow-auto">
+      <p clas="w-100 d-inline-block text-truncate my-0" id="post-description-italic">{{post_description}}</p>
+    </div>
+    
+    <div>
+      {{#if (isFree price)}}
+      <p class="card-price w-100 my-0">Free</p>
+      {{else}}
+      <p class="card-price w-100 my-0">$ {{price}}</p>
+      {{/if}}
+    </div>
+    <div>
+      <a href="/posts/{{post_id}}" class="anchor-buttons btn btn-success text-break w-100 my-1">Contact Seller</a>
+    </div>
+
+  </div>
+</div>

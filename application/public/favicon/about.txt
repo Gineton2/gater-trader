@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Yrsa
+- Font Author: Copyright 2015 The Yrsa-Rasa Project Authors (https://github.com/rosettatype/yrsa-rasa/)
+- Font Source: http://fonts.gstatic.com/s/yrsa/v15/wlprgwnQFlxs_wD3CFSMYmFaaCieSNNV9rRPfrKu.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

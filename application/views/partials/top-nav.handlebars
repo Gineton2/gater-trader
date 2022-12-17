@@ -1,0 +1,107 @@
+{{!-- /*
+Filename: top-nav.handlebars
+
+Purpose: Navigation Bar
+
+Author: Duccio Rocca, Yoshimasa Iwano, Rai'd M. Team: 07
+
+Course: CSC648 SFSU
+
+*/ --}}
+
+
+<div id="top-nav" class=" w-100 text-center bg-greenOne">
+  {{!-- <div class="text-white">
+    <p class="font-italic mb-0 text-white" style="font-size:20px; font-family: serif">SFSU Software Engineering Project
+      CSC 648-848, Fall 2022.
+      For Demonstration Only
+    </p>
+  </div> --}}
+
+  <nav class="navbar navbar-expand navbar-dark d-flex flex-row justify-content-between flex-wrap ">
+    <a class="navbar text-white text-decoration-none" href="/">
+    <img src="../public/images/alligator.png" style="max-height: 5rem" class="img-fluid ms-3" alt="...">
+      <span class="neonText bold px-1 ">
+        
+        <h2 class="me-3">Gater<span class="border-white" style="color: rgb(218, 36, 218)">T</span>rader</h2>
+        
+      </span>
+    </a>
+    <div class="navbar-container mx-auto" id="navbarSupportedContent">
+      <ul class="navbar-nav align-items-center d-flex flex-row flex-wrap mx-auto">
+        <li class="nav-item btn-group-search active m-auto px-2 my-1 "  role="group">
+          <form class="container-search input-group rounded-2 bg-grey flex-wrap" method="POST" action="/posts/search">
+            <div class="input-group-btn search-panel form-outline px-0 w-90px">
+              <button type="button" class="btn btn-default dropdown-toggle select m-auto border-0" id="dropdownMenuButton"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span id="search_concept selected" class="selected ">All</span>
+                <input type="hidden" name="selectedCat" value="All" id="selectedCat" class="selectedCat">
+                <span id="caret" class="caret"></span>
+              </button>
+              <ul class="dropdown-menu scrollable-dropdown " id="dropdown-menu" role="menu"
+                onclick="examplePlaceholder()">
+                <li><a class="dropdown-item active-item">All</a></li>
+                <li><a class="dropdown-item">Videos</a></li>
+                <li><a class="dropdown-item">Images</a></li>
+                <li><a class="dropdown-item">Music</a></li>
+                <li><a class="dropdown-item">Ebooks</a></li>
+                <li><a class="dropdown-item">Slides</a></li>
+              </ul>
+            </div>
+
+            <input type="text" class=" search-text px-5" id="search-text" name="searchText"
+              placeholder=" e.g. Janis Joplin" />
+            {{!-- <input class="search-text" id="search-text" name="search-text" type="text"> --}}
+            {{#if searchTerm}}
+            <script defer>
+              document.getElementById("search-text").setAttribute('placeholder', '{{searchTerm}}');
+            </script>
+            {{/if}}
+            {{#if categorySearch}}
+            <script defer>
+              let innerTextNode = document.createTextNode('{{categorySearch}}');
+              let searchCondition = document.getElementById('search_concept selected');
+              searchCondition.innerText = '';
+              searchCondition.appendChild(innerTextNode);
+            </script>
+            {{/if}}
+            <button id="search-button" class="btn btn-default search-button rounded-end border-0" type="submit" method="POST"
+              action="/posts/search">
+              <i class="bi bi-search"></i>
+            </button>
+          </form>
+        </li>
+
+        <li class="nav-item active m-auto px-2 my-1">
+          <a class="nav-link rounded-3 bg-dark px-4" href="/about-team">About</a>
+        </li>
+
+        <li class="nav-item active m-auto px-2 my-1">
+          <a class="nav-link rounded-3 bg-dark px-4" href="/make-post">Make a Post</a>
+        </li>
+        <li class="nav-item active m-auto px-2 my-1 ">
+          {{#if logged}}<form method="POST" action="users/logout"><a class="nav-link rounded-3 bg-dark px-4 " id="logout" onclick="this.parentNode.submit()" href="#">Logout</a> </form>{{else}} <a
+            class="nav-link rounded-3 bg-dark px-4 " href="/login">Login</a>{{/if}}
+
+        </li>
+
+        <li class="nav-item active m-auto px-2 my-1">
+
+          {{#if logged}} <a class="nav-link rounded-3 bg-dark px-4" href="/dashboard">Dashboard</a>  {{else}} <a
+            class="nav-link rounded-3 bg-dark px-4 " href="/signup">Register</a>{{/if}}
+        </li>
+
+      </ul>
+
+
+      {{!-- {{#if logged}}
+      <li class="nav-item active m-auto px-3 my-3 pt-2">
+        <a class="nav-link rounded-3 bg-dark px-4 " href="/dashboard">dashboard</a>
+        <span id="logged" class="logged"> Hi, {{username}} !</span>
+      </li>
+      {{/if}} --}}
+    </div>
+
+
+  </nav>
+</div>

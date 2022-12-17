@@ -1,18 +1,31 @@
-#Head {
-  margin: auto;
-  padding: 5px;
-  background-color: orange;
-}
-.Title h1 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2rem;
-  text-align: left;
-  color: black;
-  margin-left: 25px;
+/* 
+    Filename: style.css
+
+    Purpose: General Styling of Nav and About page 
+    
+    Author: Gineton Alencar, Duccio Rocca, Yoshimasa Iwano, Rai'd M. Team: 07
+    
+    Course: CSC648 SFSU
+
+ */
+
+.bg-lightgreen {
+  background-color: rgb(39, 67, 66);
 }
 
-.header-fall22{
+.bg-green {
+  background-color: rgb(78, 92, 85);
+}
 
+.bg-greenOne {
+  background-color: rgb(61, 72, 67);
+}
+
+img {
+  object-fit: fill;
+}
+
+.header-fall22 {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
@@ -20,11 +33,11 @@
   font-size: 1rem;
 }
 
-.Special_num {
+/* .Special_num {
   text-decoration: bold;
   color: white;
-}
-.Meet_Team {
+} */
+.meet-team {
   font-size: 35px;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -34,26 +47,24 @@
 
 body {
   margin: auto;
-  background-color: rgb(84, 173, 170);
-  background: radial-gradient(circle, rgb(84, 173, 170), rgb(116, 182, 162));
+  background-color: rgb(17, 41, 40);
+  background: radial-gradient(circle, rgb(15, 44, 43), rgb(59, 84, 76));
 }
 /*Profiles*/
-.Pictures img {
+.pictures img {
   max-height: 15%;
   max-width: 15%;
   object-fit: contain;
-
-  
 }
-.CEO {
+.ceo {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-top: 5px;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
 }
-.Leads1 {
+/* .Leads1 {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
@@ -88,8 +99,9 @@ body {
   padding-left: 0;
   gap: 80px;
   flex-wrap: no-wrap;
-}
-.linkAbout1 {
+} 
+*/
+/* .linkAbout1 {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
@@ -114,18 +126,18 @@ body {
   padding-left: 10px;
   gap: 100px;
   flex-wrap: no-wrap;
-}
-.TeamInfo {
+} */
+.team-info {
   background-color: lightskyblue;
 }
-.TeamInfo h1 {
+.team-info h1 {
   text-align: center;
   font-weight: lighter;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 2rem;
   color: white;
   margin: 1rem;
-  padding: .5rem;
+  padding: 0.5rem;
   /* text-decoration: underline; */
 }
 
@@ -134,7 +146,7 @@ h1 {
   margin-top: 0.5rem;
 }
 
-.singleBox {
+.single-box {
   display: flex;
   justify-content: center;
   text-align: left;
@@ -144,36 +156,164 @@ h1 {
   color: white;
   padding-left: 20rem;
   padding-right: 20rem;
-  
 }
 
-.gitLink{
+.git-link {
   margin-top: 1rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
-.imgAboutMe{
-  border: .0625rem solid grey;
-  border-radius: .25rem;
+.img-about-me {
+  border: 0.0625rem solid grey;
+  border-radius: 0.25rem;
   box-shadow: 1px 1px 4px 1px #4d2828;
-  margin: .9rem;
+  margin: 0.9rem;
+}
+
+.word-about {
+  padding: 0.5rem;
   
 }
 
-.wordAbout{
-  padding: .5rem;
+.lead-word {
+  padding: 0.7rem;
+  text-decoration: underline;
 }
 
-.leadWord{
-  padding: .7rem;
+.bg-grey {
+  background-color: #dcdcdc;
 }
 
+.bold {
+  font-weight: bold;
+}
+
+.btn-group-search {
+  display: flex;
+
+  /* border-radius: 4px 4px 4px 4px; */
+  /* border-style: groove;
+  border-width: thin; */
+}
+
+#navbarSupportedContent
+  > ul
+  > li.nav-item.btn-group-search.active.m-auto.px-2.my-1
+  > form
+  > div {
+  outline: none;
+  text-decoration: none;
+  padding: 8px;
+}
+
+#dropdown-menu {
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+}
+#navbarSupportedContent
+  > ul
+  > li.nav-item.btn-group-search.active.m-auto.px-2.my-1 {
+  width: auto;
+}
+
+.search-text {
+  /* border-style: solid; */
+  border: none;
+  /* border-width: 1px;
+  border: 1px solid #cccccc;
+  text-indent: 0.3rem;
+  min-width: 550px;
+  max-width: 550px;
+  height: 50px;
+  font-size: 25px;
+  text-align: center; */
+}
+
+.w-90px {
+  width: 90px;
+}
+
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.mh-50 {
+  max-height: 50%;
+}
+
+.mh-300 {
+    max-height: 300px;
+}
+
+.d-inline-block {
+  display: inline-block;
+} 
+
+.text-truncate {
+  text-overflow: ellipsis;
+}
+
+.navbar-container {
+  display: flex;
+}
+
+.nav-item {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.open-caret {
+  transform: rotate(0.5turn);
+  transition: all 0.25s ease-out;
+}
+
+.select:hover {
+  background: #7a7c86;
+}
+
+.active-item {
+  background: #83889d;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  column-gap: 3rem;
+  grid-template-rows: repeat(1, auto);
+  margin-top: 20px;
+  margin: 1rem;
+  padding: 0.5rem;
+  row-gap: 3rem;
+}
 
 @media screen and (max-width: 600px) {
+  .pl-sm-0 {
+    padding-left: 0;
+  }
+  .pr-sm-0 {
+    padding-right: 0;
+  }
+  .ml-sm-1 {
+    margin-left: 0.5rem;
+  }
+  .mr-sm-1 {
+    margin-right: 0.5rem;
+  }
+  .ml-sm-auto {
+    margin-left: auto;
+  }
+  .mr-sm-auto {
+    margin-right: auto;
+  }
+  .mw-sm-25 {
+    max-width: 25%;
+  }
   .team-leader {
     text-align: center;
   }
-  .team-leader img{
+  .team-leader img {
     max-width: 100%;
     height: 200px;
     width: 200px;
@@ -194,22 +334,34 @@ h1 {
     height: 150px;
     width: 150px;
   }
-  .name {
-  
-  }
-  .position {
-  
-  }
-  .about {
-  
-  }
 }
 
 @media screen and (min-width: 600px) and (max-width: 1200px) {
+  .pl-md-0 {
+    padding-left: 0;
+  }
+  .pr-md-0 {
+    padding-right: 0;
+  }
+  .ml-md-1 {
+    margin-left: 0.5rem;
+  }
+  .mr-md-1 {
+    margin-right: 0.5rem;
+  }
+  .ml-md-auto {
+    margin-left: auto;
+  }
+  .mr-md-auto {
+    margin-right: auto;
+  }
+  .mw-md-20 {
+    max-width: 20%;
+  }
   .team-leader {
     text-align: center;
   }
-  .team-leader img{
+  .team-leader img {
     max-width: 100%;
     height: 250px;
     width: 250px;
@@ -231,22 +383,34 @@ h1 {
     height: 200px;
     width: 200px;
   }
-  .name {
-  
-  }
-  .position {
-  
-  }
-  .about {
-  
-  }
 }
 
 @media screen and (min-width: 1200px) {
+  .pl-xl-0 {
+    padding-left: 0;
+  }
+  .pr-xl-0 {
+    padding-right: 0;
+  }
+  .ml-xl-1 {
+    margin-left: 0.5rem;
+  }
+  .mr-xl-1 {
+    margin-right: 0.5rem;
+  }
+  .ml-xl-auto {
+    margin-left: auto;
+  }
+  .mr-xl-auto {
+    margin-right: auto;
+  }
+  .mw-xl-15 {
+    max-width: 15%;
+  }
   .team-leader {
     text-align: center;
   }
-  .team-leader img{
+  .team-leader img {
     max-width: 100%;
     height: 350px;
     width: 350px;
@@ -268,14 +432,46 @@ h1 {
     height: 250px;
     width: 250px;
   }
-  .name {
-  
-  }
-  .position {
-  
-  }
-  .about {
-  
-  }
 }
 
+#navbarSupportedContent > li {
+  color: rgb(183, 176, 136);
+  text-decoration: none;
+  list-style-type: none;
+  text-transform: uppercase;
+
+}
+
+#post-title-format {
+  font-weight: bolder;
+  color: white;
+  /* font-size: 1.25rem; */
+  box-shadow: inset 0 0 0 0 #015d7b;
+
+  /* padding: 0 .25rem;
+  margin: 0 -.25rem; */
+  transition: color 2s ease-in-out, box-shadow .3s ease-in-out;
+  width: 100%;
+
+}
+#post-title-format:hover{
+  color: #fff;
+  box-shadow: inset 200px 0 0 0 #025830;
+}
+
+#post-description-italic {
+  font-style: italic;
+}
+
+#about-profile {
+  box-shadow: inset 0 0 0 0 #015d7b;
+
+  padding: 0 .25rem;
+  margin: 0 -.25rem;
+  transition: color 2s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+#about-profile:hover{
+  color: #fff;
+  box-shadow: inset 350px 0 0 0 #025830;
+}
