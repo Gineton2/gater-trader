@@ -37,7 +37,8 @@ const { postValidation } = require("../middleware/validation");
 const {
   doTheSearch,
   getTargetPostById,
-  findReceiver
+  findReceiver,
+  sendReply
 } = require("../middleware/postsMiddleware");
 
 var PostModel = require("../models/posts-model");
@@ -99,6 +100,11 @@ router.post("/logged", async (req, res, next) => {
 router.post("/send", findReceiver, (req, res, next) => {
     res.redirect("/");
   });
+
+router.post("/sendReply", sendReply, (req, res, next) => {
+    res.redirect("../dashboard");
+});
+
 
 router.post("/search", doTheSearch, function (req, res, next) {
   res.render("index");
