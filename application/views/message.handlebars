@@ -16,10 +16,10 @@
     type="video/mp4" /> </video>
     
     {{else}} {{#if (isMusic currentPost.post_category)}}
-    <div class="flex-column align-content-center">
+    <div class="d-flex flex-column justify-content-center">
     <img class="p-2 img-fluid" src="{{currentPost.post_thumbnail}}" alt="PostImage" >
 
-    <audio class="p-2"
+    <audio class="p-2 m-auto"
         controls controlslist="nodownload" 
         src="../{{currentPost.post_path}}">
     </audio>
