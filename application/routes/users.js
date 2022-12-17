@@ -290,8 +290,8 @@ router.post('/logout', (req, res, next) => {
             res.clearCookie('csID');
             req.session = null;
             res.locals.logged = false;
-            res.json({status: "Ok", message: "user is logged out"});
-            // res.redirect('/');
+            // res.json({status: "Ok", message: "user is logged out"});
+            res.redirect('/');
             
         }
 

@@ -11,18 +11,20 @@ Course: CSC648 SFSU
 
 
 <div id="top-nav" class=" w-100 text-center bg-greenOne">
-  <div class="text-white">
+  {{!-- <div class="text-white">
     <p class="font-italic mb-0 text-white" style="font-size:20px; font-family: serif">SFSU Software Engineering Project
       CSC 648-848, Fall 2022.
       For Demonstration Only
     </p>
-  </div>
+  </div> --}}
 
   <nav class="navbar navbar-expand navbar-dark d-flex flex-row justify-content-between flex-wrap ">
     <a class="navbar text-white text-decoration-none" href="/">
+    <img src="../public/images/alligator.png" style="max-height: 5rem" class="img-fluid ms-3" alt="...">
       <span class="neonText bold px-1 ">
-        <h2 class="mx-5">Gater<span class="border-white" style="color: rgb(163, 22, 163)">T</span>rader</h2>
-
+        
+        <h2 class="me-3">Gater<span class="border-white" style="color: rgb(218, 36, 218)">T</span>rader</h2>
+        
       </span>
     </a>
     <div class="navbar-container mx-auto" id="navbarSupportedContent">
@@ -78,7 +80,7 @@ Course: CSC648 SFSU
           <a class="nav-link rounded-3 bg-dark px-4" href="/make-post">Make a Post</a>
         </li>
         <li class="nav-item active m-auto px-2 my-1 ">
-          {{#if logged}}<a class="nav-link rounded-3 bg-dark px-4 " id="logout" href="">Logout</a> {{else}} <a
+          {{#if logged}}<form method="POST" action="users/logout"><a class="nav-link rounded-3 bg-dark px-4 " id="logout" onclick="this.parentNode.submit()" href="#">Logout</a> </form>{{else}} <a
             class="nav-link rounded-3 bg-dark px-4 " href="/login">Login</a>{{/if}}
 
         </li>
