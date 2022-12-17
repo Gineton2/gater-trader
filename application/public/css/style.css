@@ -243,6 +243,10 @@ h1 {
   max-height: 50%;
 }
 
+.mh-300 {
+    max-height: 300px;
+}
+
 .d-inline-block {
   display: inline-block;
 } 
