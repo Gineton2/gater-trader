@@ -22,20 +22,20 @@
       <p class="h1 my-2 text-center text-white p-2 text-uppercase">{{currentPost.title}}</p>
       <div class="bg-success bg-opacity-25 py-2 my-3 rounded">
         <h4 class="my-2 text-center text-warning mb-3"> Owner </h4>
-        <h4 style="color:white ;" class="px-2 text-center text-uppercase fst-italic">{{currentPost.username}}</h4>
+        <h4 style="color:white" class="px-2 text-center text-uppercase fst-italic">{{currentPost.username}}</h4>
       </div>
       <div class="bg-success bg-opacity-25 py-2 my-3 rounded">
         <h4  class="px-2 text-center mb-3 text-warning"> Description</h4>
-        <h5 style="color:white ;" class="px-2 fst-italic text-center">{{currentPost.post_description}}</h5>
+        <h5 style="color:white" class="px-2 fst-italic text-center">{{currentPost.post_description}}</h5>
       </div>
       <div class="bg-success bg-opacity-25 py-2 my-3 rounded">
 
         {{#if (isFree currentPost.price)}}
         <h4 class="my-2 text-center text-warning mb-3">Price: </h4>
-        <h5 style="color:white ;" class="px-2 text-center"> Free</h5>
+        <h5 style="color:white" class="px-2 text-center"> Free</h5>
         {{else}}
         <h4 class="my-2 text-center text-warning mb-3">Price</h4>
-        <h5 style="color:white ;" class="px-2 text-center">{{currentPost.price}}</h5>
+        <h5 style="color:white" class="px-2 text-center">{{currentPost.price}}</h5>
         {{/if}}
 
       </div>
