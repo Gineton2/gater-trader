@@ -1,0 +1,162 @@
+<!--- 
+    Filename: dashboard.handlebars
+
+    Purpose: User Dashboard
+
+    Author:Rai'd Muhammad, Gineton Alencar, Yoshimasa Iwano Team: 07
+
+    Course: CSC648 SFSU 
+--->
+
+
+<div class="container">
+    <div class="row align-items-center py-1 m-2">
+        <h2 class="text-center text-white m-auto">
+            User Dashboard
+        </h2>
+       
+        {{!-- Hardcoded Name for Idea of Dashboard Style --}}
+        <div class="col-lg-3 m-auto">
+            <h3 class="text-white text-wrap m-auto my-3">
+                Hi, {{username}}
+            </h3>
+            <div class="w-100 h-100">
+                <img src="/public/images/icons/user.jpeg" alt="profile" class="mx-auto img-fluid">
+            </div>
+        </div>
+        
+        <div class="accordion accordion-flush col-lg-9 m-auto py-3 " id="accordionFlush">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <h4>Recent Messages</h4>
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse overflow-auto mh-300" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlush">
+                    <table class="table overflow-auto">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">From</th>
+                                <th scope="col">To</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Content</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each userMessage}}
+                                {{> message-list this}}
+                            {{/each}}
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h4>Created Post</h4>
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse overflow-auto mh-300" aria-labelledby="flush-headingTwo"
+                    data-bs-parent="#accordionFlush">
+                    {{!-- <div class="m-auto px-2 my-1">
+                        <a class="link text-decoration-none rounded-1 " href="/sort-by-price">Price</a>
+                    </div> --}}
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">
+                                    <button type="button" class="btn dropdown-toggle select border-0 " id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Price
+                                    </button>
+                                    <ul class="dropdown-menu scrollable-dropdown" id="dropdown-menu" role="menu">
+                                        <li><a class="dropdown-item" href="/sort-by-price-asc">ASC</a></li>
+                                        <li><a class="dropdown-item" href="/sort-by-price-desc">DESC</a></li>
+                                    </ul>
+                                </th>
+                                <th scope="col">
+                                    <button type="button" class="btn dropdown-toggle select border-0 " id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Date
+                                    </button>
+                                    <ul class="dropdown-menu scrollable-dropdown" id="dropdown-menu" role="menu">
+                                        <li><a class="dropdown-item" href="/sort-by-date-asc">ASC</a></li>
+                                        <li><a class="dropdown-item" href="/sort-by-date-desc">DESC</a></li>
+                                    </ul>
+                                </th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each userPost}}
+                                {{#if approved}}
+                                    {{> post-list this}}
+                                {{/if}}
+                            {{/each}}
+                        </tbody>
+                    </table>    
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        <h4>Pending Posts</h4>
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse overflow-auto mh-300" aria-labelledby="flush-headingThree"
+                    data-bs-parent="#accordionFlush">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">
+                                    <button type="button" class="btn dropdown-toggle select border-0 " id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Price
+                                    </button>
+                                    <ul class="dropdown-menu scrollable-dropdown" id="dropdown-menu" role="menu">
+                                        <li><a class="dropdown-item" href="/sort-by-price-asc">ASC</a></li>
+                                        <li><a class="dropdown-item" href="/sort-by-price-desc">DESC</a></li>
+                                    </ul>
+                                </th>
+                                <th scope="col">
+                                    <button type="button" class="btn dropdown-toggle select border-0 " id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Date
+                                    </button>
+                                    <ul class="dropdown-menu scrollable-dropdown" id="dropdown-menu" role="menu">
+                                        <li><a class="dropdown-item" href="/sort-by-date-asc">ASC</a></li>
+                                        <li><a class="dropdown-item" href="/sort-by-date-desc">DESC</a></li>
+                                    </ul>
+                                </th>
+                                <th scope="col">description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each userPost}}
+                                {{#if approved}}
+                                {{else}}
+                                    {{> post-list this}}
+                                {{/if}}
+                            {{/each}}
+                        </tbody>
+                    </table>    
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+</div>

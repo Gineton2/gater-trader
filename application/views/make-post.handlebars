@@ -1,0 +1,206 @@
+<!--- 
+    Filename: make-post.handlebars
+
+    Purpose: Make post page 
+
+    Author: Rai'd Muhammad Team: 07
+
+    Course: CSC648 SFSU 
+--->
+
+
+<div class="container " style="position: relative;">
+  <h2 class=" text-center mb-4 text-white mt-2">Make a Post</h2>
+  <div class="row d-flex justify-content-center align-items-center mask m-auto px-2">
+    <div class="card shadow-sm col-12 col-md-9 col-lg-7 col-xl-6">
+      <div class="card-body "> 
+        <form id="post-form" class="mx-1 mx-md-5" method="POST" enctype="multipart/form-data"  action='/posts/createPost'>
+          <div class="form-outline mb-2">
+            <div class="fields-two text-center bold">
+              <label class="form-label" for="form3">Title</label>
+            </div>
+              <input type="text" id="postTitle" name="PostTitle"
+                  class="form-control form-control-lg border border-dark"
+                  placeholder="Enter Post title" />
+            </div>
+            <div class="form-outline mb-2">
+              <div class="fields-three text-center bold">
+                <label class="form-label" for="postCategory">Category</label>
+              </div>
+              <div class="input-group mb-2">
+                  <select class="custom-select w-100 p-3 form-control" id="postCategoryDropdown" name="category" required>
+                    <option selected>Choose...</option>
+                    <option value="1">Video</option>
+                    <option value="2">Music</option>
+                    <option value="3">Ebooks</option>
+                    <option value="4">Slides</option>
+                    <option value="5">Images</option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-outline mb-2">
+                <div class="fields-two text-center bold">
+                  <label class="form-label" for="postPrice">Price</label>
+                </div>
+                <input type="number" step="0.01" id="form3Example1cg" name="price"
+                    class="form-control form-control-lg border border-dark"
+                    placeholder="Enter Price" />
+            </div>
+            <div class="form-outline mb-1">
+              <div class="fields-twotext-center bold">
+                <div class="md-form text-center ">
+                  <label for="description">
+                    <h4>Description</h4>
+                  </label>
+                  <textarea type="text" id="description" name="PostDescription" rows="3"
+                      class="form-control md-textarea"></textarea>
+                  <p class="text-center"> *All fields required.</p>
+                </div> 
+              </div>
+            </div>
+            <input class="form-control form-control-lg" name="upload" id="formFileLg" type="file" accept="audio/*,video/*,image/*, .pptx, .pdf, .epub" required/>
+            <div class="clearfix py-2 my-2"> <span class="badge rounded-pill bg-success px-2 fw-bold">Accepted
+                    File Types</span> <span class="px-1 fw-bold ">Audio, Images, Videos, .pdf, .epub, .pptx</span>
+            </div>
+            <div class="form-check d-flex justify-content-center mb-5 bold">
+              <input class="form-check-input me-2" type="checkbox" value="check" id="checkBoxTos" required/>
+              <label class="form-check-label" for="form2Example3g">
+                  I agree all statements in <a href="#!" class="text-body"><u>Terms of service for
+                          Posting</u></a>
+              </label>
+            </div>
+            <div class="text-center justify-content-center">
+              <button id="post-button" type="submit" class="btn btn-success btn-block text-center btn-lg ">Make
+                    Post</button>
+            </div>
+            <div class="text-center text-danger mt-1">
+              <p> Posts may take up to 24 hours to be approved. </p>
+            </div>
+        
+            <input id="usernameSend" name="usernameSend" type="text" value="" hidden>
+            <input id="emailSend" name="emailSend" type="email" value="" hidden>
+            <input id="passSend" name="passSend" type="text" value="" hidden>
+            <input id="matchPassSend" name="matchPassSend" type="text" value="" hidden>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalToggle" aria-hidden="true" aria-labelledby="ModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="ModalToggleLabel">You’re almost done!</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <h6 class="modal-header">Please Register to send the message</h6>
+          <div class="modal-body">
+            <h2 class="text-uppercase text-center mb-5 bg-dark text-white bold">SIGN UP</h2>
+            <form id="registerSend" class="needs-validation" method="POST" action="/users/registerSend">
+              <fieldset>
+                <div class="form-outline mb-4 form-group">
+                  <div class="fields-one text-center bold">
+                    <label class="form-label " for="username">Your Name</label>
+                  </div>
+                  <input type="text" id="usernameReg" name="username"
+                    class="form-control form-control-lg border border-dark" placeholder="Enter Full Name"
+                    minlength="2" pattern="^\D\w{2,}" required />
+                </div>
+                <div class="form-outline mb-4 form-group">
+                  <div class="fields-two text-center bold">
+                    <label class="form-label" for="email">Your Email</label>
+                  </div>
+                  <input type="email" id="emailReg" name="email" class="form-control form-control-lg border border-dark"
+                    placeholder="Enter Your SFSU Email" 
+                    required />
+                </div>
+                <div class="form-outline mb-4 form-group" id="div-input-password">
+                  <div class="fields-three text-center bold">
+                    <label class="form-label" for="password">Password</label>
+                  </div>
+                  <input type="password" id="passwordReg" name="password" autocomplete="on"
+                    class="form-control form-control-lg border border-dark" placeholder="Enter Your Password"
+                    minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required />
+                </div>
+                <div class="form-outline mb-4 form-group">
+                  <div class="fields-four text-center bold">
+                    <label class="form-label" for="matchPassword">Repeat your password</label>
+                  </div>
+                  <input type="password" id="matchPasswordReg" name="matchPassword" autocomplete="on"
+                    class="form-control form-control-lg border border-dark" placeholder="Re Enter Your Password"
+                    minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required />
+                </div>
+              </fieldset>
+
+              <div class="form-check d-flex justify-content-center mb-5 bold">
+                <input class="form-check-input me-2" type="checkbox" value="check" id="checkBoxTosReg" required />
+                <label class="form-check-label" for="form2Example3g">
+                  I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                </label>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <button id="regSendButtonMake" type="submit" class="btn btn-success btn-block text-center btn-lg ">Sign
+                  Up!</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <p>Already Registered?</p>
+            <a class="btn btn-primary" data-bs-target="#ModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Log in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalToggle2" aria-hidden="true" aria-labelledby="ModalToggleLabel2" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="ModalToggleLabel">You’re almost done!   </h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <h6 class="modal-header">Please Login to send the message</h6>
+          <div class="modal-body">
+            <h3 class=" text-center mb-3 text-white bold">Login Page</h3>
+            <form id="loginSend" class="bg-green rounded-5 shadow-5-strong p-5 " enctype="application/x-www-form-urlencoded"
+              method="POST" action="/users/loginSend">
+              <h2 class="text-uppercase text-center mb-5 bg-dark text-white">LOGIN</h2>
+              <!-- Email input -->
+              <div class="form-outline mb-4 text-center bold text-white">
+                <label class="form-label" for="email">Email address</label>
+                <input name="loginEmail" type="email" id="loginEmail" class="form-control border border-dark"
+                  placeholder="Enter Your SFSU Email" minlength="6"
+                name="loginEmail" autocomplete="on"/>
+              </div>
+              <!-- Password input -->
+              <div class="form-outline mb-2 text-center bold text-white">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" name="loginPassword" id="passwordLog" class="form-control border border-dark"
+                  placeholder="Enter Your Password" autocomplete="on"/>
+              </div>
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row mb-2">
+                <div class="col d-flex justify-content-center">
+                  <!-- Checkbox -->
+                  <div class="form-check">
+                  </div>
+                </div>
+
+                <div class="col text-center ">
+                  <!-- Simple link -->
+                  <a href="/forgot-password" class="text-decoration-none text-warning">Forgot password?</a>
+                </div>
+              </div>
+              <!-- Reset button -->
+              <button type="reset" class="btn btn-light btn-block text-center btn-lg ">Reset</button>
+              <!-- Submit button -->
+              <button id="logSendButtonMake" type="submit" class="btn btn-success btn-block text-center btn-lg ">Log in</button>
+            
+            </form>
+          </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#ModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

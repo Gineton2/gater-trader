@@ -1,0 +1,31 @@
+<!--- 
+    Filename: database-test.handlebars
+
+    Purpose: test page to register and store user info
+
+    Author: Yoshimasa Iwano, Duccio Rocca, Team: 07
+
+    Course: CSC648 SFSU 
+--->
+
+
+<form id="form" class="grid-container_form_register" method="POST" action="/users/register"
+    enctype="application/x-www-form-urlencoded">
+    <div class="containerForm_message">
+        <fieldset>
+            <input id="Username" name="username" placeholder="Username" required>
+            <div id="messageUser" class="messages message_Username"></div>
+            <input autocomplete="off" id="Email" name="email" type="email" required placeholder="Email">
+            <div id="messageEmail" class="messages message_Email"></div>
+            <input id="Password" name="password" type="password" placeholder="Password" required>
+            <div id="messagePassword" class="messages message_Password"> </div>
+        </fieldset>
+    </div>
+
+
+    <div class="button-container">
+        <button type="submit" class="buttonLeft">Register</button>
+        <button type="reset" class="buttonRight">Clear</button>
+    </div>
+
+</form>
