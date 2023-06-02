@@ -1,17 +1,8 @@
 # csc648 Repository
 
-## Please when ready add your teams application URL or IP to the repository description. This will help with grading. Teams are expected to keep this value up to date.
+[GaterTrader](https://gatertrader.com/)
 
-## Please do the following steps before completing Milestone 0.
-1. Change the name of the repository. All that needs to change is the NN to your respective team number. Team numbers whose value is less than 10, please pad with a 0. Ex team 1 is Team01 team 11 is Team11. Please make sure to also remove the username from the repository as well. Teams with incorrectly name repository will have points deducted from their milestone 0 grades.
-      - Please follow the naming convention assigned by your instructor.
-
-1. PLEASE REMOVE THE USERNAME FROM THE REPOSITORY NAME!!!
-
-2. Add ALL members of your team to this repository. For it to count, they must ACCEPT the invite.
-
-3. Fill out the table below
-
+GaterTrader is a web platform exclusive for San Francisco State University (SFSU) students, staff, and faculty to sell and share content that may be useful to all. It was built by SFSU students for the SFSU community. Students and faculty will immediately see a benefit from the school-friendly categorization of media by course and field of study. Professors will be able to publish their syllabi, notes, and handouts in one place. Students, for example, will have the opportunity to be rewarded for their creativity by facilitating buying and selling of media. The project was developed as part of the Software Engineering (course CSC648) capstone project.
 
 | Student Name    | Student Email               | GitHub Username |
 |    :---:        |     :---:                   |     :---:       |
@@ -22,5 +13,3 @@
 | Kobe Shelby     | kshelby@mail.sfsu.edu       |  Kobe040102     |
 | Rai'd Muhammad  |  rmuhammad@mail.sfsu.edu    |  muhammad14u2c  |
 | Duccio Rocca    |  drocca@sfsu.edu            |  RINO-GAELICO   |
-
-## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
